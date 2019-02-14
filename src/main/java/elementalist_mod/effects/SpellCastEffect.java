@@ -119,8 +119,8 @@ public class SpellCastEffect extends AbstractGameEffect {
 		
 		this.nodeHb = hb;
 
-		this.startingDuration = 5F;
-		this.duration = 5F;
+		this.startingDuration = 2F;
+		this.duration = 2F;
 
 		this.scale = scale * Settings.scale; //(MathUtils.random(0.9F, 1.3F) * Settings.scale);
 		this.rotation = (canRotate ? MathUtils.random(-30.0F, 30.0F) : 0);
@@ -141,7 +141,7 @@ public class SpellCastEffect extends AbstractGameEffect {
 		this.color.g = this.color.a;
 		this.color.b = this.color.a;
 		if(canRotate) {
-			this.rotation += Gdx.graphics.getDeltaTime() * (this.flipped? -1 : 1);
+			this.rotation += 4 * Gdx.graphics.getDeltaTime() * (this.flipped? -1 : 1);
 		}
 		this.duration -= Gdx.graphics.getDeltaTime();
 		if (this.duration < 0.0F) {
