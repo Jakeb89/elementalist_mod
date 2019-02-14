@@ -1,0 +1,10 @@
+{
+	"elementalist:Elemental_Strike": {
+		"NAME": "Elemental Strike",
+		"DESCRIPTION": "Deal !D! damage. \nElement 1."
+	},
+	"elementalist:Elemental_Defend": {
+		"NAME": "Elemental Defend",
+		"DESCRIPTION": "Gain !B! Block. \nElement 1."
+	}
+}

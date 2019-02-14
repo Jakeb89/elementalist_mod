@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>elementalistmod</groupId>
+    <artifactId>elementalistmod</artifactId>
+    <version>v0.0.2</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.megacrit.cardcrawl</groupId>
+            <artifactId>slaythespire</artifactId>
+            <version>906</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../lib/desktop-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>basemod</groupId>
+            <artifactId>basemod</artifactId>
+            <version>3.2.2</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../lib/BaseMod.jar</systemPath>
+        </dependency>
+        <dependency>
+	        <groupId>com.evacipated.cardcrawl</groupId>
+		      <artifactId>ModTheSpire</artifactId>
+		      <version>3.1.0</version>
+		      <scope>system</scope>
+          <systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>
+	      </dependency>
+    </dependencies>
+	<build>
+        <finalName>ElementalistMod</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>ModTheSpire.json</exclude>
+                    <exclude>**/*.psd</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>ModTheSpire.json</include>
+                </includes>
+            </resource>
+	</resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+		    		<fork>true</fork>
+		    		<executable>C:\Program Files\Java\jdk-11.0.1\bin\javac.exe</executable>
+                    <source>1.8</source>
+                    <target>1.8</target>
+          <excludes>
+            <exclude>**/*.psd</exclude>
+          </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <copy file="target/ElementalistMod.jar" tofile="../lib/ElementalistMod.jar" />
+                		<copy file="target/ElementalistMod.jar" tofile="C:/Program Files (x86)/Steam/steamapps/common/SlayTheSpire/mods/ElementalistMod.jar"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build><name>ElementalistMod</name>
+    <description>Attempting to make a mod!</description>
+
+    
+
+    
+</project>

@@ -1,0 +1,37 @@
+{
+  "elementalistmod:MagusStaff": {
+    "NAME": "Magus Staff",
+    "FLAVOR": "A mysterious staff the elementalist found on their person upon waking. It feels important somehow...",
+    "DESCRIPTIONS": [
+      "Gains a charge for every 5 cards played. NL Click an elemental orb to convert a charge into one point of that element. NL Starts each battle with 1 charge."
+    ]
+  },
+  "elementalistmod:BlueRibbon": {
+    "NAME": "Blue Ribbon",
+    "FLAVOR": "A curious and familiar blue ribbon. It looks similar to the one on your staff...",
+    "DESCRIPTIONS": [
+      "Start battles with 1 Water. You are more likely to find Water-based cards."
+    ]
+  },
+  "elementalistmod:RedRibbon": {
+    "NAME": "Red Ribbon",
+    "FLAVOR": "A curious and familiar redribbon. It looks similar to the one on your staff...",
+    "DESCRIPTIONS": [
+      "Start battles with 1 Fire. You are more likely to find Fire-based cards."
+    ]
+  },
+  "elementalistmod:YellowCirclet": {
+    "NAME": "Yellow Circlet",
+    "FLAVOR": "A curious and familiar yellow circlet. It looks similar to the one on your staff...",
+    "DESCRIPTIONS": [
+      "Start battles with 1 Earth. You are more likely to find Earth-based cards."
+    ]
+  },
+  "elementalistmod:GreenCirclet": {
+    "NAME": "Green Circlet",
+    "FLAVOR": "A curious and familiar green circlet. It looks similar to the one on your staff...",
+    "DESCRIPTIONS": [
+      "Start battles with 1 Air. You are more likely to find Air-based cards."
+    ]
+  }
+}
