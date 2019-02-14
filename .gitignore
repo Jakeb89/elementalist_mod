@@ -1,4 +1,5 @@
 *.psd
+*.cmd
 
 # Compiled class file
 *.class
