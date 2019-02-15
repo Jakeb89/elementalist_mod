@@ -52,6 +52,7 @@ public class Flame extends AbstractElementalistCard {
 		if (cast("Fire", 1)) {
 		    //AbstractDungeon.actionManager.addToBottom(new ModifyDamageAction(this.uuid, this.magicNumber));
 		    AbstractDungeon.actionManager.addToTop(new FlameAction(this.magicNumber));
+			AbstractDungeon.actionManager.addToBottom(new ModifyDamageAction(this.uuid, this.magicNumber));
 		}
 	}
 
