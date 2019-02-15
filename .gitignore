@@ -29,3 +29,9 @@ hs_err_pid*
 target/maven-archiver/pom.properties
 target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+src/main/resources/ModTheSpire.json
+src/main/resources/ModTheSpire.json
+target/classes/ModTheSpire.json
+target/maven-archiver/pom.properties
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+src/main/resources/ModTheSpire.json
