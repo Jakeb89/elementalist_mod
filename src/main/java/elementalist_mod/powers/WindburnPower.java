@@ -13,7 +13,7 @@ import elementalist_mod.orbs.ElementOrb;
 public class WindburnPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:Windburn";
 	public static final String NAME = "Windburn";
-	public static String baseDescription = "Take damage equal to your Windburn at the end of each turn if any element is higher than Air.";
+	public static String baseDescription = "Lose HP equal to your Windburn at the end of your turn if any element is higher than Air.";
 	public static String DESCRIPTION = baseDescription;
 
 	public WindburnPower(AbstractCreature owner, AbstractCreature source, int amount) {
@@ -44,15 +44,7 @@ public class WindburnPower extends ElementalPower {
 	}
 
 	public int getElement(String element) {
-		for (AbstractOrb orb : AbstractDungeon.player.orbs) {
-			if (orb instanceof ElementOrb) {
-				ElementOrb elementOrb = (ElementOrb) orb;
-				if (elementOrb.element == element) {
-					return elementOrb.amount;
-				}
-			}
-		}
-		return 0;
+		return ElementalistMod.getElement(element);
 	}
 
 	public void atEndOfTurn(boolean isPlayer) {

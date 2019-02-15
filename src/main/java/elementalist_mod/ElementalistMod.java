@@ -364,7 +364,7 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		BaseMod.addKeyword("Synergy", new String[] { "synergy", "synergized", "synergizing", "synergizes" }, "Occurs when at least two elements are equal and greater than zero.");
 		BaseMod.addKeyword("Aerial Dodge", new String[] { "aerial", "dodge" }, "When you have less than 5 extra block remaining at the end of the enemy turn, gain 2 Dexterity.");
 		BaseMod.addKeyword("Windburn", new String[] { "windburn" },
-			"Take damage equal to your Windburn at the end of each turn if any element is higher than Air. Monsters always take their windburn damage.");
+			"Lose HP equal to your Windburn at the end of your turn if any element is higher than Air. Monsters always take their windburn damage.");
 		BaseMod.addKeyword("Rune", new String[] { "rune", "igniseye", "terraheart", "zephyrsoul", "aquamind" },
 			"Runes are temporary cards which exhaust on use, at the end of your turn, or if another Rune is played.");
 
