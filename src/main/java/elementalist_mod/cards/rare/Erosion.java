@@ -27,7 +27,7 @@ public class Erosion extends AbstractElementalistCard {
 	
 
 	public Erosion() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_ATTACK_GREY_3), COST, DESCRIPTION,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_GREY_3), COST, DESCRIPTION,
 				AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.RARE,
 				AbstractCard.CardTarget.NONE);
 		
