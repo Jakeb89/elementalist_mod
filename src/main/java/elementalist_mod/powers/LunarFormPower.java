@@ -6,7 +6,8 @@ import elementalist_mod.ElementalistMod;
 public class LunarFormPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:LunarForm";
 	public static final String NAME = "Lunar Form";
-	public static String[] DESCRIPTION = {"When you cast any element, gain ", " Water."};
+	public static String[] DESCRIPTION = {"The first time you cast an element each turn, gain ", " Water."};
+	public boolean active = true;
 	
 	public LunarFormPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
 		this.ID = POWER_ID;
@@ -23,9 +24,17 @@ public class LunarFormPower extends ElementalPower {
 		initIcon(ElementalistMod.POWER_LUNARFORM, ElementalistMod.POWER_LUNARFORM_SMALL);
 	}
 	
+	public void atStartOfTurn() {
+		super.atStartOfTurn();
+		active = true;
+	}
+	
 	public void onElementalCast(String element) {
-		this.flash();
-		ElementalistMod.changeElement("Water", this.amount);
+		if(active) {
+			active = false;
+			this.flash();
+			ElementalistMod.changeElement("Water", this.amount);
+		}
 	}
 	
 	public void updateDescription() {

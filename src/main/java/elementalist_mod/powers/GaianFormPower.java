@@ -6,7 +6,8 @@ import elementalist_mod.ElementalistMod;
 public class GaianFormPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:GaianForm";
 	public static final String NAME = "Gaian Form";
-	public static String[] DESCRIPTION = {"When you cast any element, gain ", " Earth."};
+	public static String[] DESCRIPTION = {"The first time you cast an element each turn, gain ", " Earth."};
+	public boolean active = true;
 	
 	public GaianFormPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
 		this.ID = POWER_ID;
@@ -23,9 +24,17 @@ public class GaianFormPower extends ElementalPower {
 		initIcon(ElementalistMod.POWER_GAIANFORM, ElementalistMod.POWER_GAIANFORM_SMALL);
 	}
 	
+	public void atStartOfTurn() {
+		super.atStartOfTurn();
+		active = true;
+	}
+	
 	public void onElementalCast(String element) {
-		this.flash();
-		ElementalistMod.changeElement("Earth", this.amount);
+		if(active) {
+			active = false;
+			this.flash();
+			ElementalistMod.changeElement("Earth", this.amount);
+		}
 	}
 	
 	public void updateDescription() {

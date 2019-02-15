@@ -6,7 +6,8 @@ import elementalist_mod.ElementalistMod;
 public class SiderealFormPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:SiderealForm";
 	public static final String NAME = "Sidereal Form";
-	public static String[] DESCRIPTION = {"When you cast any element, gain ", " Air."};
+	public static String[] DESCRIPTION = {"The first time you cast an element each turn, gain ", " Air."};
+	public boolean active = true;
 	
 	public SiderealFormPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
 		this.ID = POWER_ID;
@@ -23,9 +24,17 @@ public class SiderealFormPower extends ElementalPower {
 		initIcon(ElementalistMod.POWER_SIDEREALFORM, ElementalistMod.POWER_SIDEREALFORM_SMALL);
 	}
 	
+	public void atStartOfTurn() {
+		super.atStartOfTurn();
+		active = true;
+	}
+	
 	public void onElementalCast(String element) {
-		this.flash();
-		ElementalistMod.changeElement("Air", this.amount);
+		if(active) {
+			active = false;
+			this.flash();
+			ElementalistMod.changeElement("Air", this.amount);
+		}
 	}
 	
 	public void updateDescription() {
