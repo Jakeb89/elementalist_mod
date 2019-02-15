@@ -12,7 +12,7 @@ import elementalist_mod.patches.*;
 public class Emberveil extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Emberveil";
 	public static final String NAME = "Emberveil";
-	public static String DESCRIPTION = "Ward. NL Bloodied: Reduce incoming damage by !M! and discard Emberveil. Add 1 Burn to your discard pile and gain 1 Fire.";
+	public static String DESCRIPTION = "Ward. Unplayable. NL Bloodied: Reduce incoming damage by !M! and discard Emberveil. Add 1 Burn to your discard pile and gain 1 Fire.";
 	private static final int COST = -2;
 	private static final int MAGIC_NUM = 5;
 	private static final int UPGRADE_MAGIC_NUM = 5;
@@ -29,6 +29,8 @@ public class Emberveil extends AbstractElementalistCard {
 		
 		this.isWard = true;
 		this.activeWard = true;
+		this.retain = true;
+		this.unplayable = true;
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {

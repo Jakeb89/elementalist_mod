@@ -38,6 +38,7 @@ public class AbstractElementalistCard extends CustomCard{
 	public boolean tiringPlayed = false;
 	public boolean isWard = false;
 	public boolean activeWard = false;
+	public boolean unplayable = false;
 	
 
 	public AbstractElementalistCard(String id, String name, String img, int cost, String rawDescription, CardType type,
@@ -361,8 +362,8 @@ public class AbstractElementalistCard extends CustomCard{
 	
 
 	public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-		if(this.isWard) {
-			this.cantUseMessage = "I can't play Ward cards manually.";
+		if(this.unplayable) {
+			this.cantUseMessage = "That card is unplayable.";
 			return false;
 		}
 		return super.canUse(p, m);

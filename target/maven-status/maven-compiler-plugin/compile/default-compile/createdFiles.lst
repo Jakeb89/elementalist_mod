@@ -97,6 +97,7 @@ elementalist_mod\cards\rare\Impact.class
 elementalist_mod\cards\uncommon\Concentricity.class
 elementalist_mod\cards\common\Flame.class
 elementalist_mod\cards\common\Confluence.class
+elementalist_mod\cards\special\Autopetrify.class
 elementalist_mod\cards\rare\Kiln.class
 elementalist_mod\patches\ElementalCardRenderPatch3.class
 elementalist_mod\cards\uncommon\Sidereal_Form.class

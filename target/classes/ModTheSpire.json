@@ -3,7 +3,7 @@
   "name": "The Elementalist",
   "author_list": ["jakeb89"],
   "description": "A mod which adds the elementalist, a mage focusing in abilities of Fire, Earth, Water, and Air.",
-  "version": "0.1.7.5",
+  "version": "0.1.7.6",
   "sts_version": "01-12-2019",
   "mts_version": "3.8.0",
   "dependencies": ["basemod"],

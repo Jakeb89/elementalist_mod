@@ -71,6 +71,9 @@ public class CardList {
 		addCard(new Wards());
 		addCard(new Caution());
 		addCard(new Emberveil());
+		
+		// Status?
+		addCard(new Autopetrify());
 
 		// Uncommon
 		addCard(new Magma_Shot());
