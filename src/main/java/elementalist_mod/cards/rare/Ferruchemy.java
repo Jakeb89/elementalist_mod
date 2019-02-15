@@ -40,7 +40,7 @@ public class Ferruchemy extends AbstractElementalistCard {
 			int gold = p.gold;
 			if(gold >= 100) {
 			    AbstractDungeon.actionManager.addToBottom(new ChangePlayerMaxHPAction(gold/100));
-			    AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, gold/100));
+			    //AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, gold/100));
 			}
 		}
 		
