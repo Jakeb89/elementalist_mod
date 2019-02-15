@@ -2,6 +2,7 @@ elementalist_mod\patches\EventPickerPatch.class
 elementalist_mod\cards\uncommon\Lunar_Form.class
 elementalist_mod\actions\SpellChantAction.class
 elementalist_mod\patches\MasterDeckChangePatch$onRemoveCard.class
+elementalist_mod\patches\AbstractPlayerDamagePatch.class
 elementalist_mod\CardList.class
 elementalist_mod\powers\AerialDodgePower.class
 elementalist_mod\powers\ElementalPower.class
@@ -21,6 +22,7 @@ elementalist_mod\cards\special\Ignis_Eye.class
 elementalist_mod\cards\rare\Rising_Vapors.class
 elementalist_mod\powers\MomentumPower.class
 elementalist_mod\cards\rare\Quadmire.class
+elementalist_mod\patches\AbstractPlayerDamagePatch$Locator.class
 elementalist_mod\cards\common\Stone_to_Mud.class
 elementalist_mod\cards\special\Earth_Emblem.class
 elementalist_mod\patches\MasterDeckChangePatch$FastCardObtainEffectPatch.class
@@ -106,6 +108,7 @@ elementalist_mod\actions\ShatterAction.class
 elementalist_mod\cards\common\Waterstrike.class
 elementalist_mod\cards\rare\Mirror_Circlet.class
 elementalist_mod\cards\special\Aqua_Mind.class
+elementalist_mod\cards\common\Emberveil.class
 elementalist_mod\orbs\ElementParticle.class
 elementalist_mod\cards\special\Fire_Emblem.class
 elementalist_mod\cards\uncommon\Geomancy.class

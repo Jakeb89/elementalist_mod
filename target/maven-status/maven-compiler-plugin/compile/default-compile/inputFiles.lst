@@ -60,6 +60,7 @@ C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\orbs\EarthOrb.java
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\patches\LibraryTypeEnum.java
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\cards\rare\Mirror_Circlet.java
+C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\cards\common\Emberveil.java
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\actions\ChangePlayerMaxHPAction.java
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\relics\YellowCirclet.java
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\actions\EtherstrikeAction.java
@@ -132,6 +133,7 @@ C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\powers\MultificationPower.java
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\cards\uncommon\Concentricity.java
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\cards\common\Momentum.java
+C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\patches\AbstractPlayerDamagePatch.java
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\cards\uncommon\Rising_Tides.java
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\cards\basic\Elemental_Defend.java
 C:\Users\jakeb\Documents\my_mods\elementalist_mod\src\main\java\elementalist_mod\CustomTags.java

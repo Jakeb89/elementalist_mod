@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.status.Burn;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
@@ -33,6 +36,8 @@ public class AbstractElementalistCard extends CustomCard{
 	public boolean isEmblem = false;
 	public String emblemID = "";
 	public boolean tiringPlayed = false;
+	public boolean isWard = false;
+	public boolean activeWard = false;
 	
 
 	public AbstractElementalistCard(String id, String name, String img, int cost, String rawDescription, CardType type,
@@ -43,7 +48,7 @@ public class AbstractElementalistCard extends CustomCard{
 	
 	public boolean willSuccessfullyGainElement() {
 		//This is a very dumb method that will work in most cases, but should be overwritten if the card has multiple source elements.
-		//...or if the card has one, but gaining an element isn't dependant on that element.
+		//...or if the card has one, but gaining an element isn't dependent on that element.
 		for (int i = 0; i < costElement.size(); i++) {
 			int usedAlready = 0;
 			for (int j = 0; j < i; j++) {
@@ -105,6 +110,10 @@ public class AbstractElementalistCard extends CustomCard{
 		super.triggerWhenDrawn();
 		
 		checkEffects();
+		if(isWard) {
+			this.retain = true;
+			this.activeWard = true;
+		}
 	}
 
 	public void checkEffects() {
@@ -120,6 +129,7 @@ public class AbstractElementalistCard extends CustomCard{
 		if(isEmblem) {
 			emblemEffect();
 		}
+		
 		
 		
 			//effectsChecked = true;
@@ -179,7 +189,12 @@ public class AbstractElementalistCard extends CustomCard{
 	}
 	
 	public void atTurnStart() {
-		emblemedThisTurn = false;
+		if(isEmblem) {
+			emblemedThisTurn = false;
+		}
+		if(isWard) {
+			AbstractDungeon.actionManager.addToTop(new DiscardSpecificCardAction(this));
+		}
 	}
 	
 
@@ -337,6 +352,20 @@ public class AbstractElementalistCard extends CustomCard{
 	public void actionCallback(int memory, int memory2) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public int onLoseHp(int damageAmount) {
+		//ElementalistMod.log("AbstractElementalistCard.onLoseHp("+damageAmount+")");
+		return damageAmount;
+	}
+	
+
+	public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+		if(this.isWard) {
+			this.cantUseMessage = "I can't play Ward cards manually.";
+			return false;
+		}
+		return super.canUse(p, m);
 	}
 
 }

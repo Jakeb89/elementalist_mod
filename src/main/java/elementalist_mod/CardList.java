@@ -70,6 +70,7 @@ public class CardList {
 		addCard(new Cyclone());
 		addCard(new Wards());
 		addCard(new Caution());
+		addCard(new Emberveil());
 
 		// Uncommon
 		addCard(new Magma_Shot());

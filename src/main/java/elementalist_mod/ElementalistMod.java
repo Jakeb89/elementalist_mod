@@ -380,6 +380,8 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 			"Emblems are cards that activate automatically when drawn once per turn. They then move to the discard, and another card is drawn instead.");
 
 		BaseMod.addKeyword("Total Cost", new String[] { "total cost" }, "'Total Cost' refers to the sum of both normal and elemental energy costs of a card.");
+		BaseMod.addKeyword("Ward", new String[] { "ward" }, "Wards are cards which cannot be played manually. They remain in your hand until the beginning of the next turn.");
+		BaseMod.addKeyword("Bloodied", new String[] { "bloodied" }, "Bloodied effects occur when the player takes damage during the enemy turn.");
 
 		BaseMod.addKeyword("Check the Pins", new String[] { "pins" }, "For fuck's sake, please just check the pins.");
 	}
