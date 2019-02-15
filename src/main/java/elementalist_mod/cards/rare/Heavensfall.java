@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+
 import elementalist_mod.ElementalistMod;
 import elementalist_mod.actions.CallbackAction;
 import elementalist_mod.actions.CustomDamageAction;
@@ -20,8 +22,8 @@ import elementalist_mod.patches.*;
 public class Heavensfall extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Heavensfall";
 	public static final String NAME = "Heavensfall";
-	public static String DESCRIPTION = "Exhaust. Elementcast X: Deal !D! damage to ALL enemies X times.";
-	private static final int COST = 3;
+	public static String DESCRIPTION = "Exhaust. Elementcast X: Deal !D! damage to ALL enemies X times. (Sum the X costs.)";
+	private static final int COST = -1;
 	private static final int DAMAGE = 3;
 	private static final int DAMAGE_UPGRADE = 2;
 
@@ -48,7 +50,23 @@ public class Heavensfall extends AbstractElementalistCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 		
+
+	    if (this.energyOnUse < EnergyPanel.totalCount) {
+	      this.energyOnUse = EnergyPanel.totalCount;
+	    }
+
+	    int energy = EnergyPanel.totalCount;
+	    if (this.energyOnUse != -1) {
+	    	energy = this.energyOnUse;
+	    }
+	    if (AbstractDungeon.player.hasRelic("Chemical X"))
+	    {
+	    	energy += 2;
+	      AbstractDungeon.player.getRelic("Chemical X").flash();
+	    }
+		
 		int attacks = getElement("Air") + getElement("Water") + getElement("Earth") + getElement("Fire");
+		attacks += energy;
 		
 		this.cast("Air");
 		this.cast("Water");
