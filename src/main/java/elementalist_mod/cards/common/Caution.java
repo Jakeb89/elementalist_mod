@@ -37,9 +37,7 @@ public class Caution extends AbstractElementalistCard {
 		super.use(p, m);
 
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-		for(int i=0; i<this.magicNumber; i++) {
-			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
-		}
+		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
 	}
 
 	public AbstractCard makeCopy() {
