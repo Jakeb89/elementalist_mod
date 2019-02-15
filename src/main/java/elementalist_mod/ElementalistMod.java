@@ -364,7 +364,7 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		BaseMod.addKeyword("Synergy", new String[] { "synergy", "synergized", "synergizing", "synergizes" }, "Occurs when at least two elements are equal and greater than zero.");
 		BaseMod.addKeyword("Aerial Dodge", new String[] { "aerial", "dodge" }, "When you have less than 5 extra block remaining at the end of the enemy turn, gain 2 Dexterity.");
 		BaseMod.addKeyword("Windburn", new String[] { "windburn" },
-			"Lose HP equal to your Windburn at the end of your turn if any element is higher than Air. Monsters always take their windburn damage.");
+			"Lose HP equal to your Windburn at the end of your turn if any element is higher than Air. Monsters always lose HP to Windburn.");
 		BaseMod.addKeyword("Rune", new String[] { "rune", "igniseye", "terraheart", "zephyrsoul", "aquamind" },
 			"Runes are temporary cards which exhaust on use, at the end of your turn, or if another Rune is played.");
 
@@ -380,8 +380,9 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 			"Emblems are cards that activate automatically when drawn once per turn. They then move to the discard, and another card is drawn instead.");
 
 		BaseMod.addKeyword("Total Cost", new String[] { "total cost" }, "'Total Cost' refers to the sum of both normal and elemental energy costs of a card.");
-		BaseMod.addKeyword("Ward", new String[] { "ward" }, "Wards are cards which cannot be played manually. They remain in your hand until the beginning of the next turn.");
+		BaseMod.addKeyword("Ward", new String[] { "ward" }, "Wards remain in your hand until the beginning of the next turn.");
 		BaseMod.addKeyword("Bloodied", new String[] { "bloodied" }, "Bloodied effects occur when the player takes damage during the enemy turn.");
+		BaseMod.addKeyword("Unplayable", new String[] { "unplayable" }, "Unplayable cards cannot be played manually.");
 
 		BaseMod.addKeyword("Check the Pins", new String[] { "pins" }, "For fuck's sake, please just check the pins.");
 	}
