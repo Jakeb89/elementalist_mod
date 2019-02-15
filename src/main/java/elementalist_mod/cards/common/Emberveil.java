@@ -47,7 +47,7 @@ public class Emberveil extends AbstractElementalistCard {
 		//ElementalistMod.log("AbstractElementalistCard.onLoseHp("+damageAmount+")");
 		damageAmount = super.onLoseHp(damageAmount);
 
-		if (this.isWard && this.activeWard) {
+		if (this.isWard && this.activeWard && damageAmount>0) {
 			this.activeWard = false;
 			damageAmount = Math.max(0, damageAmount - this.magicNumber);
 			AbstractDungeon.actionManager.addToTop(new MakeTempCardInDiscardAction(new Burn(), 1));
