@@ -23,7 +23,7 @@ public class Aegis extends AbstractElementalistCard {
 	public static String DESCRIPTION = "Earthcast 2: Gain !B! Block. Add an Autopetrify to your draw pile.";
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 15;
-	private static final int UPGRADE_PLUS_BLOCK = 20;
+	private static final int UPGRADE_PLUS_BLOCK = 5;
 
 	public Aegis() {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.AEGIS), COST, DESCRIPTION,
