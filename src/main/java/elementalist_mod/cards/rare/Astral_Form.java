@@ -15,8 +15,8 @@ import elementalist_mod.powers.AstralFormPower;
 public class Astral_Form extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Astral_Form";
 	public static final String NAME = "Astral Form";
-	public static String DESCRIPTION = "When you cast from a synergizing element, pick 1 of 3 random cards to shuffle into your draw pile.";
-	private static final int COST = 2;
+	public static String DESCRIPTION = "When you cast from a synergizing element, gain 1 in one of your synergizing elements.";
+	private static final int COST = 1;
 
 	public Astral_Form() {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_POWER_GREY_1), COST, DESCRIPTION, AbstractCard.CardType.POWER, AbstractCardEnum.ELEMENTALIST_BLUE,

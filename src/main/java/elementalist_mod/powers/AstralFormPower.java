@@ -1,5 +1,7 @@
 package elementalist_mod.powers;
 
+import java.util.ArrayList;
+
 import com.megacrit.cardcrawl.actions.unique.CodexAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -9,7 +11,7 @@ import elementalist_mod.ElementalistMod;
 public class AstralFormPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:AstralForm";
 	public static final String NAME = "Astral Form";
-	public static String[] DESCRIPTION = {"When you cast an element from a synergizing element, pick 1 of 3 random cards", " to shuffle into your draw pile."};
+	public static String[] DESCRIPTION = {"When you cast from a synergizing element, gain ", " in one of your synergizing elements."};
 	
 	public AstralFormPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
 		this.ID = POWER_ID;
@@ -29,7 +31,15 @@ public class AstralFormPower extends ElementalPower {
 	public void onElementalCast(String element) {
 		if(ElementalistMod.hasSynergy(element)) {
 			this.flash();
-		    AbstractDungeon.actionManager.addToBottom(new CodexAction());
+			
+			ArrayList<String> synergizingElements = new ArrayList<String>();
+			if(ElementalistMod.hasSynergy("Fire")) synergizingElements.add("Fire");
+			if(ElementalistMod.hasSynergy("Earth")) synergizingElements.add("Earth");
+			if(ElementalistMod.hasSynergy("Water")) synergizingElements.add("Water");
+			if(ElementalistMod.hasSynergy("Air")) synergizingElements.add("Air");
+			String chosenElement = synergizingElements.get( (int)( Math.random()*synergizingElements.size() ) );
+			
+			ElementalistMod.changeElement(chosenElement, amount);
 		}
 	}
 	
