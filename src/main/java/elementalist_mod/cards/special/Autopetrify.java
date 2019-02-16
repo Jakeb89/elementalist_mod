@@ -18,7 +18,7 @@ import elementalist_mod.patches.*;
 public class Autopetrify extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Autopetrify";
 	public static final String NAME = "Autopetrify";
-	public static String DESCRIPTION = "Exhaust. Ward. NL Bloodied: Exhaust. Gain !M! Plated Armor. Gain 1 Earth.";
+	public static String DESCRIPTION = "Ward. Exhaust. NL NL Bloodied: Gain !M! Plated Armor and 1 Earth. Exhaust.";
 	private static final int COST = 0;
 	private int MAGIC = 1;
 	private int MAGIC_UPGRADE = 1;
