@@ -49,7 +49,9 @@ public class Glaciate extends AbstractElementalistCard {
 				e.printStackTrace();
 			}
 
-		    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, enemyDamage));
+			if(enemyDamage > 0) {
+				AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, enemyDamage));
+			}
 		}
 		
 
