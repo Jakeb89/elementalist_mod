@@ -18,7 +18,7 @@ import elementalist_mod.patches.*;
 public class Autopetrify extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Autopetrify";
 	public static final String NAME = "Autopetrify";
-	public static String DESCRIPTION = "Ward. NL NL Bloodied: Gain !M! Plated Armor and 1 Earth. Exhaust.";
+	public static String DESCRIPTION = "Ward. NL NL Bloodied: Gain !M! Plated Armor and 2 Earth. Exhaust.";
 	private static final int COST = 0;
 	private int MAGIC = 2;
 	private int MAGIC_UPGRADE = 1;
@@ -62,7 +62,7 @@ public class Autopetrify extends AbstractElementalistCard {
 			AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(this, p.hand));
 			AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new PlatedArmorPower(p, this.magicNumber), this.magicNumber));
 			
-			changeElement("Earth", 1);
+			changeElement("Earth", 2);
 		}
 
 		return damageAmount;
