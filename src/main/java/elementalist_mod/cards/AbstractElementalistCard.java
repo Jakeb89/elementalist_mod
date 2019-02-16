@@ -116,6 +116,7 @@ public class AbstractElementalistCard extends CustomCard{
 			this.activeWard = true;
 		}
 	}
+	
 
 	public void checkEffects() {
 		//if(!effectsChecked) {
@@ -287,6 +288,11 @@ public class AbstractElementalistCard extends CustomCard{
 		
 		if(tiringPlayed) {
 			tiringEffect();
+		}
+
+		if(isWard) {
+			this.retain = true;
+			this.activeWard = true;
 		}
 	}
 	
