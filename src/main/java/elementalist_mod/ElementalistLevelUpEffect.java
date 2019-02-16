@@ -117,15 +117,23 @@ public class ElementalistLevelUpEffect extends AbstractGameEffect
     }
 
     private CardGroup getLevelUpPerkChoices() {
-        CardGroup perkChoices = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+    	ElementalistMod.log("ElementalistLevelUpEffect.getLevelUpPerkChoices()");
+        int rewardCardsWanted = TheElementalist.level*2;
+    	ElementalistMod.log("reward cards: " + rewardCardsWanted);
         
-        perkChoices.group.add(new Fire_Emblem());
-        perkChoices.group.add(new Water_Emblem());
-        perkChoices.group.add(new Air_Emblem());
-        perkChoices.group.add(new Earth_Emblem());
+        if(ElementalistMod.levelupRewardGroup != null && ElementalistMod.levelupRewardGroup.size() == rewardCardsWanted+4) {
+        	ElementalistMod.log("Reusing existing reward set.");
+        	return ElementalistMod.levelupRewardGroup;
+        }
+        
+        ElementalistMod.levelupRewardGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        
+        ElementalistMod.levelupRewardGroup.group.add(new Fire_Emblem());
+        ElementalistMod.levelupRewardGroup.group.add(new Water_Emblem());
+        ElementalistMod.levelupRewardGroup.group.add(new Air_Emblem());
+        ElementalistMod.levelupRewardGroup.group.add(new Earth_Emblem());
         
         try {
-	        int rewardCardsWanted = TheElementalist.level*2;
 	        ArrayList<AbstractCard> rewardCards = AbstractDungeon.getRewardCards();
 	        if(rewardCards.size() > 0) {
 	        	while(rewardCards.size() < rewardCardsWanted) {
@@ -135,12 +143,15 @@ public class ElementalistLevelUpEffect extends AbstractGameEffect
 	        while(rewardCards.size() > rewardCardsWanted) {
 	        	rewardCards.remove(0);
 	        }
-	    	perkChoices.group.addAll(rewardCards);
+	        ElementalistMod.levelupRewardGroup.group.addAll(rewardCards);
         }catch(Exception e) {
         	e.printStackTrace();
         }
+
+        CardGroup levelupRewards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        levelupRewards.group.addAll(ElementalistMod.levelupRewardGroup.group);
         
-        return perkChoices;
+        return levelupRewards;
 	}
 
 	@Override

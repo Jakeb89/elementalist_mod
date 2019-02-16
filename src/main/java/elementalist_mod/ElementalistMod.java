@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -61,6 +62,7 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 	public static HashMap<String, Integer> loggerMessages = new HashMap<String, Integer>();
 	public static ArrayList<String> loggerMutes = new ArrayList<String>();
 	public static boolean ribbonEventFired = false;
+	public static CardGroup levelupRewardGroup = null;
 
 	public static void log(String info) {
 		logger.info("ElemLog: " + info);
