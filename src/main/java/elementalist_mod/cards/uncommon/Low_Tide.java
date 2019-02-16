@@ -29,7 +29,7 @@ public class Low_Tide extends AbstractElementalistCard {
 	public static final int MAGIC_NUM_UPGRADE = -2;
 
 	public Low_Tide() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_ATTACK_BLUE_3), COST, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_BLUE_3), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
 		this.baseMagicNumber = MAGIC_NUM;
 		this.magicNumber = MAGIC_NUM;
