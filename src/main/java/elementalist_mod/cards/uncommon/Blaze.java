@@ -63,60 +63,21 @@ public class Blaze extends AbstractElementalistCard {
 		
 		hits = effect;
 		
+		
+		if(cast("Fire", 2)) {
+			hits *= 2;
+		}
+		
+		for(int i=0; i<hits; i++) {
+			AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.FIRE));
+		}
+		
 		if (hits > 0) {
 			if (!this.freeToPlayOnce) {
 				p.energy.use(EnergyPanel.totalCount);
 			}
-			AbstractDungeon.actionManager.addToBottom(new CallbackAction(this, 0));
-			
-			
-			/*AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_WHIRLWIND"));
-			AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
-			for (int i = 0; i < effect; i++) {
-				AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY"));
-				AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new CleaveEffect(), 0.0F));
-				AbstractDungeon.actionManager
-					.addToBottom(new DamageRandomEnemyAction(new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.FIRE));
-			}
-
-			if (cast("Fire", 2)) {
-				AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_WHIRLWIND"));
-				AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
-				for (int i = 0; i < effect; i++) {
-					AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY"));
-					AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new CleaveEffect(), 0.0F));
-					AbstractDungeon.actionManager
-						.addToBottom(new DamageRandomEnemyAction(new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-				}
-			}
-			*/
 		}
 
-	}
-	
-	@Override
-	public void actionCallback(int value) {
-		AbstractPlayer p = AbstractDungeon.player;
-		boolean doHitThisTime = false;
-		if(hits > 0) {
-			doHitThisTime = true;
-			hits--;
-		}
-		if(hits == 0 && !firecastChecked) {
-			firecastChecked = true;
-			if (cast("Fire", 2)) {
-				hits = effect;
-			}
-		}
-		if(hits > 0) {
-			AbstractDungeon.actionManager.addToTop(new CallbackAction(this, 0));
-		}
-		if(doHitThisTime) {
-			AbstractDungeon.actionManager
-				.addToTop(new DamageRandomEnemyAction(new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.FIRE));
-			AbstractDungeon.actionManager.addToTop(new VFXAction(p, new CleaveEffect(), 0.0F));
-			AbstractDungeon.actionManager.addToTop(new SFXAction("ATTACK_HEAVY"));
-		}
 	}
 
 	public AbstractCard makeCopy() {
