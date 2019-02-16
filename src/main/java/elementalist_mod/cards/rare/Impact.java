@@ -20,14 +20,17 @@ import elementalist_mod.powers.WindburnPower;
 public class Impact extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Impact";
 	public static final String NAME = "Impact";
-	public static String DESCRIPTION = "Exhaust. Gain 7 Plate Armor. NL NL Earthcast 3: Deal damage equal to your Block 3 times.";
-	public static String DESCRIPTION_UPGRADED = "Tiring. Gain 7 Plate Armor. NL NL Earthcast 3: Deal damage equal to your Block 3 times.";
+	public static String DESCRIPTION = "Exhaust. Gain 7 Plated Armor. Gain !B! Block. NL NL Earthcast 3: Deal damage equal to your Block 3 times.";
+	public static String DESCRIPTION_UPGRADED = "Tiring. Gain 7 Plated Armor. Gain !B! Block. NL NL Earthcast 3: Deal damage equal to your Block 3 times.";
 	private static final int COST = 2;
+	private static final int BLOCK = 5;
 
 	public Impact() {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_ATTACK_YELLOW_4), COST, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY);
 
+		this.baseBlock = BLOCK;
+		
 		this.exhaust = true;
 		
 		addElementalCost("Earth", 3);
@@ -38,6 +41,7 @@ public class Impact extends AbstractElementalistCard {
 		
 
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PlatedArmorPower(p, 7), 7));
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		
 		
 		if(cast("Earth", 3)) {
