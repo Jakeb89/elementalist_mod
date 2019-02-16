@@ -15,7 +15,7 @@ import elementalist_mod.powers.SiderealFormPower;
 public class Sidereal_Form extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Sidereal_Form";
 	public static final String NAME = "Sidereal Form";
-	public static String DESCRIPTION = "The first time you cast an element each turn, gain 1 Air.";
+	public static String DESCRIPTION = "The first time you cast an element each turn, gain 2 Air.";
 	private static final int COST = 1;
 
 	public Sidereal_Form() {
@@ -36,7 +36,7 @@ public class Sidereal_Form extends AbstractElementalistCard {
 			}
 		}*/
 
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SiderealFormPower(p, p, 1), 1));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SiderealFormPower(p, p, 2), 2));
 	}
 
 	public AbstractCard makeCopy() {
