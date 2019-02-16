@@ -26,7 +26,7 @@ public class Caution extends AbstractElementalistCard {
 	private static final int UPGRADE_MAGIC = 1;
 
 	public Caution() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_GREY_4), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.CAUTION), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF);
 		this.baseBlock = BLOCK_AMT;
 		this.baseMagicNumber = MAGIC;

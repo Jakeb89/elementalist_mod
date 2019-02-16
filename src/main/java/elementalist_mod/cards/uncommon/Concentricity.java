@@ -23,7 +23,7 @@ public class Concentricity extends AbstractElementalistCard {
 	private static final int DAMAGE = 10;
 
 	public Concentricity() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_ATTACK_GREY_4), COST, DESCRIPTION,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.CONCENTRICITY), COST, DESCRIPTION,
 				AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.UNCOMMON,
 				AbstractCard.CardTarget.ENEMY);
 		this.baseDamage = DAMAGE;

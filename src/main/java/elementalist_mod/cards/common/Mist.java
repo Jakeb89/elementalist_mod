@@ -20,7 +20,7 @@ public class Mist extends AbstractElementalistCard {
 	private static final int COST = 0;
 
 	public Mist() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_BLUE_2), COST, DESCRIPTION,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.MIST), COST, DESCRIPTION,
 				AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.COMMON,
 				AbstractCard.CardTarget.NONE);
 		

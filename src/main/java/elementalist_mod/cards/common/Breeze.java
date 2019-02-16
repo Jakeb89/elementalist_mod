@@ -17,7 +17,7 @@ public class Breeze extends AbstractElementalistCard {
 	private static final int COST = 0;
 
 	public Breeze() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_GREEN_2), COST, DESCRIPTION,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BREEZE), COST, DESCRIPTION,
 				AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.COMMON,
 				AbstractCard.CardTarget.SELF);
 		

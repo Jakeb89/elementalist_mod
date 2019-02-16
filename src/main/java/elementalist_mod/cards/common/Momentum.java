@@ -26,7 +26,7 @@ public class Momentum extends AbstractElementalistCard {
 	private static final int COST = 1;
 
 	public Momentum() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_GREY_2), COST, DESCRIPTION,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.MOMENTUM), COST, DESCRIPTION,
 				AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.COMMON,
 				AbstractCard.CardTarget.SELF);
 	}

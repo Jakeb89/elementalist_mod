@@ -20,7 +20,7 @@ public class Cyclone extends AbstractElementalistCard {
 	private static final int MAGIC_UPG = 1;
 
 	public Cyclone() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_GREEN_3), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.CYCLONE), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF);
 		this.baseBlock = BLOCK;
 		this.baseMagicNumber = MAGIC;

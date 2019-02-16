@@ -20,7 +20,7 @@ public class Overheat extends AbstractElementalistCard {
 	private static final int COST = 1;
 
 	public Overheat() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_RED_2), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.OVERHEAT), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF);
 
 		addElementalCost("Fire", 1);

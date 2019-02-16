@@ -18,7 +18,7 @@ public class Emberveil extends AbstractElementalistCard {
 	private static final int UPGRADE_MAGIC_NUM = 5;
 
 	public Emberveil() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_RED_4), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.EMBERVEIL), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.NONE);
 		this.baseMagicNumber = MAGIC_NUM;
 		this.magicNumber = this.baseMagicNumber;

@@ -26,7 +26,7 @@ public class Aegis extends AbstractElementalistCard {
 	private static final int UPGRADE_PLUS_BLOCK = 20;
 
 	public Aegis() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_YELLOW_2), COST, DESCRIPTION,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.AEGIS), COST, DESCRIPTION,
 				AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.UNCOMMON,
 				AbstractCard.CardTarget.SELF);
 	    this.baseBlock = BLOCK_AMT;

@@ -25,7 +25,7 @@ public class Autopetrify extends AbstractElementalistCard {
 	
 
 	public Autopetrify() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_YELLOW_1), COST, DESCRIPTION, AbstractCard.CardType.STATUS, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.AUTOPETRIFY), COST, DESCRIPTION, AbstractCard.CardType.STATUS, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.SPECIAL, AbstractCard.CardTarget.SELF);
 
 		this.baseMagicNumber = MAGIC;

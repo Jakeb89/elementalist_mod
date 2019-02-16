@@ -22,7 +22,7 @@ public class Wards extends AbstractElementalistCard {
 	private static final int UPGRADE_PLUS_BLOCK = 2;
 
 	public Wards() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_GREY_3), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.WARDS), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF);
 		this.baseBlock = BLOCK_AMT;
 

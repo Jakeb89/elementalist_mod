@@ -128,6 +128,19 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 	public static final String SPOUT = "cards/spout.png";
 	public static final String MONUMENT = "cards/monument.png";
 	public static final String HEAVENSFALL = "cards/heavensfall.png";
+	
+
+	public static final String AUTOPETRIFY = "cards/autopetrify.png";
+	public static final String AEGIS = "cards/aegis.png";
+	public static final String BREEZE = "cards/breeze.png";
+	public static final String CAUTION = "cards/caution.png";
+	public static final String CYCLONE = "cards/cyclone.png";
+	public static final String EMBERVEIL = "cards/emberveil.png";
+	public static final String MIST = "cards/mist.png";
+	public static final String MOMENTUM = "cards/momentum.png";
+	public static final String OVERHEAT = "cards/overheat.png";
+	public static final String WARDS = "cards/wards.png";
+	public static final String CONCENTRICITY = "cards/concentricity.png";
 
 	// generic card images
 
