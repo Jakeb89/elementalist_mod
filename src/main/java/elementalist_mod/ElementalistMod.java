@@ -396,6 +396,7 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		BaseMod.addKeyword("Ward", new String[] { "ward" }, "Wards remain in your hand until the beginning of the next turn.");
 		BaseMod.addKeyword("Bloodied", new String[] { "bloodied" }, "Bloodied effects occur when the player takes damage during the enemy turn.");
 		BaseMod.addKeyword("Unplayable", new String[] { "unplayable" }, "Unplayable cards cannot be played manually.");
+		BaseMod.addKeyword("Autopetrify", new String[] { "autopetrify" }, "Autopetrify is an unplayable status which exhausts and gives Plated Armor and Earth when you are damaged.");
 
 		BaseMod.addKeyword("Check the Pins", new String[] { "pins" }, "For fuck's sake, please just check the pins.");
 	}

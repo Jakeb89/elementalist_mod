@@ -20,7 +20,7 @@ import elementalist_mod.patches.*;
 public class Aegis extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Aegis";
 	public static final String NAME = "Aegis";
-	public static String DESCRIPTION = "Earthcast 2: Gain !B! Block. Add an Autopetrify to your draw pile.";
+	public static String DESCRIPTION = "Earthcast 1: Gain !B! Block. Add an Autopetrify to your draw pile.";
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 15;
 	private static final int UPGRADE_PLUS_BLOCK = 5;
@@ -31,13 +31,13 @@ public class Aegis extends AbstractElementalistCard {
 				AbstractCard.CardTarget.SELF);
 	    this.baseBlock = BLOCK_AMT;
 
-		addElementalCost("Earth", 2);
+		addElementalCost("Earth", 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		if (cast("Earth", 2)) {
+		if (cast("Earth", 1)) {
 			//int cardCount = p.hand.size();
 		    //AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block*cardCount));
 
