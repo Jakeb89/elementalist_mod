@@ -22,9 +22,9 @@ import elementalist_mod.powers.WindburnPower;
 public class Inferno extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Inferno";
 	public static final String NAME = "Inferno";
-	public static String DESCRIPTION = "Firecast 3: Deal !D! damage. Exhaust a random card in your hand. NL NL Repeat the effect of this card until you have less than 3 Fire, your hand is empty or the target is dead.";
-	public static final int DAMAGE = 10;
-	public static final int DAMAGE_UPGRADE = 5;
+	public static String DESCRIPTION = "Firecast 2: Deal !D! damage. Exhaust a random card in your hand. NL NL Repeat the effect of this card until you have less than 2 Fire, your hand is empty or the target is dead.";
+	public static final int DAMAGE = 12;
+	public static final int DAMAGE_UPGRADE = 4;
 	private static final int COST = 2;
 	private AbstractMonster useTarget = null;
 
@@ -33,14 +33,14 @@ public class Inferno extends AbstractElementalistCard {
 			AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY);
 		this.baseDamage = DAMAGE;
 		
-		addElementalCost("Fire", 3);
+		addElementalCost("Fire", 2);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 		useTarget = m;
 		
-		if(getElement("Fire") >= 3) {
+		if(getElement("Fire") >= 2) {
 			doStep();
 		}
 	}
@@ -48,7 +48,7 @@ public class Inferno extends AbstractElementalistCard {
 	public void doStep() {
 		if(useTarget.isDying || useTarget.isDead) return;
 		
-		if(cast("Fire", 3)) {
+		if(cast("Fire", 2)) {
 			AbstractDungeon.actionManager.addToBottom(new DamageAction(useTarget, new DamageInfo(AbstractDungeon.player, this.damage), AbstractGameAction.AttackEffect.FIRE));
 
 			if(AbstractDungeon.player.hand.size() < 1) return;
@@ -61,7 +61,7 @@ public class Inferno extends AbstractElementalistCard {
 	}
 	
 	public void actionCallback(int value) {
-		if(getElement("Fire") < 3) return;
+		if(getElement("Fire") < 2) return;
 		if(AbstractDungeon.player.hand.size() < 1) return;
 		
 		doStep();
