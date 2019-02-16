@@ -12,14 +12,18 @@ import elementalist_mod.patches.*;
 public class Breeze extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Breeze";
 	public static final String NAME = "Breeze";
-	public static String DESCRIPTION = "Aircast 1: Exhaust a random status or curse in your hand. If you had one, draw 1 card.";
-	public static String UPGRADE_DESCRIPTION = "Aircast 1: Exhaust a random status or curse in your hand. If you had one, draw 3 cards.";
+	public static String DESCRIPTION = "Aircast 1: Exhaust a random status or curse in your hand. If you had one, draw !M! card(s).";
 	private static final int COST = 0;
+	private static final int MAGIC = 1;
+	private static final int MAGIC_UP = 2;
 
 	public Breeze() {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BREEZE), COST, DESCRIPTION,
 				AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.COMMON,
 				AbstractCard.CardTarget.SELF);
+
+		this.baseMagicNumber = MAGIC;
+		this.magicNumber = MAGIC;
 		
 		addElementalCost("Air", 1);
 	}
@@ -32,11 +36,7 @@ public class Breeze extends AbstractElementalistCard {
 			AbstractCard card = getRandomCard(getAllStatusOrCurse(p.hand));
 			if(card != null) {
 				AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(card, p.hand));
-				if(!upgraded) {
-					AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
-				}else {
-					AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 3));
-				}
+				AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
 			}
 			
 		}
@@ -49,7 +49,7 @@ public class Breeze extends AbstractElementalistCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			upgradeName();
-			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.upgradeMagicNumber(MAGIC_UP);
 			initializeDescription();
 		}
 	}
