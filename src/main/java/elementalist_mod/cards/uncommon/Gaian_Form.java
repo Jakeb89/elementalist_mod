@@ -16,7 +16,7 @@ public class Gaian_Form extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Gaian_Form";
 	public static final String NAME = "Gaian Form";
 	public static String DESCRIPTION = "The first time you cast an element each turn, gain 1 Earth.";
-	private static final int COST = 2;
+	private static final int COST = 1;
 
 	public Gaian_Form() {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_POWER_YELLOW_1), COST, DESCRIPTION, AbstractCard.CardType.POWER, AbstractCardEnum.ELEMENTALIST_BLUE,

@@ -16,7 +16,7 @@ public class Sidereal_Form extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Sidereal_Form";
 	public static final String NAME = "Sidereal Form";
 	public static String DESCRIPTION = "The first time you cast an element each turn, gain 1 Air.";
-	private static final int COST = 2;
+	private static final int COST = 1;
 
 	public Sidereal_Form() {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_POWER_GREEN_1), COST, DESCRIPTION, AbstractCard.CardType.POWER, AbstractCardEnum.ELEMENTALIST_BLUE,

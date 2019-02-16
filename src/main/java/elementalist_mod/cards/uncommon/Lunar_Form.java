@@ -16,7 +16,7 @@ public class Lunar_Form extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Lunar_Form";
 	public static final String NAME = "Lunar Form";
 	public static String DESCRIPTION = "The first time you cast an element each turn, gain 1 Water.";
-	private static final int COST = 2;
+	private static final int COST = 1;
 
 	public Lunar_Form() {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_POWER_BLUE_1), COST, DESCRIPTION, AbstractCard.CardType.POWER, AbstractCardEnum.ELEMENTALIST_BLUE,
