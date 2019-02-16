@@ -27,17 +27,13 @@ public class Heavensfall extends AbstractElementalistCard {
 	private static final int DAMAGE = 3;
 	private static final int DAMAGE_UPGRADE = 2;
 
-	private static String[] spellChant = {
-		"I, who stand in the full light of the heavens, ",
-		"command thee, who opens the gates of hell.",
-		"Come forth, divine lightning! ",
-		"This ends now! Indignation!!"
-		};
+	private static String[] spellChant = { "I, who stand in the full light of the heavens, ", "command thee, who opens the gates of hell.", "Come forth, divine lightning! ",
+		"This ends now! Indignation!!" };
 
 	public Heavensfall() {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.HEAVENSFALL), COST, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ALL_ENEMY);
-		
+
 		this.baseDamage = DAMAGE;
 
 		addElementalCost("Air", -1);
@@ -49,25 +45,24 @@ public class Heavensfall extends AbstractElementalistCard {
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
-		
 
-	    if (this.energyOnUse < EnergyPanel.totalCount) {
-	      this.energyOnUse = EnergyPanel.totalCount;
-	    }
+		if (this.energyOnUse < EnergyPanel.totalCount) {
+			this.energyOnUse = EnergyPanel.totalCount;
+		}
 
-	    int energy = EnergyPanel.totalCount;
-	    if (this.energyOnUse != -1) {
-	    	energy = this.energyOnUse;
-	    }
-	    if (AbstractDungeon.player.hasRelic("Chemical X"))
-	    {
-	    	energy += 2;
-	      AbstractDungeon.player.getRelic("Chemical X").flash();
-	    }
-		
+		int energy = EnergyPanel.totalCount;
+		if (this.energyOnUse != -1) {
+			energy = this.energyOnUse;
+		}
+		if (AbstractDungeon.player.hasRelic("Chemical X")) {
+			energy += 2;
+			AbstractDungeon.player.getRelic("Chemical X").flash();
+		}
+
 		int attacks = getElement("Air") + getElement("Water") + getElement("Earth") + getElement("Fire");
 		attacks += energy;
-		
+
+		AbstractDungeon.actionManager.addToBottom(new CallbackAction(this, 0));
 		this.cast("Air");
 		this.cast("Water");
 		this.cast("Earth");
@@ -75,13 +70,13 @@ public class Heavensfall extends AbstractElementalistCard {
 
 		float duration = 0.5f;
 		int hits = 0;
-		for(int i=0; i<attacks; i++) {
+		for (int i = 0; i < attacks; i++) {
 			duration *= 0.7f;
-			for(AbstractMonster enemy : this.getAllLivingEnemies()) {
-				if(hits > 40) {
+			for (AbstractMonster enemy : this.getAllLivingEnemies()) {
+				if (hits > 40) {
 					duration = 0.001f;
 				}
-				int expectedTotalHits = hits + (attacks-i)*getAllLivingEnemies().size();
+				int expectedTotalHits = hits + (attacks - i) * getAllLivingEnemies().size();
 				AbstractDungeon.actionManager.addToBottom(new CallbackAction(this, hits, expectedTotalHits));
 				AbstractDungeon.actionManager.addToBottom(makeDamageAction(p, enemy, duration));
 				hits++;
@@ -89,61 +84,67 @@ public class Heavensfall extends AbstractElementalistCard {
 		}
 
 	}
-	
+
+	public void actionCallback(int value) {
+		if (!this.freeToPlayOnce) {
+			AbstractDungeon.player.energy.use(EnergyPanel.totalCount);
+		}
+	}
+
 	public void actionCallback(int hits, int expectedTotalHits) {
 		queueSpeechAction(hits, expectedTotalHits);
 	}
-	
+
 	public void queueSpeechAction(int hit, int totalHits) {
-		if(totalHits > 5 && hit == 0) {
+		if (totalHits > 5 && hit == 0) {
 			AbstractDungeon.actionManager.addToTop(new SpellChantAction(spellChant[0], 2f));
-			
-		    AbstractDungeon.actionManager.addToTop(new SFXAction("WIND"));
-		    AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("circle", 1.5f, true, 2F), 0.01F));
+
+			AbstractDungeon.actionManager.addToTop(new SFXAction("WIND"));
+			AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("circle", 1.5f, true, 2F), 0.01F));
 		}
 
-		if(totalHits > 10 && hit == 5) {
+		if (totalHits > 10 && hit == 5) {
 			AbstractDungeon.actionManager.addToTop(new SpellChantAction(spellChant[1], 2f));
-			
-		    AbstractDungeon.actionManager.addToTop(new SFXAction("ORB_DARK_CHANNEL"));
-		    AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("circle fancy", 1.7f, true, 1.5F), 0.01F));
-		    AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("circle", 1.2f, true, 1.5F), 0.01F));
+
+			AbstractDungeon.actionManager.addToTop(new SFXAction("ORB_DARK_CHANNEL"));
+			AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("circle fancy", 1.7f, true, 1.5F), 0.01F));
+			AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("circle", 1.2f, true, 1.5F), 0.01F));
 		}
 
-		if(totalHits > 15 && hit == 10) {
+		if (totalHits > 15 && hit == 10) {
 			AbstractDungeon.actionManager.addToTop(new SpellChantAction(spellChant[2], 2f));
-			
-		    AbstractDungeon.actionManager.addToTop(new SFXAction("ORB_DARK_CHANNEL"));
-		    AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("orokin circle", 2f, false, 1F), 0.01F));
-		    AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("circle", 2.2f, true, 1F), 0.01F));
-		    AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("cross", 2f, false, 1F), 0.01F));
+
+			AbstractDungeon.actionManager.addToTop(new SFXAction("ORB_DARK_CHANNEL"));
+			AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("orokin circle", 2f, false, 1F), 0.01F));
+			AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("circle", 2.2f, true, 1F), 0.01F));
+			AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, getSpellCastEffect("cross", 2f, false, 1F), 0.01F));
 		}
 
-		if(totalHits > 30 && hit == 19) {
+		if (totalHits > 30 && hit == 19) {
 			AbstractDungeon.actionManager.addToTop(new SpellChantAction(spellChant[3], 2f));
-			
-		    AbstractDungeon.actionManager.addToTop(new SFXAction("ORB_DARK_CHANNEL"));
-		    
-			SpellCastEffect spellEffect =  getSpellCastEffect("indignation circle", 2.5f, true, 1F);
+
+			AbstractDungeon.actionManager.addToTop(new SFXAction("ORB_DARK_CHANNEL"));
+
+			SpellCastEffect spellEffect = getSpellCastEffect("indignation circle", 2.5f, true, 1F);
 			spellEffect.isSudden = true;
-		    AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, spellEffect, 1.0F));
+			AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, spellEffect, 1.0F));
 		}
 
-		if(totalHits > 30 && hit == 20) {
-		    AbstractDungeon.actionManager.addToTop(new SFXAction("ORB_DARK_EVOKE"));
-		    
+		if (totalHits > 30 && hit == 20) {
+			AbstractDungeon.actionManager.addToTop(new SFXAction("ORB_DARK_EVOKE"));
+
 			SpellCastEffect spellEffect = getSpellCastEffect("divine lightning", 5f, false, 0.5F);
 			spellEffect.isSudden = true;
-		    AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, spellEffect, 0.01F));
+			AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, spellEffect, 0.01F));
 		}
 	}
-	
+
 	public SpellCastEffect getSpellCastEffect(String name, float scale, boolean canRotate, float length) {
 		SpellCastEffect effect = new SpellCastEffect(name, scale, canRotate);
 		effect.setDuration(length);
 		return effect;
 	}
-	
+
 	public CustomDamageAction makeDamageAction(AbstractPlayer p, AbstractMonster enemy, float duration) {
 		CustomDamageAction damageAction = (new CustomDamageAction(enemy, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.SMASH));
 		damageAction.setDuration(duration);
