@@ -19,7 +19,7 @@ public class Astral_Form extends AbstractElementalistCard {
 	private static final int COST = 1;
 
 	public Astral_Form() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_POWER_GREY_1), COST, DESCRIPTION, AbstractCard.CardType.POWER, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.ASTRAL_FORM), COST, DESCRIPTION, AbstractCard.CardType.POWER, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF);
 
 		generatesElement = true;
