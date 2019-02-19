@@ -10,7 +10,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evacipated.cardcrawl.mod.stslib.StSLib;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
@@ -383,44 +385,58 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 
 	@Override
 	public void receiveEditKeywords() {
-		BaseMod.addKeyword("Elementize X", new String[] { "elementize" },
+		
+		/*
+		Gson gson = new Gson();
+        StSLib.Keywords keywords = gson.fromJson(loadJson(keywordsPath), Keywords.class);
+        Arrays.stream(keywords.keywords).forEach(key -> {
+            logger.info("Loading keyword : " + key.NAMES[0]);
+            BaseMod.addKeyword("runesmith", key.PROPER_NAME, key.NAMES, key.DESCRIPTION);
+        });
+		*/
+		
+		addKeyword("Elementize X", new String[] { "elementize" },
 			"When drawn, Elementize X becomes one of Fire X, Water X, Earth X, or Air X randomly. When played, the given number of the chosen element is generated.");
-		BaseMod.addKeyword("Create [Element] X", new String[] { "create fire", "create earth", "create water", "create air" }, "Generates X of the listed element.");
+		addKeyword("Create [Element] X", new String[] { "create fire", "create earth", "create water", "create air" }, "Generates X of the listed element.");
 
-		BaseMod.addKeyword("Firecast X", new String[] { "firecast" }, "If you have X fire, it is spent to achieve the following effect.");
-		BaseMod.addKeyword("Earthcast X", new String[] { "earthcast" }, "If you have X earth, it is spent to achieve the following effect.");
-		BaseMod.addKeyword("Watercast X", new String[] { "watercast" }, "If you have X water, it is spent to achieve the following effect.");
-		BaseMod.addKeyword("Aircast X", new String[] { "aircast" }, "If you have X air, it is spent to achieve the following effect.");
-		BaseMod.addKeyword("Elementcast X", new String[] { "elementcast" },
+		addKeyword("Firecast X", new String[] { "firecast" }, "If you have X fire, it is spent to achieve the following effect.");
+		addKeyword("Earthcast X", new String[] { "earthcast" }, "If you have X earth, it is spent to achieve the following effect.");
+		addKeyword("Watercast X", new String[] { "watercast" }, "If you have X water, it is spent to achieve the following effect.");
+		addKeyword("Aircast X", new String[] { "aircast" }, "If you have X air, it is spent to achieve the following effect.");
+		addKeyword("Elementcast X", new String[] { "elementcast" },
 			"If you have X between your elements, it is spent (from most to least) to achieve the following effect.");
 
-		BaseMod.addKeyword("Transmute", new String[] { "transmute" }, "Takes all points in the first element and moves them to the second.");
+		addKeyword("Transmute", new String[] { "transmute" }, "Takes all points in the first element and moves them to the second.");
 
-		BaseMod.addKeyword("Synergy", new String[] { "synergy", "synergized", "synergizing", "synergizes" }, "Occurs when at least two elements are equal and greater than zero.");
-		BaseMod.addKeyword("Aerial Dodge", new String[] { "aerial", "dodge" }, "When you have less than 5 extra block remaining at the end of the enemy turn, gain 2 Dexterity.");
-		BaseMod.addKeyword("Windburn", new String[] { "windburn" },
+		addKeyword("Synergy", new String[] { "synergy", "synergized", "synergizing", "synergizes" }, "Occurs when at least two elements are equal and greater than zero.");
+		addKeyword("Aerial Dodge", new String[] { "aerial", "dodge" }, "When you have less than 5 extra block remaining at the end of the enemy turn, gain 2 Dexterity.");
+		addKeyword("Windburn", new String[] { "windburn" },
 			"Lose HP equal to your Windburn at the end of your turn if any element is higher than Air. Monsters always lose HP to Windburn.");
-		BaseMod.addKeyword("Rune", new String[] { "rune", "igniseye", "terraheart", "zephyrsoul", "aquamind" },
+		addKeyword("Rune", new String[] { "rune", "igniseye", "terraheart", "zephyrsoul", "aquamind" },
 			"Runes are temporary cards which exhaust on use, at the end of your turn, or if another Rune is played.");
 
-		BaseMod.addKeyword("Igniseye", new String[] { "igniseye" }, "A 0-cost Rune Skill which gives 1 Fire. NL If upgraded, it gives 2 Fire instead.");
-		BaseMod.addKeyword("Terraheart", new String[] { "terraheart" }, "A 0-cost Rune Skill which gives 1 Earth. NL If upgraded, it gives 2 Earth instead.");
-		BaseMod.addKeyword("Zephyrsoul", new String[] { "zephyrsoul" }, "A 0-cost Rune Skill which gives 1 Air. NL If upgraded, it gives 2 Air instead.");
-		BaseMod.addKeyword("Aquamind", new String[] { "aquamind" }, "A 0-cost Rune Skill which gives 1 Water. NL If upgraded, it gives 2 Water instead.");
+		addKeyword("Igniseye", new String[] { "igniseye" }, "A 0-cost Rune Skill which gives 1 Fire. NL If upgraded, it gives 2 Fire instead.");
+		addKeyword("Terraheart", new String[] { "terraheart" }, "A 0-cost Rune Skill which gives 1 Earth. NL If upgraded, it gives 2 Earth instead.");
+		addKeyword("Zephyrsoul", new String[] { "zephyrsoul" }, "A 0-cost Rune Skill which gives 1 Air. NL If upgraded, it gives 2 Air instead.");
+		addKeyword("Aquamind", new String[] { "aquamind" }, "A 0-cost Rune Skill which gives 1 Water. NL If upgraded, it gives 2 Water instead.");
 
-		BaseMod.addKeyword("Mercurial", new String[] { "mercurial" }, "When drawn, the cost of a random card in your hand is reduced by 1 for a turn.");
+		addKeyword("Mercurial", new String[] { "mercurial" }, "When drawn, the cost of a random card in your hand is reduced by 1 for a turn.");
 
-		BaseMod.addKeyword("Tiring", new String[] { "tiring" }, "A card with 'Tiring' gains 'Exhaust' when played.");
-		BaseMod.addKeyword("Emblem", new String[] { "emblem" },
+		addKeyword("Tiring", new String[] { "tiring" }, "A card with 'Tiring' gains 'Exhaust' when played.");
+		addKeyword("Emblem", new String[] { "emblem" },
 			"Emblems are cards that activate automatically when drawn once per turn. They then move to the discard, and another card is drawn instead.");
 
-		BaseMod.addKeyword("Total Cost", new String[] { "total cost" }, "'Total Cost' refers to the sum of both normal and elemental energy costs of a card.");
-		BaseMod.addKeyword("Ward", new String[] { "ward" }, "Wards remain in your hand until the beginning of the next turn.");
-		BaseMod.addKeyword("Bloodied", new String[] { "bloodied" }, "Bloodied effects occur when the player takes damage during the enemy turn.");
-		BaseMod.addKeyword("Unplayable", new String[] { "unplayable" }, "Unplayable cards cannot be played manually.");
-		BaseMod.addKeyword("Autopetrify", new String[] { "autopetrify" }, "Autopetrify is an unplayable status which exhausts and gives Plated Armor and Earth when you are damaged.");
+		addKeyword("Total Cost", new String[] { "total cost" }, "'Total Cost' refers to the sum of both normal and elemental energy costs of a card.");
+		addKeyword("Ward", new String[] { "ward" }, "Wards remain in your hand until the beginning of the next turn.");
+		addKeyword("Bloodied", new String[] { "bloodied" }, "Bloodied effects occur when the player takes damage during the enemy turn.");
+		addKeyword("Unplayable", new String[] { "unplayable" }, "Unplayable cards cannot be played manually.");
+		addKeyword("Autopetrify", new String[] { "autopetrify" }, "Autopetrify is an unplayable status which exhausts and gives Plated Armor and Earth when you are damaged.");
 
-		BaseMod.addKeyword("Check the Pins", new String[] { "pins" }, "For fuck's sake, please just check the pins.");
+		addKeyword("Check the Pins", new String[] { "pins" }, "For fuck's sake, please just check the pins.");
+	}
+
+	private void addKeyword(String name, String[] names, String description) {
+		BaseMod.addKeyword("Elementalist", name, names, description);
 	}
 
 	@Override
