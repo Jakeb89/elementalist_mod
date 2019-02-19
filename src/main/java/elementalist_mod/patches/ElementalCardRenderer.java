@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.Util;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.cards.common.*;
@@ -116,7 +117,7 @@ public class ElementalCardRenderer {
 				return;
 			}
 
-			if (card.element != "") {
+			if (card.element != null) {
 				drawStampElementUp(sb, card, card.element, 0, 0);
 			}
 
@@ -245,20 +246,20 @@ public class ElementalCardRenderer {
 	}
 
 	public static void drawElementalCostStamp(final SpriteBatch sb, AbstractElementalistCard card, int slot, boolean isReady, float dx, float dy) {
-		String element = card.costElement.get(slot);
+		Element element = card.costElement.get(slot);
 
 		Texture baseTexture = null;
 		switch (element) {
-		case ("Fire"):
+		case FIRE:
 			baseTexture = fireCostStamp[slot * 2 + (isReady ? 1 : 0)];
 			break;
-		case ("Earth"):
+		case EARTH:
 			baseTexture = earthCostStamp[slot * 2 + (isReady ? 1 : 0)];
 			break;
-		case ("Water"):
+		case WATER:
 			baseTexture = waterCostStamp[slot * 2 + (isReady ? 1 : 0)];
 			break;
-		case ("Air"):
+		case AIR:
 			baseTexture = airCostStamp[slot * 2 + (isReady ? 1 : 0)];
 			break;
 		}
@@ -306,21 +307,21 @@ public class ElementalCardRenderer {
 			(dy + (192.0F - 55)) * card.drawScale * Settings.scale, card.angle, false, costColor);
 	}
 
-	public static void drawStampElementUp(final SpriteBatch sb, AbstractElementalistCard card, String element, float dx, float dy) {
+	public static void drawStampElementUp(final SpriteBatch sb, AbstractElementalistCard card, Element element, float dx, float dy) {
 
 		Texture texture = null;
 		int readyIndex = card.willSuccessfullyGainElement() ? 0 : 1;
 		switch (element) {
-		case ("Fire"):
+		case FIRE:
 			texture = fireUpStamp[readyIndex];
 			break;
-		case ("Earth"):
+		case EARTH:
 			texture = earthUpStamp[readyIndex];
 			break;
-		case ("Water"):
+		case WATER:
 			texture = waterUpStamp[readyIndex];
 			break;
-		case ("Air"):
+		case AIR:
 			texture = airUpStamp[readyIndex];
 			break;
 		}

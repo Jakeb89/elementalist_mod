@@ -68,6 +68,10 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		logger.info("ElemLog: " + info);
 
 	}
+	
+	public static enum Element {
+	    AIR, WATER, EARTH, FIRE
+	}
 
 	public static Color ELEMBLUE = CardHelper.getColor(128f, 128f, 128f);
 
@@ -431,10 +435,10 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 			}
 		}
 		if (elementalEnergyIsEnabled()) {
-			changeElement("Air", 0);
-			changeElement("Water", 0);
-			changeElement("Earth", 0);
-			changeElement("Fire", 0);
+			changeElement(Element.AIR, 0);
+			changeElement(Element.WATER, 0);
+			changeElement(Element.EARTH, 0);
+			changeElement(Element.FIRE, 0);
 		}
 
 	}
@@ -467,7 +471,7 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		return Color.WHITE.cpy();
 	}
 
-	public static int getElement(String element) {
+	public static int getElement(Element element) {
 		setElementalEnergyEnabled(true);
 		if (AbstractDungeon.player == null)
 			return 0;
@@ -488,11 +492,11 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 	private static void setElementalEnergyEnabled(boolean b) {
 		if(elementalEnergyEnabled == false && b == true) {
 			elementalEnergyEnabled = b;
-			if(AbstractDungeon.player != null){
-				changeElement("Air", 0);
-				changeElement("Water", 0);
-				changeElement("Earth", 0);
-				changeElement("Fire", 0);
+			if(AbstractDungeon.player != null && AbstractDungeon.getCurrRoom() != null) {
+				changeElement(Element.AIR, 0);
+				changeElement(Element.WATER, 0);
+				changeElement(Element.EARTH, 0);
+				changeElement(Element.FIRE, 0);
 			}
 		}
 		elementalEnergyEnabled = b;
@@ -507,11 +511,11 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		return false;
 	}
 
-	public static void changeElement(String element, int delta) {
+	public static void changeElement(Element element, int delta) {
 		changeElement(element, delta, "?");
 	}
 
-	public static void changeElement(String element, int delta, String source) {
+	public static void changeElement(Element element, int delta, String source) {
 		if(AbstractDungeon.getCurrRoom() == null) return;
 		if(AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT) return;
 		
@@ -519,15 +523,27 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		AbstractDungeon.actionManager.addToBottom(new ElementAddAction(makeOrb(element, delta), source));
 	}
 
-	public static ElementOrb makeOrb(String element, int amount) {
+	public static void changeElementNow(Element element, int delta) {
+		changeElementNow(element, delta, "?");
+	}
+
+	public static void changeElementNow(Element element, int delta, String source) {
+		if(AbstractDungeon.getCurrRoom() == null) return;
+		if(AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT) return;
+		
+		setElementalEnergyEnabled(true);
+		AbstractDungeon.actionManager.addToTop(new ElementAddAction(makeOrb(element, delta), source));
+	}
+
+	public static ElementOrb makeOrb(Element element, int amount) {
 		switch (element) {
-		case ("Fire"):
+		case FIRE:
 			return new FireOrb(amount);
-		case ("Water"):
+		case WATER:
 			return new WaterOrb(amount);
-		case ("Earth"):
+		case EARTH:
 			return new EarthOrb(amount);
-		case ("Air"):
+		case AIR:
 			return new AirOrb(amount);
 		}
 		return null;
@@ -577,26 +593,25 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		return false;
 	}
 
-	public static String[] getHighestElements() {
-		ArrayList<String> elements = new ArrayList<String>();
+	public static Element[] getHighestElements() {
+		ArrayList<Element> elements = new ArrayList<Element>();
 
-		int fire = getElement("Fire");
-		int earth = getElement("Earth");
-		int water = getElement("Water");
-		int air = getElement("Air");
-
+		int fire = getElement(Element.FIRE);
+		int earth = getElement(Element.EARTH);
+		int water = getElement(Element.WATER);
+		int air = getElement(Element.AIR);
 		int highestValue = Math.max(Math.max(fire, earth), Math.max(water, air));
 
 		if (fire == highestValue)
-			elements.add("Fire");
+			elements.add(Element.FIRE);
 		if (earth == highestValue)
-			elements.add("Earth");
+			elements.add(Element.EARTH);
 		if (water == highestValue)
-			elements.add("Water");
+			elements.add(Element.WATER);
 		if (air == highestValue)
-			elements.add("Air");
+			elements.add(Element.AIR);
 
-		String[] output = new String[elements.size()];
+		Element[] output = new Element[elements.size()];
 
 		return elements.toArray(output);
 
@@ -655,20 +670,20 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		return false;
 	}
 
-	public static boolean hasSynergy(String element) {
-		int fire = getElement("Fire");
-		int earth = getElement("Earth");
-		int water = getElement("Water");
-		int air = getElement("Air");
+	public static boolean hasSynergy(Element elem) {
+		int fire = getElement(Element.FIRE);
+		int earth = getElement(Element.EARTH);
+		int water = getElement(Element.WATER);
+		int air = getElement(Element.AIR);
 
-		switch (element) {
-		case ("Fire"):
+		switch (elem) {
+		case FIRE:
 			return fire > 0 && anyEqualFirst(fire, earth, water, air);
-		case ("Earth"):
+		case EARTH:
 			return earth > 0 && anyEqualFirst(earth, fire, water, air);
-		case ("Water"):
+		case WATER:
 			return water > 0 && anyEqualFirst(water, fire, earth, air);
-		case ("Air"):
+		case AIR:
 			return air > 0 && anyEqualFirst(air, fire, earth, water);
 		}
 		return false;
@@ -703,10 +718,10 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 				float dir = 0;
 				float sixteenth = 2*3.14f / 16;
 				switch(eOrb.element) {
-					case "Fire": 	dir = 1 * sixteenth; 	break;
-					case "Earth": 	dir = 3 * sixteenth; 	break;
-					case "Water": 	dir = 5 * sixteenth; 	break;
-					case "Air": 	dir = 7 * sixteenth; 	break;
+					case FIRE: 	dir = 1 * sixteenth; 	break;
+					case EARTH: dir = 3 * sixteenth; 	break;
+					case WATER: dir = 5 * sixteenth; 	break;
+					case AIR: 	dir = 7 * sixteenth; 	break;
 				}
 				float dis = 120*Settings.scale;
 				float dx = (float) (Math.cos(dir)*dis);
@@ -730,6 +745,16 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 
 	public static boolean elementalEnergyIsEnabled() {
 		return elementalEnergyEnabled;
+	}
+
+	public static String getElementName(Element element) {
+		switch(element) {
+			case AIR: return "Air";
+			case WATER: return "Water";
+			case EARTH: return "Earth";
+			case FIRE: return "Fire";
+		}
+		return "?";
 	}
 
 }

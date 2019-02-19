@@ -1,5 +1,6 @@
 package elementalist_mod.actions;
 
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -24,7 +25,7 @@ public class EtherstrikeAction extends AbstractElementalistAction {
 		AbstractDungeon.actionManager.addToBottom(
 			new DamageAction(specificTarget, new DamageInfo(AbstractDungeon.player, sourceCard.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
-		String[] highestElements = getHighestElements();
+		Element[] highestElements = getHighestElements();
 		
 		for(int i=0; i<highestElements.length; i++) {
 			if(getElement(highestElements[i]) > 0) {

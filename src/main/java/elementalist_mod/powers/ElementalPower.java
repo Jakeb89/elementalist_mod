@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import elementalist_mod.ElementalistMod.Element;
+
 public class ElementalPower extends AbstractPower {
 	public AbstractCreature source;
 
@@ -14,11 +16,11 @@ public class ElementalPower extends AbstractPower {
 		this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(img_small), 0, 0, 32, 32);
 	}
 
-	public int onAddElement(String element, int amount, String sourceType) {
+	public int onAddElement(Element element, int amount, String sourceType) {
 		return amount;
 	}
 
-	public void onElementalCast(String element) {
+	public void onElementalCast(Element element) {
 		// TODO Auto-generated method stub
 	}
 

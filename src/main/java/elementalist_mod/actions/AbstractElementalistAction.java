@@ -1,6 +1,7 @@
 package elementalist_mod.actions;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.orbs.ElementOrb;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -34,19 +35,19 @@ public class AbstractElementalistAction extends AbstractGameAction {
 	
 	/*Pass-through to ElementalistMod functions*/
 
-	public static int getElement(String element) {
+	public static int getElement(Element element) {
 		return ElementalistMod.getElement(element);
 	}
 
-	public void changeElement(String element, int delta) {
-		ElementalistMod.changeElement(element, delta);
+	public void changeElement(Element highestElements, int delta) {
+		ElementalistMod.changeElement(highestElements, delta);
 	}
 	
-	public void changeElement(String element, int delta, String source) {
+	public void changeElement(Element element, int delta, String source) {
 		ElementalistMod.changeElement(element, delta, source);
 	}
 	
-	public ElementOrb makeOrb(String element, int amount) {
+	public ElementOrb makeOrb(Element element, int amount) {
 		return ElementalistMod.makeOrb(element, amount);
 	}
 	
@@ -62,7 +63,7 @@ public class AbstractElementalistAction extends AbstractGameAction {
 		return ElementalistMod.intentContainsAttack(intent);
 	}
 
-	public String[] getHighestElements() {
+	public Element[] getHighestElements() {
 		return ElementalistMod.getHighestElements();
 	}
 	

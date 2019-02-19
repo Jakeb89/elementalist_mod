@@ -5,11 +5,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.combat.FrostOrbActivateEffect;
 
+import elementalist_mod.ElementalistMod.Element;
+
 public class WaterOrb extends ElementOrb {
 	public WaterOrb(int amount) {
 		super("elementalist_waterOrb", amount);
 		name = "Water";
-		this.element = "Water";
+		this.element = Element.WATER;
 		description = "The quanitity of "+element+" energy you have accumulated.";
 		if(AbstractDungeon.player.hasRelic("Magus Staff")) {
 			description += " NL NL If your Magus Staff has any charges, you can click this orb to gain 1 "+element+".";

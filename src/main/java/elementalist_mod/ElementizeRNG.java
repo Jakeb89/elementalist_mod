@@ -1,40 +1,49 @@
 package elementalist_mod;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 
 public class ElementizeRNG {
-	private static ArrayList<String> previousElementPicks = new ArrayList<String>();
 
-	private static final int AIR = 0;
-	private static final int WATER = 1;
-	private static final int EARTH = 2;
-	private static final int FIRE = 3;
+	public static Element getRandomElement() {
+		double rng = Math.random();
+		if(rng < 0.25) 	return Element.AIR;
+		if(rng < 0.50) 	return Element.WATER;
+		if(rng < 0.75) 	return Element.EARTH;
+						return Element.FIRE;
+	}
+	
+	/*
+	private static ArrayList<Element> previousElementPicks = new ArrayList<Element>();
 	
 	private static double[] hoarderMemory = {0, 0, 0, 0};
 
-	private static String getElementName(int element) {
+	private static Element getElementName(int element) {
 		switch(element) {
-			case(FIRE): return "Fire";
-			case(EARTH): return "Earth";
-			case(WATER): return "Water";
-			case(AIR): return "Air";
+			case(FIRE): return Element.FIRE;
+			case(EARTH): return Element.EARTH;
+			case(WATER): return Element.WATER;
+			case(AIR): return Element.AIR;
 		}
-		return "";
+		return null;
 	}
-	private static int getElementID(String element) {
+	private static int getElementID(Element element) {
 		for(int i=0; i<4; i++) {
 			if(getElementName(i) == element) return i;
 		}
 		return -1;
 	}
 
-	public static String getRandomElement() {
+	public static Element getRandomElement() {
 		ElementalistMod.log("getRandomElement()");
 		double[] weights = {0, 0, 0, 0};
 
@@ -49,7 +58,7 @@ public class ElementizeRNG {
 		logWeights("Final weights: ", weights);
 		
 		double highestValue = 0;
-		String element = "";
+		Element element = null;
 		
 		for(int i=0; i<weights.length; i++) {
 			if(weights[i] > highestValue) {
@@ -84,34 +93,34 @@ public class ElementizeRNG {
 		ElementalistMod.log(title+" ( " + output + " ) ");
 	}
 
-	private static double[] trueRNG() {
-		double[] weights = {0, 0, 0, 0};
+	private static HashMap<Element, Double> trueRNG() {
+		HashMap<Element, Double> weightMap = new HashMap<Element, Double>();
+
+		weightMap.put(Element.FIRE, 	Math.random());
+		weightMap.put(Element.EARTH, 	Math.random());
+		weightMap.put(Element.AIR, 		Math.random());
+		weightMap.put(Element.WATER, 	Math.random());
 		
-		weights[FIRE] 	= Math.random();
-		weights[EARTH] 	= Math.random();
-		weights[AIR] 	= Math.random();
-		weights[WATER] 	= Math.random();
+		weightMap = normalize(weightMap);
+		logWeights("trueRNG()", weightMap);
 		
-		weights = normalize(weights);
-		logWeights("trueRNG()", weights);
-		
-		return weights;
+		return weightMap;
 	}
 
 	private static double[] hoarderRNG() {
 		double[] weights = {0, 0, 0, 0};
 		
-		weights[FIRE] 	= ElementalistMod.getElement("Fire");
-		weights[EARTH] 	= ElementalistMod.getElement("Earth");
-		weights[WATER] 	= ElementalistMod.getElement("Water");
-		weights[AIR] 	= ElementalistMod.getElement("Air");
+		weights[FIRE] 	= ElementalistMod.getElement(Element.FIRE);
+		weights[EARTH] 	= ElementalistMod.getElement(Element.EARTH);
+		weights[WATER] 	= ElementalistMod.getElement(Element.WATER);
+		weights[AIR] 	= ElementalistMod.getElement(Element.AIR);
 
 		for(AbstractCard abstractCard : AbstractDungeon.player.hand.group) {
 			if(abstractCard instanceof AbstractElementalistCard) {
 				AbstractElementalistCard elementalistCard = (AbstractElementalistCard) abstractCard;
 				for(int i=0; i<elementalistCard.costElement.size(); i++) {
 					if(elementalistCard.generatesElement) {
-						String element = elementalistCard.element;
+						Element element = elementalistCard.element;
 						int amount = elementalistCard.generatedElementAmount;
 						
 						weights[getElementID(element)] += amount*0.5;
@@ -140,9 +149,9 @@ public class ElementizeRNG {
 			if(abstractCard instanceof AbstractElementalistCard) {
 				AbstractElementalistCard elementalistCard = (AbstractElementalistCard) abstractCard;
 				for(int i=0; i<elementalistCard.costElement.size(); i++) {
-					String element = elementalistCard.costElement.get(i);
+					Element element = elementalistCard.costElement.get(i);
 					int cost = elementalistCard.costElementAmount.get(i);
-					if(element != "" && cost > 0) {
+					if(element != null && cost > 0) {
 						weights[getElementID(element)] += cost;
 					}
 				}
@@ -155,18 +164,25 @@ public class ElementizeRNG {
 		return weights;
 	}
 	
-	private static double[] normalize(double[] weights) {
+	private static HashMap<Element, Double> normalize(HashMap<Element, Double> weightMap) {
 		double sum = 0;
-		for(int i=0; i<weights.length; i++) {
-			sum += weights[i];
-		}
+	    Iterator it = weightMap.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        sum += (double)pair.getValue();
+	        //it.remove(); // avoids a ConcurrentModificationException
+	    }
 		if(sum<=0) {
 			sum = 1;
 		}
-		for(int i=0; i<weights.length; i++) {
-			weights[i] = weights[i]/sum;
-		}
-		return weights;
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        sum += (double)pair.getValue();
+	        Element key = (Element) pair.getKey();
+	        weightMap.put(key, weightMap.get(key) / sum);
+	        //it.remove(); // avoids a ConcurrentModificationException
+	    }
+		return weightMap;
 	}
 	
 	private static double[] invert(double[] weights) {
@@ -187,16 +203,16 @@ public class ElementizeRNG {
 
 		for (int i = 0; i < previousElementPicks.size(); i++) {
 			switch (previousElementPicks.get(i)) {
-			case ("Fire"):
+			case FIRE:
 				weights[FIRE] += 10-i;
 				break;
-			case ("Earth"):
+			case EARTH:
 				weights[EARTH] += 10-i;
 				break;
-			case ("Water"):
+			case WATER:
 				weights[WATER] += 10-i;
 				break;
-			case ("Air"):
+			case AIR:
 				weights[AIR] += 10-i;
 				break;
 			}
@@ -209,4 +225,5 @@ public class ElementizeRNG {
 		
 		return weights;
 	}
+	*/
 }

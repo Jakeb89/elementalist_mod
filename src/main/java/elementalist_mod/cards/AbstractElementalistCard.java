@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.abstracts.CustomCard;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.ElementizeRNG;
 import elementalist_mod.orbs.*;
 import elementalist_mod.powers.ElementalPower;
@@ -25,8 +26,8 @@ public class AbstractElementalistCard extends CustomCard{
 	
 	public boolean generatesElement = false;
 	public int generatedElementAmount = 1;
-	public String element = "";
-	public ArrayList<String> costElement = new ArrayList<String>(); //Change this default to "" later.
+	public Element element = null;
+	public ArrayList<Element> costElement = new ArrayList<Element>(); //Change this default to "" later.
 	public ArrayList<Integer> costElementAmount = new ArrayList<Integer>(); //Change this default to 0 later.
 	//public String costElementAmountCustom = "";
 	public String customDescription = "";
@@ -92,12 +93,12 @@ public class AbstractElementalistCard extends CustomCard{
 		}
 	}
 	
-	public void addElementalCost(String element, int amount) {
+	public void addElementalCost(Element element, int amount) {
 		costElement.add(element);
 		costElementAmount.add(amount);
 	}
 	
-	public void editElementalCost(int index, String element, int amount) {
+	public void editElementalCost(int index, Element element, int amount) {
 		costElement.remove(index);
 		costElement.add(index, element);
 		
@@ -212,7 +213,7 @@ public class AbstractElementalistCard extends CustomCard{
 		
 		if(!customDescription.toLowerCase().contains("elementize")) return;
 		
-		if(element != "") return;
+		if(element != null) return;
 			
 		element = ElementizeRNG.getRandomElement();
 		
@@ -224,7 +225,8 @@ public class AbstractElementalistCard extends CustomCard{
 	}
 	
 	public void undoElementize() {
-		element = "";
+		if(!customDescription.toLowerCase().contains("elementize")) return;
+		element = null;
 
 		rawDescription = customDescription;
 		initializeDescription();
@@ -247,14 +249,14 @@ public class AbstractElementalistCard extends CustomCard{
 		}
 	}
 	
-	public int cast(String element) {
+	public int cast(Element element) {
 		int amount = getElement(element);
 		changeElement(element, -amount);
 		doCastTriggers(element);
 		return amount;
 	}
 	
-	public boolean cast(String element, int amount) {
+	public boolean cast(Element element, int amount) {
 		if(getElement(element) >= amount) {
 			changeElement(element, -amount);
 			doCastTriggers(element);
@@ -263,7 +265,7 @@ public class AbstractElementalistCard extends CustomCard{
 		return false;
 	}
 	
-	public void doCastTriggers(String element) {
+	public void doCastTriggers(Element element) {
 		for(AbstractPower power : AbstractDungeon.player.powers) {
 			if(power instanceof ElementalPower) {
 				ElementalPower elementalPower = (ElementalPower) power;
@@ -297,19 +299,19 @@ public class AbstractElementalistCard extends CustomCard{
 	}
 	
 
-	public static int getElement(String element) {
+	public static int getElement(Element element) {
 		return ElementalistMod.getElement(element);
 	}
 
-	public void changeElement(String element, int delta) {
+	public void changeElement(Element element, int delta) {
 		ElementalistMod.changeElement(element, delta);
 	}
 	
-	public void changeElement(String element, int delta, String source) {
+	public void changeElement(Element element, int delta, String source) {
 		ElementalistMod.changeElement(element, delta, source);
 	}
 	
-	public ElementOrb makeOrb(String element, int amount) {
+	public ElementOrb makeOrb(Element element, int amount) {
 		return ElementalistMod.makeOrb(element, amount);
 	}
 	
@@ -325,7 +327,7 @@ public class AbstractElementalistCard extends CustomCard{
 		return ElementalistMod.intentContainsAttack(intent);
 	}
 
-	public String[] getHighestElements() {
+	public Element[] getHighestElements() {
 		return ElementalistMod.getHighestElements();
 	}
 	
@@ -348,9 +350,12 @@ public class AbstractElementalistCard extends CustomCard{
 
 	public ArrayList<String> getElementalTags() {
 		ArrayList<String> output = new ArrayList<String>();
-		if(element != "") output.add(element);
-		output.addAll(costElement);
-		for(String element : costElement) {
+		if(element != null) output.add(ElementalistMod.getElementName(element));
+		for(Element singleElement : costElement){
+			output.add(ElementalistMod.getElementName(singleElement));
+		}
+		//output.addAll(costElement);
+		for(Element element : costElement) {
 			output.add(element+"cast");
 		}
 		return output;

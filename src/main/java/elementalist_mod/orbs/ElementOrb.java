@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.FrostOrbPassiveEffect;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.uncommon.Concentricity;
 import elementalist_mod.powers.AstralFormPower;
 import elementalist_mod.powers.ConfluencePower;
@@ -36,7 +37,7 @@ public abstract class ElementOrb extends AbstractOrb {
 	public boolean shattering = false;
 
 	public String[] descriptions;
-	public String element = "null";
+	public Element element = null;
 	private Texture img2, img3, img4, img5, imgExtra, imgBevel;
 	public float rotation = 0f;
 	public float particleDelta = 0f;
@@ -293,10 +294,10 @@ public abstract class ElementOrb extends AbstractOrb {
 		Color textColor, elementColor = Color.WHITE.cpy();
 		
 		switch(element) {
-			case("Fire"): 	elementColor = Color.RED.cpy(); break;
-			case("Water"): 	elementColor = Color.BLUE.cpy(); break;
-			case("Earth"): 	elementColor = Color.YELLOW.cpy(); break;
-			case("Air"): 	elementColor = Color.GREEN.cpy(); break;
+			case FIRE: 	elementColor = Color.RED.cpy(); break;
+			case WATER: elementColor = Color.BLUE.cpy(); break;
+			case EARTH: elementColor = Color.YELLOW.cpy(); break;
+			case AIR: 	elementColor = Color.GREEN.cpy(); break;
 		}
 		
 		if(amount == 0) textColor = Color.GRAY.cpy();
@@ -319,12 +320,12 @@ public abstract class ElementOrb extends AbstractOrb {
 		 */
 	}
 	
-	private Color getElementColor(String element) {
-		switch(element) {
-		case("Fire"): return Color.RED.cpy();
-		case("Earth"): return Color.YELLOW.cpy();
-		case("Water"): return Color.BLUE.cpy();
-		case("Air"): return Color.GREEN.cpy();
+	private Color getElementColor(Element element2) {
+		switch(element2) {
+		case FIRE: return Color.RED.cpy();
+		case EARTH: return Color.YELLOW.cpy();
+		case WATER: return Color.BLUE.cpy();
+		case AIR: return Color.GREEN.cpy();
 		}
 		return null;
 	}
