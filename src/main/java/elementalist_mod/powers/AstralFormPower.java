@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 
 public class AstralFormPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:AstralForm";
@@ -28,16 +29,15 @@ public class AstralFormPower extends ElementalPower {
 		initIcon(ElementalistMod.POWER_ASTRALFORM, ElementalistMod.POWER_ASTRALFORM_SMALL);
 	}
 	
-	public void onElementalCast(String element) {
+	public void onElementalCast(Element element) {
 		if(ElementalistMod.hasSynergy(element)) {
 			this.flash();
 			
-			ArrayList<String> synergizingElements = new ArrayList<String>();
-			if(ElementalistMod.hasSynergy("Fire")) synergizingElements.add("Fire");
-			if(ElementalistMod.hasSynergy("Earth")) synergizingElements.add("Earth");
-			if(ElementalistMod.hasSynergy("Water")) synergizingElements.add("Water");
-			if(ElementalistMod.hasSynergy("Air")) synergizingElements.add("Air");
-			String chosenElement = synergizingElements.get( (int)( Math.random()*synergizingElements.size() ) );
+			ArrayList<Element> synergizingElements = new ArrayList<Element>();
+			for(Element elem : Element.values()) {
+				if(ElementalistMod.hasSynergy(elem)) synergizingElements.add(elem);
+			}
+			Element chosenElement = synergizingElements.get( (int)( Math.random()*synergizingElements.size() ) );
 			
 			ElementalistMod.changeElement(chosenElement, amount);
 		}
