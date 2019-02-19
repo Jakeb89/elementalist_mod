@@ -20,7 +20,7 @@ public class Burning_Soul extends AbstractElementalistCard {
 	private static final int COST_UPGRADED = 1;
 
 	public Burning_Soul() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_POWER_RED_4), COST, DESCRIPTION,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BURNING_SOUL), COST, DESCRIPTION,
 				AbstractCard.CardType.POWER, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.RARE,
 				AbstractCard.CardTarget.SELF);
 	}

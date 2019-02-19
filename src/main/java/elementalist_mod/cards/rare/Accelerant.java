@@ -25,7 +25,7 @@ public class Accelerant extends AbstractElementalistCard {
 	
 
 	public Accelerant() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_ATTACK_GREY_3), COST, DESCRIPTION,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.ACCELERANT), COST, DESCRIPTION,
 				AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.RARE,
 				AbstractCard.CardTarget.ENEMY);
 		

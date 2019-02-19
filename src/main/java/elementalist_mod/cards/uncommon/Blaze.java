@@ -31,7 +31,7 @@ public class Blaze extends AbstractElementalistCard {
 	private int effect = 0;
 
 	public Blaze() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_ATTACK_RED_3), COST, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BLAZE), COST, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ALL_ENEMY);
 		this.baseDamage = ATTACK_DMG;
 
