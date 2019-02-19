@@ -14,7 +14,7 @@ public class Multification extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Multification";
 	public static final String NAME = "Multification";
 	public static String DESCRIPTION = "Double all elemental energy gain this turn.";
-	public static String DESCRIPTION_UPGRADED = "Double all elemental energy gain this turn. Gain 1 Energy.";
+	public static String DESCRIPTION_UPGRADED = "Double all elemental energy gain this turn. Gain [E].";
 	private static final int COST = 0;
 
 	public Multification() {
