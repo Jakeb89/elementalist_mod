@@ -23,7 +23,7 @@ public class Absolute_Zero extends AbstractElementalistCard {
 	private static final int COST = 1;
 
 	public Absolute_Zero() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_ATTACK_BLUE_1), COST, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.ABSOLUTE_ZERO), COST, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY);
 
 		addElementalCost("Water", 2);
@@ -45,13 +45,11 @@ public class Absolute_Zero extends AbstractElementalistCard {
 			
 			
 			int missingHealth = p.maxHealth - p.currentHealth;
-	
-			for (AbstractMonster enemy : getAllLivingEnemies()) {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, missingHealth), AbstractGameAction.AttackEffect.SMASH));
-			}
+
+			AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, missingHealth), AbstractGameAction.AttackEffect.SMASH));
 
 			if(this.upgraded) {
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new StrengthPower(p, -2)));
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new StrengthPower(p, -2), -2));
 			}
 			
 			changeElement("Earth", 1);
