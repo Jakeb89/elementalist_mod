@@ -19,7 +19,7 @@ public class Autopetrify extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Autopetrify";
 	public static final String NAME = "Autopetrify";
 	public static String DESCRIPTION = "Ward. NL NL Bloodied: Gain !M! Plated Armor and 2 Earth. Exhaust.";
-	private static final int COST = 0;
+	private static final int COST = -2;
 	private int MAGIC = 2;
 	private int MAGIC_UPGRADE = 1;
 	
