@@ -21,7 +21,8 @@ import elementalist_mod.patches.*;
 public class Low_Tide extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Low_Tides";
 	public static final String NAME = "Low Tide";
-	public static String DESCRIPTION = "Gain !B! Block. NL NL Watercast 2: For every !M! cards in your discard pile, a random enemy gains 2 Weakness.";
+	public static String DESCRIPTION = "Gain !B! Block. NL NL Watercast 2: For every !M! cards in your discard pile, apply 2 Weak to a random enemy.";
+	
 	private static final int COST = 1;
 	public static final int BLOCK = 10;
 	public static final int BLOCK_UP = 2;
@@ -29,8 +30,8 @@ public class Low_Tide extends AbstractElementalistCard {
 	public static final int MAGIC_NUM_UPGRADE = -2;
 
 	public Low_Tide() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_BLUE_3), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
-			AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.LOW_TIDE), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
+			AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.NONE);
 		this.baseMagicNumber = MAGIC_NUM;
 		this.magicNumber = MAGIC_NUM;
 		this.baseBlock = BLOCK;
