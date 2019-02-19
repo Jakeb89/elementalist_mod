@@ -149,6 +149,15 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 	public static final String SIDEREAL_FORM = "cards/sidereal_form.png";
 	public static final String GAIAN_FORM = "cards/gaian_form.png";
 	public static final String ASTRAL_FORM = "cards/astral_form.png";
+	
+
+	public static final String IMPACT = "cards/impact.png";
+	public static final String BURNING_SOUL = "cards/burning_soul.png";
+	public static final String ABSOLUTE_ZERO = "cards/absolute_zero.png";
+	public static final String ACCELERANT = "cards/accelerant.png";
+	public static final String BLAZE = "cards/blaze.png";
+	public static final String HIGH_TIDE = "cards/high_tide.png";
+	public static final String LOW_TIDE = "cards/low_tide.png";
 
 	// generic card images
 
