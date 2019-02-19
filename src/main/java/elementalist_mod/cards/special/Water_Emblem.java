@@ -11,7 +11,7 @@ import elementalist_mod.patches.*;
 public class Water_Emblem extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Water_Emblem";
 	public static final String NAME = "Water Emblem";
-	public static String DESCRIPTION = "Emblem. Gain !M! Water.";
+	public static String DESCRIPTION = "elementalist:Emblem. Gain !M! elementalist:Water.";
 	private static final int COST = -2;
 	private int MAGIC = 1;
 	private int MAGIC_UPGRADE = 1;

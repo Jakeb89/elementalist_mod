@@ -19,8 +19,8 @@ public class Reckless_Dance extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Reckless_Dance";
 	public static final String NAME = "Reckless Dance";
-	public static String DESCRIPTION = "Tiring. NL Gain !M! Aerial Dodge. Gain 2 Windburn. NL NL Aircast 2: Move half your windburn to a random enemy.";
-	public static String DESCRIPTION_UPGRADED = "Tiring. NL Gain !M! Aerial Dodge. Gain 2 Windburn. NL NL Aircast 2: Move ALL your windburn to a random enemy.";
+	public static String DESCRIPTION = "elementalist:Tiring. NL Gain !M! elementalist:Aerial elementalist:Dodge. Gain 2 elementalist:Windburn. NL NL elementalist:Aircast 2: Move half your elementalist:Windburn to a random enemy.";
+	public static String DESCRIPTION_UPGRADED = "elementalist:Tiring. NL Gain !M! elementalist:Aerial elementalist:Dodge. Gain 2 elementalist:Windburn. NL NL elementalist:Aircast 2: Move ALL your elementalist:Windburn to a random enemy.";
 	private static final int COST = 1;
 	private static final int MAGIC_NUM = 2;
 

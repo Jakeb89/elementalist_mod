@@ -16,7 +16,7 @@ import elementalist_mod.patches.*;
 public class Elemental_Strike extends AbstractElementalistCard{
 	public static final String ID = "elementalist:Elemental_Strike";
 	public static final String NAME = "Elemental Strike";
-	public static String DESCRIPTION = "Deal !D! damage. NL Elementize 1.";
+	public static String DESCRIPTION = "Deal !D! damage. NL elementalist:Elementize 1.";
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 6;
 	private static final int UPGRADE_PLUS_DMG = 3;

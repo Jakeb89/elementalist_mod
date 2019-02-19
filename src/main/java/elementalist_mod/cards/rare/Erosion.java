@@ -22,7 +22,7 @@ public class Erosion extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Erosion";
 	public static final String NAME = "Erosion";
-	public static String DESCRIPTION = "Tiring. NL Earthcast 1: A random enemy loses !M! Strength. NL Watercast 1: Choose a card from your draw pile and put it in your hand. (It costs 1 less this turn.)";
+	public static String DESCRIPTION = "elementalist:Tiring. NL elementalist:Earthcast 1: A random enemy loses !M! Strength. NL elementalist:Watercast 1: Choose a card from your draw pile and put it in your hand. (It costs 1 less this turn.)";
 	private static final int COST = 1;
 	private static final int MAGIC_NUM = 2;
 	

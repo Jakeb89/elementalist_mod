@@ -15,7 +15,7 @@ public class Terra_Heart extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Terraheart";
 	public static final String NAME = "Terraheart";
-	public static String DESCRIPTION = "Rune. Gain !M! Earth.";
+	public static String DESCRIPTION = "elementalist:Rune. Gain !M! elementalist:Earth.";
 	private static final int COST = 0;
 	private static final int MAGIC_NUM = 1;
 

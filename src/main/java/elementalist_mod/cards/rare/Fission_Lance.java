@@ -16,7 +16,7 @@ import elementalist_mod.patches.*;
 public class Fission_Lance extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Fission_Lance";
 	public static final String NAME = "Fission Lance";
-	public static String DESCRIPTION = "Deal !D! damage. NL Firecast 2: Deal !D! damage to a random enemy twice then gain !M! Air.";
+	public static String DESCRIPTION = "Deal !D! damage. NL elementalist:Firecast 2: Deal !D! damage to a random enemy twice then gain !M! elementalist:Air.";
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 8;
 	private static final int UPGRADE_PLUS_DMG = 4;

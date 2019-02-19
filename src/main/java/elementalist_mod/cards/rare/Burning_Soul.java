@@ -15,7 +15,7 @@ public class Burning_Soul extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Burning_Soul";
 	public static final String NAME = "Burning Soul";
-	public static String DESCRIPTION = "Gain 2 fire at the start of your turn, then lose 1 HP.";
+	public static String DESCRIPTION = "Gain 2 elementalist:Fire at the start of your turn, then lose 1 HP.";
 	private static final int COST = 2;
 	private static final int COST_UPGRADED = 1;
 

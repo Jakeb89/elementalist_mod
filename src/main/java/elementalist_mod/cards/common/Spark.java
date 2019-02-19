@@ -14,8 +14,8 @@ import elementalist_mod.patches.*;
 public class Spark extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Spark";
 	public static final String NAME = "Spark";
-	public static String DESCRIPTION = "Aircast 1: Draw 1 card. NL NL Aircast 1: Deal !D! damage to a random enemy.";
-	public static String UPGRADE_DESCRIPTION = "Aircast 1: Draw 1 card. NL NL Aircast 1: Deal !D! damage to ALL enemies.";
+	public static String DESCRIPTION = "elementalist:Aircast 1: Draw 1 card. NL NL elementalist:Aircast 1: Deal !D! damage to a random enemy.";
+	public static String UPGRADE_DESCRIPTION = "elementalist:Aircast 1: Draw 1 card. NL NL elementalist:Aircast 1: Deal !D! damage to ALL enemies.";
 	private static final int COST = 0;
 	private static final int ATTACK_DMG = 8;
 	private static final int UPGRADE_PLUS_DMG = 0;

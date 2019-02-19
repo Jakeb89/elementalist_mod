@@ -21,8 +21,8 @@ import elementalist_mod.powers.WindburnPower;
 public class Impact extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Impact";
 	public static final String NAME = "Impact";
-	public static String DESCRIPTION = "Exhaust. Gain 7 Plated Armor. Gain !B! Block. NL NL Earthcast 3: Deal damage equal to your Block 3 times.";
-	public static String DESCRIPTION_UPGRADED = "Tiring. Gain 7 Plated Armor. Gain !B! Block. NL NL Earthcast 3: Deal damage equal to your Block 3 times.";
+	public static String DESCRIPTION = "Exhaust. Gain 7 Plated Armor. Gain !B! Block. NL NL elementalist:Earthcast 3: Deal damage equal to your Block 3 times.";
+	public static String DESCRIPTION_UPGRADED = "elementalist:Tiring. Gain 7 Plated Armor. Gain !B! Block. NL NL elementalist:Earthcast 3: Deal damage equal to your Block 3 times.";
 	private static final int COST = 2;
 	private static final int BLOCK = 5;
 

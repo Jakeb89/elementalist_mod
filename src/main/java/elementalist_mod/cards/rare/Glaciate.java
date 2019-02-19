@@ -18,7 +18,7 @@ import elementalist_mod.patches.*;
 public class Glaciate extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Glaciate";
 	public static final String NAME = "Glaciate";
-	public static String DESCRIPTION = "Deal !D! damage. NL NL Watercast 2: Gain Block equal to target's base attack intent.";
+	public static String DESCRIPTION = "Deal !D! damage. NL NL elementalist:Watercast 2: Gain Block equal to target's base attack intent.";
 	private static final int COST = 2;
 	private static final int DAMAGE = 16;
 	private static final int DAMAGE_UPGRADE = 4;

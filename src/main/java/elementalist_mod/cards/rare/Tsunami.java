@@ -17,7 +17,7 @@ public class Tsunami extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Tsunami";
 	public static final String NAME = "Tsunami";
-	public static String DESCRIPTION = "Mercurial. NL Gain temporary Strength each turn equal to the amount of Watercast in your hand.";
+	public static String DESCRIPTION = "elementalist:Mercurial. NL Gain temporary Strength each turn equal to the amount of elementalist:Watercast in your hand.";
 	private static final int COST = 3;
 	private static final int COST_UPGRADED = 2;
 

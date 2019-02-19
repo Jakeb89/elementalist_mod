@@ -12,7 +12,7 @@ import elementalist_mod.ElementalistMod.Element;
 public class AstralFormPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:AstralForm";
 	public static final String NAME = "Astral Form";
-	public static String[] DESCRIPTION = {"When you cast from a synergizing element, gain ", " in one of your synergizing elements."};
+	public static String[] DESCRIPTION = {"When you cast from a Synergizing element, gain ", " in one of your Synergizing elements."};
 	
 	public AstralFormPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
 		this.ID = POWER_ID;

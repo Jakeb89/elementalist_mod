@@ -15,7 +15,7 @@ public class Aqua_Mind extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Aquamind";
 	public static final String NAME = "Aquamind";
-	public static String DESCRIPTION = "Rune. Gain !M! Water.";
+	public static String DESCRIPTION = "elementalist:Rune. Gain !M! elementalist:Water.";
 	private static final int COST = 0;
 	private static final int MAGIC_NUM = 1;
 

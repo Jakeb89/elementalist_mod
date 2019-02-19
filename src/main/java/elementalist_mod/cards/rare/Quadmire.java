@@ -14,7 +14,7 @@ public class Quadmire extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Quadmire";
 	public static final String NAME = "Quadmire";
-	public static String DESCRIPTION = "When you Earthcast, gain !M! Plated Armor.";
+	public static String DESCRIPTION = "When you elementalist:Earthcast, gain !M! Plated Armor.";
 	private static final int COST = 2;
 	private static final int MAGIC = 1;
 	private static final int MAGIC_UPGRADE = 1;

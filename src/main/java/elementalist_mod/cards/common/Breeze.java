@@ -13,7 +13,7 @@ import elementalist_mod.patches.*;
 public class Breeze extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Breeze";
 	public static final String NAME = "Breeze";
-	public static String DESCRIPTION = "Aircast 1: Exhaust a random status or curse in your hand. If you had one, draw !M! card(s).";
+	public static String DESCRIPTION = "elementalist:Aircast 1: Exhaust a random status or curse in your hand. If you had one, draw !M! card(s).";
 	private static final int COST = 0;
 	private static final int MAGIC = 1;
 	private static final int MAGIC_UP = 2;

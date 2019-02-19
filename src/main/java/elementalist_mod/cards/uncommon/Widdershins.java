@@ -13,8 +13,8 @@ public class Widdershins extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Widdershins_Conversion";
 	public static final String NAME = "Widdershins";
-	public static String DESCRIPTION = "Transmute the elements Fire to Earth, Earth to Water, Water to Air, and Air to Fire simultaniously.";
-	public static String DESCRIPTION_UPGRADED = "Mercurial. NL Transmute the elements Fire to Earth, Earth to Water, Water to Air, and Air to Fire simultaniously.";
+	public static String DESCRIPTION = "elementalist:Transmute the elements elementalist:Fire to elementalist:Earth, elementalist:Earth to elementalist:Water, elementalist:Water to elementalist:Air, and elementalist:Air to elementalist:Fire simultaniously.";
+	public static String DESCRIPTION_UPGRADED = "elementalist:Mercurial. NL elementalist:Transmute the elements elementalist:Fire to elementalist:Earth, elementalist:Earth to elementalist:Water, elementalist:Water to elementalist:Air, and elementalist:Air to elementalist:Fire simultaniously.";
 	private static final int COST = 0;
 
 	public Widdershins() {

@@ -15,7 +15,7 @@ import elementalist_mod.powers.AstralFormPower;
 public class Astral_Form extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Astral_Form";
 	public static final String NAME = "Astral Form";
-	public static String DESCRIPTION = "When you cast from a synergizing element, gain 1 in one of your synergizing elements.";
+	public static String DESCRIPTION = "When you cast from a elementalist:synergizing element, gain 1 in one of your elementalist:synergizing elements.";
 	private static final int COST = 1;
 
 	public Astral_Form() {

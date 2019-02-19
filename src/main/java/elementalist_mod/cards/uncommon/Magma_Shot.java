@@ -16,7 +16,7 @@ import elementalist_mod.patches.*;
 public class Magma_Shot extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Magma_Shot";
 	public static final String NAME = "Magma Shot";
-	public static String DESCRIPTION = "Gain !B! Block. NL NL Earthcast 2: Deal !D! damage then gain !M! Fire.";
+	public static String DESCRIPTION = "Gain !B! Block. NL NL elementalist:Earthcast 2: Deal !D! damage then gain !M! elementalist:Fire.";
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 10;
 	private static final int UPGRADE_PLUS_DMG = 2;

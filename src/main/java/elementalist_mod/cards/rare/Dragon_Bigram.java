@@ -19,8 +19,8 @@ public class Dragon_Bigram extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Dragon_Bigram";
 	public static final String NAME = "Dragon Bigram";
-	public static String DESCRIPTION = "When you Earthcast, gain 1 Air. When you Aircast, gain 1 Earth.";
-	public static String DESCRIPTION_UPGRADED = "Innate. NL When you Earthcast, gain 1 Air. When you Aircast, gain 1 Earth.";
+	public static String DESCRIPTION = "When you elementalist:Earthcast, gain 1 elementalist:Air. When you elementalist:Aircast, gain 1 elementalist:Earth.";
+	public static String DESCRIPTION_UPGRADED = "Innate. NL When you elementalist:Earthcast, gain 1 elementalist:Air. When you elementalist:Aircast, gain 1 elementalist:Earth.";
 	private static final int COST = 2;
 
 	public Dragon_Bigram() {

@@ -15,7 +15,7 @@ import elementalist_mod.orbs.WaterOrb;
 public class ConfluencePower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:Confluence";
 	public static final String NAME = "Confluence";
-	public static String baseDescription = "At the beginning of your turn: NL Gain 1 in each synergizing element.";
+	public static String baseDescription = "At the beginning of your turn: NL Gain 1 in each Synergizing element.";
 	public static String DESCRIPTION = baseDescription;
 
 	public ConfluencePower(final AbstractCreature owner, final AbstractCreature source, final int amount) {

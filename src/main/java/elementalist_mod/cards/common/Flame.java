@@ -17,7 +17,7 @@ import elementalist_mod.patches.*;
 public class Flame extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Flame";
 	public static final String NAME = "Flame";
-	public static String DESCRIPTION = "Deal !D! damage. NL NL Firecast 1: Increase this card's damage by !M! this combat. NL NL Firecast 1: Increase the damage of ALL Flames in your deck by !M! this combat.";
+	public static String DESCRIPTION = "Deal !D! damage. NL NL elementalist:Firecast 1: Increase this card's damage by !M! this combat. NL NL elementalist:Firecast 1: Increase the damage of ALL Flames in your deck by !M! this combat.";
 	private static final int COST = 0;
 	private static final int ATTACK_DMG = 5;
 	private static final int MAGIC_NUM = 3;

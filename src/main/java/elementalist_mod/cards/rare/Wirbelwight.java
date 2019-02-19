@@ -31,7 +31,7 @@ import elementalist_mod.powers.WindburnPower;
 public class Wirbelwight extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Wirbelwight";
 	public static final String NAME = "Wirbelwight";
-	public static String DESCRIPTION = "You and ALL enemies gain !M! Windburn. NL NL Aircast 2: Double target's Windburn.";
+	public static String DESCRIPTION = "You and ALL enemies gain !M! elementalist:Windburn. NL NL elementalist:Aircast 2: Double target's elementalist:Windburn.";
 	private static final int COST = 1;
 	private static final int MAGIC = 3;
 	private static final int MAGIC_UPGRADE = 2;

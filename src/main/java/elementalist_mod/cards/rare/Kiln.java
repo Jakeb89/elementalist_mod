@@ -20,7 +20,7 @@ public class Kiln extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Kiln";
 	public static final String NAME = "Kiln";
-	public static String DESCRIPTION = "Tiring. NL Firecast 1: Gain !M! Strength. NL Earthcast 1: Gain !M! Plated Armor.";
+	public static String DESCRIPTION = "elementalist:Tiring. NL elementalist:Firecast 1: Gain !M! Strength. NL elementalist:Earthcast 1: Gain !M! Plated Armor.";
 	private static final int COST = 1;
 	private static final int MAGIC_NUM = 2;
 	

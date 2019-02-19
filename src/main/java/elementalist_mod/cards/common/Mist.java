@@ -16,8 +16,8 @@ import elementalist_mod.patches.*;
 public class Mist extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Mist";
 	public static final String NAME = "Mist";
-	public static String DESCRIPTION = "Watercast 1: Each enemy that intends to attack gains 2 weakness. Draw 1 card.";
-	public static String UPGRADE_DESCRIPTION = "Innate. NL Watercast 1: Each enemy that intends to attack gains 2 weakness. Draw 1 card.";
+	public static String DESCRIPTION = "elementalist:Watercast 1: Apply 2 Weak to each enemy that intends to attack.. Draw 1 card.";
+	public static String UPGRADE_DESCRIPTION = "Innate. NL elementalist:Watercast 1: Apply 2 Weak to each enemy that intends to attack. Draw 1 card.";
 	private static final int COST = 0;
 
 	public Mist() {

@@ -22,7 +22,7 @@ import elementalist_mod.patches.*;
 public class Low_Tide extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Low_Tides";
 	public static final String NAME = "Low Tide";
-	public static String DESCRIPTION = "Gain !B! Block. NL NL Watercast 2: For every !M! cards in your discard pile, apply 2 Weak to a random enemy.";
+	public static String DESCRIPTION = "Gain !B! Block. NL NL elementalist:Watercast 2: For every !M! cards in your discard pile, apply 2 Weak to a random enemy.";
 	
 	private static final int COST = 1;
 	public static final int BLOCK = 10;

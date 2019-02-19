@@ -13,7 +13,7 @@ public class Confluence extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Confluence";
 	public static final String NAME = "Confluence";
-	public static String DESCRIPTION = "At the beginning of your turn gain 1 point in each synergizing element.";
+	public static String DESCRIPTION = "At the beginning of your turn gain 1 point in each elementalist:synergizing element.";
 	private static final int COST = 1;
 
 	public Confluence() {

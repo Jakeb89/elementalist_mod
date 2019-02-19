@@ -12,7 +12,7 @@ import elementalist_mod.patches.*;
 public class Air_Emblem extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Air_Emblem";
 	public static final String NAME = "Air Emblem";
-	public static String DESCRIPTION = "Emblem. Gain !M! Air.";
+	public static String DESCRIPTION = "elementalist:Emblem. Gain !M! elementalist:Air.";
 	private static final int COST = -2;
 	private int MAGIC = 1;
 	private int MAGIC_UPGRADE = 1;

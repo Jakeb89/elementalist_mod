@@ -23,7 +23,7 @@ import elementalist_mod.powers.WindburnPower;
 public class Inferno extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Inferno";
 	public static final String NAME = "Inferno";
-	public static String DESCRIPTION = "Firecast 2: Deal !D! damage. Exhaust a random card in your hand. NL NL Repeat the effect of this card until you have less than 2 Fire, your hand is empty or the target is dead.";
+	public static String DESCRIPTION = "elementalist:Firecast 2: Deal !D! damage. Exhaust a random card in your hand. NL NL Repeat the effect of this card until you have less than 2 elementalist:Fire, your hand is empty or the target is dead.";
 	public static final int DAMAGE = 12;
 	public static final int DAMAGE_UPGRADE = 4;
 	private static final int COST = 2;

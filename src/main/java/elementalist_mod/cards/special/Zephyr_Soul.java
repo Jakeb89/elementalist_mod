@@ -15,7 +15,7 @@ public class Zephyr_Soul extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Zephyrsoul";
 	public static final String NAME = "Zephyrsoul";
-	public static String DESCRIPTION = "Rune. Gain !M! Air.";
+	public static String DESCRIPTION = "elementalist:Rune. Gain !M! elementalist:Air.";
 	private static final int COST = 0;
 	private static final int MAGIC_NUM = 1;
 

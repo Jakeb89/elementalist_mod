@@ -21,7 +21,7 @@ import elementalist_mod.patches.*;
 public class Aegis extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Aegis";
 	public static final String NAME = "Aegis";
-	public static String DESCRIPTION = "Earthcast 1: Gain !B! Block. Add an Autopetrify to your draw pile.";
+	public static String DESCRIPTION = "elementalist:Earthcast 1: Gain !B! Block. Add an elementalist:Autopetrify to your draw pile.";
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 15;
 	private static final int UPGRADE_PLUS_BLOCK = 5;

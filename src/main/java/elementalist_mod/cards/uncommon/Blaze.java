@@ -22,8 +22,8 @@ import elementalist_mod.patches.*;
 public class Blaze extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Blaze";
 	public static final String NAME = "Blaze";
-	public static String DESCRIPTION = "Deal !D! damage to X random enemies. NL Firecast 2: Repeat the above effect.";
-	public static String UPGRADED_DESCRIPTION = "Deal !D! damage to X+1 random enemies. NL Firecast 2: Repeat the above effect.";
+	public static String DESCRIPTION = "Deal !D! damage to X random enemies. NL elementalist:Firecast 2: Repeat the above effect.";
+	public static String UPGRADED_DESCRIPTION = "Deal !D! damage to X+1 random enemies. NL elementalist:Firecast 2: Repeat the above effect.";
 	private static final int COST = -1;
 	private static final int ATTACK_DMG = 7;
 	private boolean firecasted = false;

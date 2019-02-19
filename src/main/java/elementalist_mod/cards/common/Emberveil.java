@@ -13,7 +13,7 @@ import elementalist_mod.patches.*;
 public class Emberveil extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Emberveil";
 	public static final String NAME = "Emberveil";
-	public static String DESCRIPTION = "Ward. Unplayable. NL Bloodied: Reduce incoming damage by !M!. Add 1 Burn to your discard pile and gain 2 Fire.";
+	public static String DESCRIPTION = "elementalist:Ward. Unplayable. NL elementalist:Bloodied: Reduce incoming damage by !M!. Add 1 Burn to your discard pile and gain 2 elementalist:Fire.";
 	private static final int COST = -2;
 	private static final int MAGIC_NUM = 5;
 	private static final int UPGRADE_MAGIC_NUM = 5;

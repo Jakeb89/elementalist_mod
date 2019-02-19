@@ -16,8 +16,8 @@ import elementalist_mod.patches.*;
 public class Quake extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Quake";
 	public static final String NAME = "Quake";
-	public static String DESCRIPTION = "Exhaust. NL Earthcast X: Deal damage to ALL enemies equal to the sum total cost of all cards in your discard pile. Do this X times.";
-	public static String DESCRIPTION_UPGRADED = "Tiring. NL Earthcast X: Deal damage to ALL enemies equal to the sum total cost of all cards in your discard pile. Do this X times.";
+	public static String DESCRIPTION = "Exhaust. NL elementalist:Earthcast X: Deal damage to ALL enemies equal to the sum total cost of all cards in your discard pile. Do this X times.";
+	public static String DESCRIPTION_UPGRADED = "elementalist:Tiring. NL elementalist:Earthcast X: Deal damage to ALL enemies equal to the sum total cost of all cards in your discard pile. Do this X times.";
 	private static final int COST = 2;
 
 	public Quake() {

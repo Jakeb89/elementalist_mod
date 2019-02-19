@@ -12,7 +12,7 @@ import elementalist_mod.patches.*;
 public class Prepared_Sand extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Prepared_Sand";
 	public static final String NAME = "Prepared Sand";
-	public static String DESCRIPTION = "Earthcast 1: Deal !D! damage to each enemy that doesn't intend to attack. NL Gain !B! Block for each enemy that intends to attack.";
+	public static String DESCRIPTION = "elementalist:Earthcast 1: Deal !D! damage to each enemy that doesn't intend to attack. NL Gain !B! Block for each enemy that intends to attack.";
 	private static final int COST = 0;
 	private static final int ATTACK_DMG = 3;
 	private static final int UPGRADE_PLUS_DMG = 2;

@@ -16,7 +16,7 @@ import elementalist_mod.powers.GaianFormPower;
 public class Gaian_Form extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Gaian_Form";
 	public static final String NAME = "Gaian Form";
-	public static String DESCRIPTION = "The first time you cast an element each turn, gain 2 Earth.";
+	public static String DESCRIPTION = "The first time you cast an element each turn, gain 2 elementalist:Earth.";
 	private static final int COST = 1;
 
 	public Gaian_Form() {

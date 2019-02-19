@@ -16,7 +16,7 @@ public class Rising_Vapors extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Rising_Vapors";
 	public static final String NAME = "Rising Vapors";
-	public static String DESCRIPTION = "Tiring. NL Watercast 1: Gain !M! Regen. NL NL Aircast 1: Gain !M! Dexterity.";
+	public static String DESCRIPTION = "elementalist:Tiring. NL elementalist:Watercast 1: Gain !M! Regen. NL NL elementalist:Aircast 1: Gain !M! Dexterity.";
 	private static final int COST = 1;
 	private static final int MAGIC_NUM = 2;
 	

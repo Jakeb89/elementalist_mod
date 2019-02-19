@@ -15,7 +15,7 @@ import elementalist_mod.patches.*;
 public class Spout extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Spout";
 	public static final String NAME = "Spout";
-	public static String DESCRIPTION = "Watercast 1: Deal !D! damage. NL NL Watercast 1: Gain !B! Block for each card in your discard pile.";
+	public static String DESCRIPTION = "elementalist:Watercast 1: Deal !D! damage. NL NL elementalist:Watercast 1: Gain !B! Block for each card in your discard pile.";
 	private static final int COST = 1;
 	private final int ATTACK_DMG = 8;
 	private final int UPGRADE_PLUS_DMG = 4;

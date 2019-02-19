@@ -13,7 +13,7 @@ import elementalist_mod.patches.*;
 public class Monument extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Monument";
 	public static final String NAME = "Monument";
-	public static String DESCRIPTION = "Tiring. Deal !D! damage to target. NL NL Earthcast 1: If this card kills an enemy, permanently increase its damage by !M!.";
+	public static String DESCRIPTION = "elementalist:Tiring. Deal !D! damage to target. NL NL elementalist:Earthcast 1: If this card kills an enemy, permanently increase its damage by !M!.";
 	private static final int COST = 0;
 	private final int ATTACK_DMG = 4;
 	private final int MAGIC = 2;

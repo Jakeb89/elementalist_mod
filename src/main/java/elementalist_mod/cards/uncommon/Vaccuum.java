@@ -12,7 +12,7 @@ import elementalist_mod.patches.*;
 public class Vaccuum extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Vaccuum";
 	public static final String NAME = "Vacuum";
-	public static String DESCRIPTION = "Aircast 2: Draw 3 cards. For each status or curse you draw, draw another card. For each card drawn, target takes !D! damage.";
+	public static String DESCRIPTION = "elementalist:Aircast 2: Draw 3 cards. For each status or curse you draw, draw another card. For each card drawn, target takes !D! damage.";
 	private static final int COST = 1;
 	public static final int DAMAGE = 3;
 	public static final int DAMAGE_UPGRADE = 2;

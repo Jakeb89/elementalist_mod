@@ -16,7 +16,7 @@ import elementalist_mod.patches.*;
 public class Geomancy extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Geomancy";
 	public static final String NAME = "Geomancy";
-	public static String DESCRIPTION = "Earthcast 1: Gain !B! Block NL Watercast 1: Gain !B! Block. NL Aircast 1: Gain !B! Block.";
+	public static String DESCRIPTION = "elementalist:Earthcast 1: Gain !B! Block NL elementalist:Watercast 1: Gain !B! Block. NL elementalist:Aircast 1: Gain !B! Block.";
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 8;
 	private static final int UPGRADE_PLUS_BLOCK = 4;

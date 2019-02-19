@@ -23,7 +23,7 @@ import elementalist_mod.patches.*;
 public class Heavensfall extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Heavensfall";
 	public static final String NAME = "Heavensfall";
-	public static String DESCRIPTION = "Exhaust. Elementcast X: Deal !D! damage to ALL enemies X times. (Sum the X costs.)";
+	public static String DESCRIPTION = "Exhaust. elementalist:Elementcast X: Deal !D! damage to ALL enemies X times. (Sum the X costs.)";
 	private static final int COST = -1;
 	private static final int DAMAGE = 3;
 	private static final int DAMAGE_UPGRADE = 2;

@@ -16,7 +16,7 @@ import elementalist_mod.powers.LunarFormPower;
 public class Lunar_Form extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Lunar_Form";
 	public static final String NAME = "Lunar Form";
-	public static String DESCRIPTION = "The first time you cast an element each turn, gain 2 Water.";
+	public static String DESCRIPTION = "The first time you cast an element each turn, gain 2 elementalist:Water.";
 	private static final int COST = 1;
 
 	public Lunar_Form() {

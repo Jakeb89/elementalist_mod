@@ -19,8 +19,8 @@ import elementalist_mod.patches.*;
 public class Absolute_Zero extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Absolute_Zero";
 	public static final String NAME = "Absolute Zero";
-	public static String DESCRIPTION = "Watercast 2: Deal damage equal to your missing health. Gain 1 Earth.";
-	public static String DESCRIPTION_UPGRADED = "Watercast 2: Deal damage equal to your missing health. Target loses 2 Strength. Gain 1 Earth.";
+	public static String DESCRIPTION = "elementalist:Watercast 2: Deal damage equal to your missing health. Gain 1 elementalist:Earth.";
+	public static String DESCRIPTION_UPGRADED = "elementalist:Watercast 2: Deal damage equal to your missing health. Target loses 2 Strength. Gain 1 elementalist:Earth.";
 	private static final int COST = 1;
 
 	public Absolute_Zero() {

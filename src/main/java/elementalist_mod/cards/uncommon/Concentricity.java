@@ -18,8 +18,8 @@ import elementalist_mod.patches.*;
 public class Concentricity extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Concentricity";
 	public static final String NAME = "Concentricity";
-	public static String DESCRIPTION = "Deal 10 damage. NL Gain 1 in each element with synergy.";
-	public static String DESCRIPTION_UPGRADE = "Mercurial. NL Deal 10 damage. NL Gain 1 in each element with synergy.";
+	public static String DESCRIPTION = "Deal 10 damage. NL Gain 1 in each element with elementalist:Synergy.";
+	public static String DESCRIPTION_UPGRADE = "elementalist:Mercurial. NL Deal 10 damage. NL Gain 1 in each element with elementalist:Synergy.";
 	private static final int COST = 1;
 	private static final int DAMAGE = 10;
 

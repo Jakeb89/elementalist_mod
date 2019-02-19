@@ -11,7 +11,7 @@ import elementalist_mod.patches.*;
 public class Fire_Emblem extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Fire_Emblem";
 	public static final String NAME = "Fire Emblem";
-	public static String DESCRIPTION = "Emblem. Gain !M! Fire.";
+	public static String DESCRIPTION = "elementalist:Emblem. Gain !M! elementalist:Fire.";
 	private static final int COST = -2;
 	private int MAGIC = 1;
 	private int MAGIC_UPGRADE = 1;

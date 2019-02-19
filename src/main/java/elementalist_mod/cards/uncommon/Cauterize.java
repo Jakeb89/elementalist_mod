@@ -21,7 +21,7 @@ import elementalist_mod.patches.*;
 public class Cauterize extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Cauterize";
 	public static final String NAME = "Cauterize";
-	public static String DESCRIPTION = "Firecast X: Deal !D! damage to target X times. Deal X damage to target for each Status in your hand. Exhaust X random Status cards in your hand.";
+	public static String DESCRIPTION = "elementalist:Firecast X: Deal !D! damage to target X times. Deal X damage to target for each Status in your hand. Exhaust X random Status cards in your hand.";
 	private static final int COST = 1;
 	public static final int DAMAGE = 5;
 	public static final int DAMAGE_UPGRADE = 2;

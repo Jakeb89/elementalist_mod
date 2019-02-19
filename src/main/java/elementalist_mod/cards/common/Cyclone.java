@@ -12,8 +12,8 @@ import elementalist_mod.patches.*;
 public class Cyclone extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Cyclone";
 	public static final String NAME = "Cyclone";
-	public static String DESCRIPTION = "Discard any number of cards. Gain !B! Block and 1 Windburn for each card discarded."
-										+ " NL NL Gain 1 Air for every 2 cards discarded.";
+	public static String DESCRIPTION = "Discard any number of cards. Gain !B! Block and 1 elementalist:Windburn for each card discarded."
+										+ " NL NL Gain 1 elementalist:Air for every 2 cards discarded.";
 	private static final int COST = 2;
 	private static final int BLOCK = 6;
 	private static final int BLOCK_UPG = 2;

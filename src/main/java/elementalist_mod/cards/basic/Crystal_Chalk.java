@@ -14,8 +14,8 @@ public class Crystal_Chalk extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Crystal_Chalk";
 	public static final String NAME = "Crystal Chalk";
-	public static String DESCRIPTION = "Gain the following Rune cards: NL Zephyrsoul, Aquamind, Terraheart, Igniseye. NL Exhaust.";
-	public static String UPGRADED_DESCRIPTION = "Gain the following Rune cards: NL Zephyrsoul, Aquamind, Terraheart, Igniseye. NL Tiring.";
+	public static String DESCRIPTION = "Gain the following elementalist:Rune cards: NL Zephyrsoul, Aquamind, Terraheart, Igniseye. NL Exhaust.";
+	public static String UPGRADED_DESCRIPTION = "Gain the following elementalist:Rune cards: NL Zephyrsoul, Aquamind, Terraheart, Igniseye. NL Tiring.";
 	private static final int COST = 0;
 
 	public Crystal_Chalk() {

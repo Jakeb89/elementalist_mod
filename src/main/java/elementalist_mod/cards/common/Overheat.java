@@ -16,8 +16,8 @@ import elementalist_mod.patches.*;
 public class Overheat extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Overheat";
 	public static final String NAME = "Overheat";
-	public static String DESCRIPTION = "Firecast 1: Add a random card from your exhaust pile to your hand. Add a Burn to your discard pile.";
-	public static String DESCRIPTION_UPGRADE = "Firecast 1: Add a chosen card from your exhaust pile to your hand. Add a Burn to your discard pile.";
+	public static String DESCRIPTION = "elementalist:Firecast 1: Add a random card from your exhaust pile to your hand. Add a Burn to your discard pile.";
+	public static String DESCRIPTION_UPGRADE = "elementalist:Firecast 1: Add a chosen card from your exhaust pile to your hand. Add a Burn to your discard pile.";
 	private static final int COST = 1;
 
 	public Overheat() {

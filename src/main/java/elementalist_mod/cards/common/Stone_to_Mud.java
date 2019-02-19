@@ -17,7 +17,7 @@ public class Stone_to_Mud extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Stone_to_Mud";
 	public static final String NAME = "Stone to Mud";
-	public static String DESCRIPTION = "Earthcast 1: Gain !B! Block. NL NL Earthcast 1: ALL enemies gain 1 Weak.";
+	public static String DESCRIPTION = "elementalist:Earthcast 1: Gain !B! Block. NL NL elementalist:Earthcast 1: Apply 1 Weak to ALL enemies.";
 	private static final int COST = 0;
 	private static final int BLOCK_AMT = 5;
 	private static final int UPGRADE_PLUS_BLOCK = 2;

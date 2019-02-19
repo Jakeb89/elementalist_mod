@@ -16,7 +16,7 @@ import elementalist_mod.powers.SolarFormPower;
 public class Solar_Form extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Solar_Form";
 	public static final String NAME = "Solar Form";
-	public static String DESCRIPTION = "The first time you cast an element each turn, gain 2 Fire.";
+	public static String DESCRIPTION = "The first time you cast an element each turn, gain 2 elementalist:Fire.";
 	private static final int COST = 1;
 
 	public Solar_Form() {

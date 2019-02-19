@@ -1,4 +1,4 @@
-package elementalist_mod.cards.common;
+package elementalist_mod.cards.basic;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -17,7 +17,7 @@ import elementalist_mod.patches.*;
 public class Earthstrike extends AbstractElementalistCard{
 	public static final String ID = "elementalist:Earthstrike";
 	public static final String NAME = "Earthstrike";
-	public static String DESCRIPTION = "Deal !D! damage. NL Earthcast 1: Gain !B! Block.";
+	public static String DESCRIPTION = "Deal !D! damage. NL elementalist:Earthcast 1: Gain !B! Block.";
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 5;
 	private static final int UPGRADE_PLUS_DMG = 3;

@@ -15,7 +15,7 @@ import elementalist_mod.patches.*;
 public class Ignition extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Ignition";
 	public static final String NAME = "Ignition";
-	public static String DESCRIPTION = "Deal !D! damage 3 times. NL NL Aircast X: Deal !D! damage X times. Gain X-2 Fire.";
+	public static String DESCRIPTION = "Deal !D! damage 3 times. NL NL elementalist:Aircast X: Deal !D! damage X times. Gain X-2 elementalist:Fire.";
 	private static final int COST = 2;
 	public static final int DAMAGE = 3;
 	public static final int DAMAGE_UPGRADE = 2;

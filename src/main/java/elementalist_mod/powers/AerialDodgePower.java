@@ -11,7 +11,7 @@ import elementalist_mod.ElementalistMod;
 public class AerialDodgePower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:AerialDodge";
 	public static final String NAME = "Aerial Dodge";
-	public static String baseDescription = "When you have less than 5 extra block remaining at the end of the enemy turn, gain 2 Dexterity.";
+	public static String baseDescription = "When you have less than 5 extra Block remaining at the end of the enemy turn, gain 2 Dexterity.";
 	public static String DESCRIPTION = baseDescription;
 
 	public AerialDodgePower(AbstractCreature owner, AbstractCreature source, int amount) {

@@ -20,7 +20,7 @@ import elementalist_mod.powers.WindburnPower;
 public class Pressurize extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Pressurize";
 	public static final String NAME = "Pressurize";
-	public static String DESCRIPTION = "Gain !B! Block. Gain !M! Windburn. NL NL Aircast 2: Deal damage equal to your Windburn. Gain 1 Water.";
+	public static String DESCRIPTION = "Gain !B! Block. Gain !M! elementalist:Windburn. NL NL elementalist:Aircast 2: Deal damage equal to your elementalist:Windburn. Gain 1 elementalist:Water.";
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 10;
 	private static final int UPGRADE_PLUS_BLOCK = 2;

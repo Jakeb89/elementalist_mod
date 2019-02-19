@@ -21,8 +21,8 @@ public class Momentum extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Momentum";
 	public static final String NAME = "Momentum";
-	public static String DESCRIPTION = "Choose an Emblem to add to your draw pile. Exhaust.";
-	public static String DESCRIPTION_UPGRADED = "Innate. NL Choose an Emblem to add to your draw pile. Exhaust.";
+	public static String DESCRIPTION = "Choose an elementalist:Emblem to add to your draw pile. Exhaust.";
+	public static String DESCRIPTION_UPGRADED = "Innate. NL Choose an elementalist:Emblem to add to your draw pile. Exhaust.";
 	private static final int COST = 1;
 
 	public Momentum() {

@@ -11,7 +11,7 @@ import elementalist_mod.patches.*;
 public class Earth_Emblem extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Earth_Emblem";
 	public static final String NAME = "Earth Emblem";
-	public static String DESCRIPTION = "Emblem. Gain !M! Earth.";
+	public static String DESCRIPTION = "elementalist:Emblem. Gain !M! elementalist:Earth.";
 	private static final int COST = -2;
 	private int MAGIC = 1;
 	private int MAGIC_UPGRADE = 1;

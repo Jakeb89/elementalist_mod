@@ -432,11 +432,16 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		addKeyword("Unplayable", new String[] { "unplayable" }, "Unplayable cards cannot be played manually.");
 		addKeyword("Autopetrify", new String[] { "autopetrify" }, "Autopetrify is an unplayable status which exhausts and gives Plated Armor and Earth when you are damaged.");
 
+		addKeyword("Fire", new String[] { "fire" }, "A red-colored element focussing on damage but lacking in focus. Those that play with fire are often burnt.");
+		addKeyword("Earth", new String[] { "earth" }, "A yellow-colored element focussing on defense. One should take care they do not become so stone-like that they petrify.");
+		addKeyword("Water", new String[] { "water" }, "A blue-colored element focussing on status effects. Like the sea at large, water can be fickle with its blessings.");
+		addKeyword("Air", new String[] { "air" }, "A green-colored element focussing on drawing and dodging. The wind is jealous lover - best not to be caught in infidelity.");
+
 		addKeyword("Check the Pins", new String[] { "pins" }, "For fuck's sake, please just check the pins.");
 	}
 
 	private void addKeyword(String name, String[] names, String description) {
-		BaseMod.addKeyword("Elementalist", name, names, description);
+		BaseMod.addKeyword("elementalist", name, names, description);
 	}
 
 	@Override

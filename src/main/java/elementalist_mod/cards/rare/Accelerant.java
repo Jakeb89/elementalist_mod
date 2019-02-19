@@ -18,7 +18,7 @@ public class Accelerant extends AbstractElementalistCard {
 
 	public static final String ID = "elementalist:Accelerant";
 	public static final String NAME = "Accelerant";
-	public static String DESCRIPTION = "Tiring. NL Aircast 1: Target gains !M! Windburn. NL NL Firecast 1: Target takes !D! damage for each Windburn it has.";
+	public static String DESCRIPTION = "elementalist:Tiring. NL elementalist:Aircast 1: Target gains !M! Windburn. NL NL elementalist:Firecast 1: Target takes !D! damage for each elementalist:Windburn it has.";
 	private static final int COST = 1;
 	private static final int MAGIC_NUM = 2;
 	private static final int DAMAGE = 3;

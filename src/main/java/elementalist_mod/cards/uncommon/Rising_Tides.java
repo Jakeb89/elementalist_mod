@@ -21,7 +21,7 @@ import elementalist_mod.patches.*;
 public class Rising_Tides extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Rising_Tides";
 	public static final String NAME = "High Tide";
-	public static String DESCRIPTION = "Deal !D! damage. NL NL Watercast 2: For every !M! cards in your draw pile, apply 2 Vulnerable to a random enemy.";
+	public static String DESCRIPTION = "Deal !D! damage. NL NL elementalist:Watercast 2: For every !M! cards in your draw pile, apply 2 Vulnerable to a random enemy.";
 	private static final int COST = 1;
 	public static final int DAMAGE = 10;
 	public static final int DAMAGE_UP = 2;

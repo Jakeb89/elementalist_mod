@@ -20,8 +20,8 @@ import elementalist_mod.patches.*;
 public class Ferruchemy extends AbstractElementalistCard {
 	public static final String ID = "elementalist:Ferruchemy";
 	public static final String NAME = "Ferruchemy";
-	public static String DESCRIPTION = "Exhaust. NL NL Firecast 2: Gain 1 Max HP for every 100 gold you have. NL NL Earthcast 2: Gain 25 Gold.";
-	public static String DESCRIPTION_UPGRADED = "Tiring. NL NL Firecast 2: Gain 1 Max HP for every 100 gold you have. NL NL Earthcast 2: Gain 25 Gold.";
+	public static String DESCRIPTION = "Exhaust. NL NL elementalist:Firecast 2: Gain 1 Max HP for every 100 gold you have. NL NL elementalist:Earthcast 2: Gain 25 Gold.";
+	public static String DESCRIPTION_UPGRADED = "elementalist:Tiring. NL NL elementalist:Firecast 2: Gain 1 Max HP for every 100 gold you have. NL NL elementalist:Earthcast 2: Gain 25 Gold.";
 	private static final int COST = 1;
 
 	public Ferruchemy() {
