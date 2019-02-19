@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -25,13 +26,13 @@ public class Breeze extends AbstractElementalistCard {
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = MAGIC;
 		
-		addElementalCost("Air", 1);
+		addElementalCost(Element.AIR, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		if (cast("Air", 1)) {
+		if (cast(Element.AIR, 1)) {
 
 			AbstractCard card = getRandomCard(getAllStatusOrCurse(p.hand));
 			if(card != null) {

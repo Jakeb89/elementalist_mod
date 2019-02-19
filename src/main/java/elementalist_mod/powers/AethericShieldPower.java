@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 
 public class AethericShieldPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:AethericShield";
@@ -32,7 +33,7 @@ public class AethericShieldPower extends ElementalPower {
 		initIcon(ElementalistMod.POWER_AETHERIC_SHIELD, ElementalistMod.POWER_AETHERIC_SHIELD_SMALL);
 	}
 	
-	public int onAddElement(String element, int amount, String sourceType) {
+	public int onAddElement(Element element, int amount, String sourceType) {
 		if(sourceType == "widdershins") return amount;
 		if(amount < 0) return amount;
 		

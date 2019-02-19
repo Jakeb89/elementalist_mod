@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import elementalist_mod.CustomTags;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.*;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -30,7 +31,7 @@ public class Aqua_Mind extends AbstractElementalistCard {
 
 		generatesElement = true;
 		generatedElementAmount = this.magicNumber;
-		this.element = "Water";
+		this.element = Element.WATER;
 
 		this.isEthereal = true;
 		this.exhaust = true;

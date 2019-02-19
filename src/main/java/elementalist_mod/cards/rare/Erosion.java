@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.RegenPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.AccelerantAction;
 import elementalist_mod.actions.DrawCardFromPileAction;
 import elementalist_mod.cards.AbstractElementalistCard;
@@ -36,8 +37,8 @@ public class Erosion extends AbstractElementalistCard {
 		this.baseMagicNumber = MAGIC_NUM;
 		this.magicNumber = this.baseMagicNumber;
 
-		addElementalCost("Earth", 1);
-		addElementalCost("Water", 1);
+		addElementalCost(Element.EARTH, 1);
+		addElementalCost(Element.WATER, 1);
 	}
 	
 	@Override
@@ -58,11 +59,11 @@ public class Erosion extends AbstractElementalistCard {
 		AbstractMonster randomEnemy = enemies.get((int)(Math.random()*enemies.size()));
 		
 
-		if (cast("Earth", 1)) {
+		if (cast(Element.EARTH, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(randomEnemy, p, new StrengthPower(randomEnemy, -this.magicNumber), -this.magicNumber));
 		}
 
-		if (cast("Water", 1)) {
+		if (cast(Element.WATER, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(new DrawCardFromPileAction(this, AbstractDungeon.player.drawPile, 1));
 		}
 	}

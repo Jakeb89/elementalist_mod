@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -25,18 +26,18 @@ public class Spark extends AbstractElementalistCard {
 				AbstractCard.CardTarget.SELF);
 		this.baseDamage = ATTACK_DMG;
 
-		addElementalCost("Air", 1);
-		addElementalCost("Air", 1);
+		addElementalCost(Element.AIR, 1);
+		addElementalCost(Element.AIR, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		if (cast("Air", 1)) {
+		if (cast(Element.AIR, 1)) {
 			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
 		}
 
-		if (getElement("Air") >= 2 && cast("Air", 1)) {
+		if (getElement(Element.AIR) >= 2 && cast(Element.AIR, 1)) {
 			AbstractMonster randomEnemy = pickRandomLivingEnemy();
 			if (randomEnemy != null) {
 				if(!upgraded) {

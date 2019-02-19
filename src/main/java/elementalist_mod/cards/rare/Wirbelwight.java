@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.CallbackAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -43,7 +44,7 @@ public class Wirbelwight extends AbstractElementalistCard {
 		this.magicNumber = MAGIC;
 		this.baseMagicNumber = MAGIC;
 
-		addElementalCost("Air", 2);
+		addElementalCost(Element.AIR, 2);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -57,7 +58,7 @@ public class Wirbelwight extends AbstractElementalistCard {
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(enemy, p, new WindburnPower(enemy, p, this.magicNumber), this.magicNumber));
 		}
 
-		if (cast("Air", 2)) {
+		if (cast(Element.AIR, 2)) {
 			AbstractDungeon.actionManager.addToBottom(new CallbackAction(this));
 		}
 	}

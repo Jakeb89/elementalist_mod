@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -23,7 +24,7 @@ public class Quake extends AbstractElementalistCard {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_ATTACK_YELLOW_1), COST, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ALL_ENEMY);
 
-		addElementalCost("Earth", -1);
+		addElementalCost(Element.EARTH, -1);
 		this.keywords.add("total cost");
 		this.exhaust = true;
 		
@@ -32,7 +33,7 @@ public class Quake extends AbstractElementalistCard {
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 		
-		int casts = cast("Earth");
+		int casts = cast(Element.EARTH);
 		if(upgraded) casts += 2;
 		
 		int damage = 0;

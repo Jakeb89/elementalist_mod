@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -27,7 +28,7 @@ public class Glaciate extends AbstractElementalistCard {
 			AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY);
 
 		this.baseDamage = DAMAGE;
-		addElementalCost("Water", 2);
+		addElementalCost(Element.WATER, 2);
 
 	}
 
@@ -37,7 +38,7 @@ public class Glaciate extends AbstractElementalistCard {
 
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 		
-		if(cast("Water", 2)) {
+		if(cast(Element.WATER, 2)) {
 			int enemyDamage = 0;
 			try {
 				java.lang.reflect.Field move = AbstractMonster.class.getDeclaredField("move");

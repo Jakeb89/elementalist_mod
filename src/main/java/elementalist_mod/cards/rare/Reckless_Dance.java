@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.CallbackAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -31,7 +32,7 @@ public class Reckless_Dance extends AbstractElementalistCard {
 		this.magicNumber = this.baseMagicNumber;
 		this.keywords.add("tiring");
 
-		addElementalCost("Air", 2);
+		addElementalCost(Element.AIR, 2);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -46,7 +47,7 @@ public class Reckless_Dance extends AbstractElementalistCard {
 	
 	public void actionCallback(int value) {
 		AbstractPlayer player = AbstractDungeon.player;
-		if(cast("Air", 2)) {
+		if(cast(Element.AIR, 2)) {
 			if(player.hasPower(WindburnPower.POWER_ID)) {
 				int windburn = player.getPower(WindburnPower.POWER_ID).amount;
 				if(!upgraded) windburn /= 2;

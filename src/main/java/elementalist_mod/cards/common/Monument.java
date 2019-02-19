@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.*;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -28,13 +29,13 @@ public class Monument extends AbstractElementalistCard {
 		this.keywords.add("tiring");
 		this.exhaust = false;
 
-		addElementalCost("Earth", 1);
+		addElementalCost(Element.EARTH, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		int incAmount = (cast("Earth", 1) ? this.magicNumber : 0);
+		int incAmount = (cast(Element.EARTH, 1) ? this.magicNumber : 0);
 		AbstractDungeon.actionManager.addToBottom(new MonumentAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), incAmount, this.uuid));
 		
 	}

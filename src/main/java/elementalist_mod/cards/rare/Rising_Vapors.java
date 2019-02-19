@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.RegenPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -30,18 +31,18 @@ public class Rising_Vapors extends AbstractElementalistCard {
 		this.baseMagicNumber = MAGIC_NUM;
 		this.magicNumber = this.baseMagicNumber;
 
-		addElementalCost("Water", 1);
-		addElementalCost("Air", 1);
+		addElementalCost(Element.WATER, 1);
+		addElementalCost(Element.AIR, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		if (cast("Water", 1)) {
+		if (cast(Element.WATER, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new RegenPower(p, this.magicNumber), this.magicNumber));
 		}
 
-		if (cast("Air", 1)) {
+		if (cast(Element.AIR, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));
 		}
 	}

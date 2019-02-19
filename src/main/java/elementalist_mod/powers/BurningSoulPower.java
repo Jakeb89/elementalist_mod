@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 
 public class BurningSoulPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:BurningSoul";
@@ -30,7 +31,7 @@ public class BurningSoulPower extends ElementalPower {
 	}
 	
 	public void atStartOfTurn() {
-		ElementalistMod.changeElement("Fire", amount*2);
+		ElementalistMod.changeElement(Element.FIRE, amount*2);
 		AbstractDungeon.actionManager.addToBottom(new LoseHPAction(owner, source, amount));
 	}
 	

@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.CallbackAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -33,14 +34,14 @@ public class Inferno extends AbstractElementalistCard {
 			AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY);
 		this.baseDamage = DAMAGE;
 		
-		addElementalCost("Fire", 2);
+		addElementalCost(Element.FIRE, 2);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 		useTarget = m;
 		
-		if(getElement("Fire") >= 2) {
+		if(getElement(Element.FIRE) >= 2) {
 			doStep();
 		}
 	}
@@ -48,7 +49,7 @@ public class Inferno extends AbstractElementalistCard {
 	public void doStep() {
 		if(useTarget.isDying || useTarget.isDead) return;
 		
-		if(cast("Fire", 2)) {
+		if(cast(Element.FIRE, 2)) {
 			AbstractDungeon.actionManager.addToBottom(new DamageAction(useTarget, new DamageInfo(AbstractDungeon.player, this.damage), AbstractGameAction.AttackEffect.FIRE));
 
 			if(AbstractDungeon.player.hand.size() < 1) return;
@@ -61,7 +62,7 @@ public class Inferno extends AbstractElementalistCard {
 	}
 	
 	public void actionCallback(int value) {
-		if(getElement("Fire") < 2) return;
+		if(getElement(Element.FIRE) < 2) return;
 		if(AbstractDungeon.player.hand.size() < 1) return;
 		
 		doStep();

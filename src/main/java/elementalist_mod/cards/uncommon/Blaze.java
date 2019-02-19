@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.CallbackAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -35,7 +36,7 @@ public class Blaze extends AbstractElementalistCard {
 			AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ALL_ENEMY);
 		this.baseDamage = ATTACK_DMG;
 
-		addElementalCost("Fire", 2);
+		addElementalCost(Element.FIRE, 2);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -64,7 +65,7 @@ public class Blaze extends AbstractElementalistCard {
 		hits = effect;
 		
 		
-		if(cast("Fire", 2)) {
+		if(cast(Element.FIRE, 2)) {
 			hits *= 2;
 		}
 		

@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 import elementalist_mod.powers.WindburnPower;
@@ -33,7 +34,7 @@ public class Impact extends AbstractElementalistCard {
 		
 		this.exhaust = true;
 		
-		addElementalCost("Earth", 3);
+		addElementalCost(Element.EARTH, 3);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -44,7 +45,7 @@ public class Impact extends AbstractElementalistCard {
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		
 		
-		if(cast("Earth", 3)) {
+		if(cast(Element.EARTH, 3)) {
 			for(int i=0; i<3; i++) {
 				int block = p.currentBlock;
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, block), AbstractGameAction.AttackEffect.BLUNT_HEAVY));

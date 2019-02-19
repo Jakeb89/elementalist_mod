@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 import elementalist_mod.powers.SolarFormPower;
@@ -24,7 +25,7 @@ public class Solar_Form extends AbstractElementalistCard {
 
 		generatesElement = true;
 		generatedElementAmount = this.magicNumber;
-		this.element = "Fire";
+		this.element = Element.FIRE;
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster target) {

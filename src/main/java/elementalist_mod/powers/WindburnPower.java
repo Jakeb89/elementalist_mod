@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.orbs.ElementOrb;
 
 public class WindburnPower extends ElementalPower {
@@ -33,17 +34,17 @@ public class WindburnPower extends ElementalPower {
 	}
 
 	public boolean airIsHighest() {
-		if (getElement("Air") < getElement("Earth"))
+		if (getElement(Element.AIR) < getElement(Element.EARTH))
 			return false;
-		if (getElement("Air") < getElement("Fire"))
+		if (getElement(Element.AIR) < getElement(Element.FIRE))
 			return false;
-		if (getElement("Air") < getElement("Water"))
+		if (getElement(Element.AIR) < getElement(Element.WATER))
 			return false;
 
 		return true;
 	}
 
-	public int getElement(String element) {
+	public int getElement(Element element) {
 		return ElementalistMod.getElement(element);
 	}
 

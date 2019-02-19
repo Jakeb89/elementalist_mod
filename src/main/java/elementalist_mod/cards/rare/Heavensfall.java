@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.CallbackAction;
 import elementalist_mod.actions.CustomDamageAction;
 import elementalist_mod.actions.SpellChantAction;
@@ -36,10 +37,10 @@ public class Heavensfall extends AbstractElementalistCard {
 
 		this.baseDamage = DAMAGE;
 
-		addElementalCost("Air", -1);
-		addElementalCost("Water", -1);
-		addElementalCost("Earth", -1);
-		addElementalCost("Fire", -1);
+		addElementalCost(Element.AIR, -1);
+		addElementalCost(Element.WATER, -1);
+		addElementalCost(Element.EARTH, -1);
+		addElementalCost(Element.FIRE, -1);
 		this.exhaust = true;
 	}
 
@@ -59,14 +60,14 @@ public class Heavensfall extends AbstractElementalistCard {
 			AbstractDungeon.player.getRelic("Chemical X").flash();
 		}
 
-		int attacks = getElement("Air") + getElement("Water") + getElement("Earth") + getElement("Fire");
+		int attacks = getElement(Element.AIR) + getElement(Element.WATER) + getElement(Element.EARTH) + getElement(Element.FIRE);
 		attacks += energy;
 
 		AbstractDungeon.actionManager.addToBottom(new CallbackAction(this, 0));
-		this.cast("Air");
-		this.cast("Water");
-		this.cast("Earth");
-		this.cast("Fire");
+		this.cast(Element.AIR);
+		this.cast(Element.WATER);
+		this.cast(Element.EARTH);
+		this.cast(Element.FIRE);
 
 		float duration = 0.5f;
 		int hits = 0;

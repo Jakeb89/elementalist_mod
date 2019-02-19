@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.DrawCardFromPileAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -23,7 +24,7 @@ public class Overheat extends AbstractElementalistCard {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.OVERHEAT), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF);
 
-		addElementalCost("Fire", 1);
+		addElementalCost(Element.FIRE, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -31,7 +32,7 @@ public class Overheat extends AbstractElementalistCard {
 		
 		if(!upgraded) {
 
-			if (cast("Fire", 1)) {
+			if (cast(Element.FIRE, 1)) {
 				if(!p.exhaustPile.isEmpty()) {
 					int randomCardIndex = (int) (Math.random()*p.exhaustPile.group.size());
 					AbstractCard randomCard = p.exhaustPile.group.get(randomCardIndex);
@@ -50,7 +51,7 @@ public class Overheat extends AbstractElementalistCard {
 			}
 		}else {
 
-			if (cast("Fire", 1)) {
+			if (cast(Element.FIRE, 1)) {
 				if(!p.exhaustPile.isEmpty()) {
 				    AbstractDungeon.actionManager.addToBottom(new DrawCardFromPileAction(this, AbstractDungeon.player.exhaustPile, 1));
 				}

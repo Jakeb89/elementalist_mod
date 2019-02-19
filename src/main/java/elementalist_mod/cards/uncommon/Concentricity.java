@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.orbs.*;
 import elementalist_mod.patches.*;
@@ -37,10 +38,10 @@ public class Concentricity extends AbstractElementalistCard {
 
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 
-    	if(ElementalistMod.hasSynergy("Fire")) 	changeElement("Fire", 1);
-    	if(ElementalistMod.hasSynergy("Earth")) changeElement("Earth", 1);
-    	if(ElementalistMod.hasSynergy("Water")) changeElement("Water", 1);
-    	if(ElementalistMod.hasSynergy("Air")) 	changeElement("Air", 1);
+    	if(ElementalistMod.hasSynergy(Element.FIRE)) 	changeElement(Element.FIRE, 1);
+    	if(ElementalistMod.hasSynergy(Element.EARTH)) 	changeElement(Element.EARTH, 1);
+    	if(ElementalistMod.hasSynergy(Element.WATER)) 	changeElement(Element.WATER, 1);
+    	if(ElementalistMod.hasSynergy(Element.AIR)) 	changeElement(Element.AIR, 1);
 		
 	}
 

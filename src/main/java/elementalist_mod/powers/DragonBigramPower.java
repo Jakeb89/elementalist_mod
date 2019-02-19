@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 
 public class DragonBigramPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:DragonBigram";
@@ -32,11 +33,12 @@ public class DragonBigramPower extends ElementalPower {
 		initIcon(ElementalistMod.POWER_DRAGON_BIGRAM, ElementalistMod.POWER_DRAGON_BIGRAM_SMALL);
 	}
 	
-	public void onElementalCast(String element) {
-		if(element == "Earth") {
-			ElementalistMod.changeElement("Air", 1);
-		}else if(element == "Air") {
-			ElementalistMod.changeElement("Earth", 1);
+	@Override
+	public void onElementalCast(Element element) {
+		if(element == Element.EARTH) {
+			ElementalistMod.changeElement(Element.AIR, 1);
+		}else if(element == Element.AIR) {
+			ElementalistMod.changeElement(Element.EARTH, 1);
 		}
 	}
 	

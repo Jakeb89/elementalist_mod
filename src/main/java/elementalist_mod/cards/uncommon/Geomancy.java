@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -26,21 +27,21 @@ public class Geomancy extends AbstractElementalistCard {
 				AbstractCard.CardTarget.SELF);
 	    this.baseBlock = BLOCK_AMT;
 
-		addElementalCost("Air", 1);
-		addElementalCost("Water", 1);
-		addElementalCost("Earth", 1);
+		addElementalCost(Element.AIR, 1);
+		addElementalCost(Element.WATER, 1);
+		addElementalCost(Element.EARTH, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		if (cast("Air", 1)) {
+		if (cast(Element.AIR, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		}
-		if (cast("Water", 1)) {
+		if (cast(Element.WATER, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		}
-		if (cast("Earth", 1)) {
+		if (cast(Element.EARTH, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		}
 	}

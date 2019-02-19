@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -26,11 +27,11 @@ public class Absolute_Zero extends AbstractElementalistCard {
 		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.ABSOLUTE_ZERO), COST, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY);
 
-		addElementalCost("Water", 2);
+		addElementalCost(Element.WATER, 2);
 		
 		generatesElement = true;
 		generatedElementAmount = 1;
-		this.element = "Earth";
+		this.element = Element.EARTH;
 		this.baseDamage = 0;
 
 	}
@@ -38,7 +39,7 @@ public class Absolute_Zero extends AbstractElementalistCard {
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 		
-		if(cast("Water", 2)) {
+		if(cast(Element.WATER, 2)) {
 		    //AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(m, p));
 	
 
@@ -52,7 +53,7 @@ public class Absolute_Zero extends AbstractElementalistCard {
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new StrengthPower(p, -2), -2));
 			}
 			
-			changeElement("Earth", 1);
+			changeElement(Element.EARTH, 1);
 		}
 
 	}

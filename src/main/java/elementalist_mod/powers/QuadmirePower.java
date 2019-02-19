@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.ElementAddAction;
 import elementalist_mod.orbs.AirOrb;
 import elementalist_mod.orbs.EarthOrb;
@@ -35,8 +36,8 @@ public class QuadmirePower extends ElementalPower {
 		initIcon(ElementalistMod.POWER_QUADMIRE, ElementalistMod.POWER_QUADMIRE_SMALL);
 	}
 	
-	public void onElementalCast(String element) {
-		if(element == "Earth") {
+	public void onElementalCast(Element element) {
+		if(element == Element.EARTH) {
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, source, new PlatedArmorPower(owner, amount), amount));
 		}
 	}

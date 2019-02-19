@@ -27,7 +27,7 @@ public class Check_The_Pins extends AbstractElementalistCard {
 		
 		//this.getCustomTooltips().add(new TooltipInfo("Check the Pins.", "For fuck's sake, please just check the pins."));
 
-		this.element = "";
+		this.element = null;
 		this.generatesElement = true;
 		this.generatedElementAmount = magicNumber;
 		this.isEmblem = true;

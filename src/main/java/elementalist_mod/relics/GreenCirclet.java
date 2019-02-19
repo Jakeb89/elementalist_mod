@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 
 public class GreenCirclet extends CustomRelic {
 
@@ -35,7 +36,7 @@ public class GreenCirclet extends CustomRelic {
 	}
 	
 	public void atBattleStart() {
-		ElementalistMod.changeElement("Air", 1, this.ID);
+		ElementalistMod.changeElement(Element.AIR, 1, this.ID);
 	}
 
 	@Override

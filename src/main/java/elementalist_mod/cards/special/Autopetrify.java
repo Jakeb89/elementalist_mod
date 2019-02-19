@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -33,7 +34,7 @@ public class Autopetrify extends AbstractElementalistCard {
 
 		generatesElement = true;
 		generatedElementAmount = 1;
-	    this.element = "Earth";
+	    this.element = Element.EARTH;
 		
 		this.isWard = true;
 		this.activeWard = true;
@@ -62,7 +63,7 @@ public class Autopetrify extends AbstractElementalistCard {
 			AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(this, p.hand));
 			AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new PlatedArmorPower(p, this.magicNumber), this.magicNumber));
 			
-			changeElement("Earth", 2);
+			changeElement(Element.EARTH, 2);
 		}
 
 		return damageAmount;

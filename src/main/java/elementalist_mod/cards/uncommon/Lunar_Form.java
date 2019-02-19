@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 import elementalist_mod.powers.LunarFormPower;
@@ -24,7 +25,7 @@ public class Lunar_Form extends AbstractElementalistCard {
 
 		generatesElement = true;
 		generatedElementAmount = this.magicNumber;
-		this.element = "Water";
+		this.element = Element.WATER;
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster target) {

@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -23,7 +24,7 @@ public class Earth_Emblem extends AbstractElementalistCard {
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = baseMagicNumber;
 
-		this.element = "Earth";
+		this.element = Element.EARTH;
 		this.generatesElement = true;
 		this.generatedElementAmount = magicNumber;
 		this.isEmblem = true;

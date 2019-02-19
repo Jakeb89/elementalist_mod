@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.helpers.BaseModCardTags;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -32,7 +33,7 @@ public class Earthstrike extends AbstractElementalistCard{
 		this.tags.add(AbstractCard.CardTags.STRIKE);
 		this.tags.add(BaseModCardTags.BASIC_STRIKE);
 		
-		addElementalCost("Earth", 1);
+		addElementalCost(Element.EARTH, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -42,7 +43,7 @@ public class Earthstrike extends AbstractElementalistCard{
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		
 		//Earthcast code
-		if (cast("Earth", 1)) {
+		if (cast(Element.EARTH, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(
 		    		new GainBlockAction(p, p, this.block)
 		    		);

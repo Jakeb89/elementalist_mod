@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.VaccuumDrawAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -24,9 +25,9 @@ public class Ignition extends AbstractElementalistCard {
 			AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
 		this.baseDamage = DAMAGE;
 		
-		addElementalCost("Air", -1);
+		addElementalCost(Element.AIR, -1);
 		this.generatesElement = true;
-		this.element = "Fire";
+		this.element = Element.FIRE;
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster target) {
@@ -36,12 +37,12 @@ public class Ignition extends AbstractElementalistCard {
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.FIRE));
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage), AbstractGameAction.AttackEffect.FIRE));
 
-		int air = getElement("Air");
+		int air = getElement(Element.AIR);
 		if (air >= 1) {
-			cast("Air", 0);
-			changeElement("Air", -air);
+			cast(Element.AIR, 0);
+			changeElement(Element.AIR, -air);
 			if(air >= 3) {
-				changeElement("Fire", air-2);
+				changeElement(Element.FIRE, air-2);
 			}
 			for(int i=0; i<air; i++) {
 				AbstractDungeon.actionManager

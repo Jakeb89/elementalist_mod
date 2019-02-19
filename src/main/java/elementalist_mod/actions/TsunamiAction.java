@@ -1,6 +1,7 @@
 package elementalist_mod.actions;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.powers.WindburnPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -43,7 +44,7 @@ public class TsunamiAction extends AbstractGameAction {
 				ElementalistMod.log(eCard.costElement.size()+"");
 				for(int i=0; i<eCard.costElement.size(); i++) {
 					ElementalistMod.log(eCard.costElement.get(i) + ": " + eCard.costElementAmount.get(i));
-					if(eCard.costElement.get(i) == "Water") {
+					if(eCard.costElement.get(i) == Element.WATER) {
 						tempStr += eCard.costElementAmount.get(i);
 					}
 				}

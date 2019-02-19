@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.CycloneAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -27,7 +28,7 @@ public class Cyclone extends AbstractElementalistCard {
 		this.magicNumber = MAGIC;
 
 		//addElementalCost("Air", 2);
-		this.element = "Air";
+		this.element = Element.AIR;
 		this.generatesElement = true;
 	}
 

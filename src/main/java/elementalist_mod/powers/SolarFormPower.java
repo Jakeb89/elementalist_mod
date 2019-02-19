@@ -2,6 +2,7 @@ package elementalist_mod.powers;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 
 public class SolarFormPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:SolarForm";
@@ -29,11 +30,11 @@ public class SolarFormPower extends ElementalPower {
 		active = true;
 	}
 	
-	public void onElementalCast(String element) {
+	public void onElementalCast(Element element) {
 		if(active) {
 			active = false;
 			this.flash();
-			ElementalistMod.changeElement("Fire", this.amount);
+			ElementalistMod.changeElement(Element.FIRE, this.amount);
 		}
 	}
 	

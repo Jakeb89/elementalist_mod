@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.ChangePlayerMaxHPAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -28,15 +29,15 @@ public class Ferruchemy extends AbstractElementalistCard {
 				AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.RARE,
 				AbstractCard.CardTarget.SELF);
 
-		addElementalCost("Fire", 2);
-		addElementalCost("Earth", 2);
+		addElementalCost(Element.FIRE, 2);
+		addElementalCost(Element.EARTH, 2);
 		this.exhaust = true;
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		if (cast("Fire", 2)) {
+		if (cast(Element.FIRE, 2)) {
 			int gold = p.gold;
 			if(gold >= 100) {
 			    AbstractDungeon.actionManager.addToBottom(new ChangePlayerMaxHPAction(gold/100));
@@ -45,7 +46,7 @@ public class Ferruchemy extends AbstractElementalistCard {
 		}
 		
 		int increaseGold = 25;
-		if (cast("Earth", 2)) {
+		if (cast(Element.EARTH, 2)) {
 		    AbstractDungeon.player.gainGold(increaseGold);
 	        for (int i = 0; i < increaseGold; i++) {
 	        	double dir = Math.random()*3.14*2*i/increaseGold;

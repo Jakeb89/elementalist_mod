@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.helpers.BaseModCardTags;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -29,7 +30,7 @@ public class Firestrike extends AbstractElementalistCard{
 		this.tags.add(AbstractCard.CardTags.STRIKE);
 		this.tags.add(BaseModCardTags.BASIC_STRIKE);
 
-		addElementalCost("Fire", 1);
+		addElementalCost(Element.FIRE, 1);
 
 	    this.isMultiDamage = true;
 	}
@@ -40,7 +41,7 @@ public class Firestrike extends AbstractElementalistCard{
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		
 
-		if (cast("Fire", 1)) {
+		if (cast(Element.FIRE, 1)) {
 			AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
 			for(AbstractMonster enemy : getAllLivingEnemies()) {
 			    

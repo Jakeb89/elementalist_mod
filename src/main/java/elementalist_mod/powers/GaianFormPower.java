@@ -2,6 +2,7 @@ package elementalist_mod.powers;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 
 public class GaianFormPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:GaianForm";
@@ -29,11 +30,11 @@ public class GaianFormPower extends ElementalPower {
 		active = true;
 	}
 	
-	public void onElementalCast(String element) {
+	public void onElementalCast(Element element) {
 		if(active) {
 			active = false;
 			this.flash();
-			ElementalistMod.changeElement("Earth", this.amount);
+			ElementalistMod.changeElement(Element.EARTH, this.amount);
 		}
 	}
 	

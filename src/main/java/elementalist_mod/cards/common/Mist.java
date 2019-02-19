@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -24,13 +25,13 @@ public class Mist extends AbstractElementalistCard {
 				AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.COMMON,
 				AbstractCard.CardTarget.NONE);
 		
-		addElementalCost("Water", 1);
+		addElementalCost(Element.WATER, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		if (cast("Water", 1)) {
+		if (cast(Element.WATER, 1)) {
 
 			for(AbstractMonster enemy : this.getAllLivingEnemies()) {
 				if(intentContainsAttack(enemy.intent)) {

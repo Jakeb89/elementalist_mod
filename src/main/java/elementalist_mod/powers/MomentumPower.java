@@ -2,6 +2,7 @@ package elementalist_mod.powers;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 
 public class MomentumPower extends ElementalPower {
 	public static final String POWER_ID = "elementalist:Momentum";
@@ -30,7 +31,7 @@ public class MomentumPower extends ElementalPower {
     	elementGainCount = 0;
 	}
 	
-	public int onAddElement(String element, int amount, String sourceType) {
+	public int onAddElement(Element element, int amount, String sourceType) {
 		if(amount > 0 && sourceType == "card") {
 			if(elementGainCount == 1) {
 				amount += this.amount;

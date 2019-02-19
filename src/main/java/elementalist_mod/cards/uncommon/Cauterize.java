@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.RegenPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.VaccuumDrawAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -30,7 +31,7 @@ public class Cauterize extends AbstractElementalistCard {
 			AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY);
 		this.baseDamage = DAMAGE;
 		
-		addElementalCost("Fire", -1);
+		addElementalCost(Element.FIRE, -1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster target) {
@@ -49,10 +50,10 @@ public class Cauterize extends AbstractElementalistCard {
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new RegenPower(p, statusCount)));
 		}*/
 		
-		int firecast = this.getElement("Fire");
+		int firecast = this.getElement(Element.FIRE);
 		
 		if(firecast > 0) {
-			cast("Fire");
+			cast(Element.FIRE);
 
 			for(int i=0; i<firecast; i++) {
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage)));

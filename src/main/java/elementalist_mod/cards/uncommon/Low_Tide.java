@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.CallbackAction;
 import elementalist_mod.actions.RisingTidesAction;
 import elementalist_mod.cards.AbstractElementalistCard;
@@ -36,7 +37,7 @@ public class Low_Tide extends AbstractElementalistCard {
 		this.magicNumber = MAGIC_NUM;
 		this.baseBlock = BLOCK;
 		
-		addElementalCost("Water", 2);
+		addElementalCost(Element.WATER, 2);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster target) {
@@ -50,7 +51,7 @@ public class Low_Tide extends AbstractElementalistCard {
 	@Override
 	public void actionCallback(int value) {
 		int tides = 0;
-		if (cast("Water", 2)) {
+		if (cast(Element.WATER, 2)) {
 			tides = AbstractDungeon.player.discardPile.size() / this.magicNumber;
 			
 			for(int i=0; i<tides; i++) {

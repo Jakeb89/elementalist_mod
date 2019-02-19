@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -26,8 +27,8 @@ public class Stone_to_Mud extends AbstractElementalistCard {
 			AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF);
 		this.baseBlock = BLOCK_AMT;
 
-		addElementalCost("Earth", 1);
-		addElementalCost("Earth", 1);
+		addElementalCost(Element.EARTH, 1);
+		addElementalCost(Element.EARTH, 1);
 	}
 
 	/*public Color getCustomEnergyCostColor() {
@@ -45,10 +46,10 @@ public class Stone_to_Mud extends AbstractElementalistCard {
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		if (cast("Earth", 1)) {
+		if (cast(Element.EARTH, 1)) {
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		}
-		if (getElement("Earth") >= 2 && cast("Earth", 1)) {
+		if (getElement(Element.EARTH) >= 2 && cast(Element.EARTH, 1)) {
 			if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
 				flash();
 				for (AbstractMonster enemy : getAllLivingEnemies()) {

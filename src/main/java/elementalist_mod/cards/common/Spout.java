@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -28,19 +29,19 @@ public class Spout extends AbstractElementalistCard {
 		this.baseDamage = ATTACK_DMG;
 		this.baseBlock = BLOCK;
 
-		addElementalCost("Water", 1);
-		addElementalCost("Water", 1);
+		addElementalCost(Element.WATER, 1);
+		addElementalCost(Element.WATER, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		if (cast("Water", 1)) {
+		if (cast(Element.WATER, 1)) {
 			AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		}
 
-		if (getElement("Water") >= 2 && cast("Water", 1)) {
+		if (getElement(Element.WATER) >= 2 && cast(Element.WATER, 1)) {
 			int discardSize = AbstractDungeon.player.discardPile.size();
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block*discardSize));
 		}

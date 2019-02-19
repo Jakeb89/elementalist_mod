@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import elementalist_mod.CustomTags;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.*;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -30,7 +31,7 @@ public class Ignis_Eye extends AbstractElementalistCard {
 
 		generatesElement = true;
 		generatedElementAmount = this.magicNumber;
-		this.element = "Fire";
+		this.element = Element.FIRE;
 
 		this.isEthereal = true;
 		this.exhaust = true;

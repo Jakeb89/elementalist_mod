@@ -1,6 +1,7 @@
 package elementalist_mod.actions;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.powers.WindburnPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
@@ -53,7 +54,7 @@ public class CycloneAction extends AbstractGameAction {
 
 		if (AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
 			if(discardedCards/2 > 0) {
-				ElementalistMod.changeElement("Air", discardedCards/2);
+				ElementalistMod.changeElement(Element.AIR, discardedCards/2);
 			}
 			tickDuration();
 			this.isDone = true;

@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -25,7 +26,7 @@ public class Emberveil extends AbstractElementalistCard {
 
 		generatesElement = true;
 		generatedElementAmount = 1;
-	    this.element = "Fire";
+	    this.element = Element.FIRE;
 		
 		this.isWard = true;
 		this.activeWard = true;
@@ -53,7 +54,7 @@ public class Emberveil extends AbstractElementalistCard {
 			//this.activeWard = false;
 			damageAmount = Math.max(0, damageAmount - this.magicNumber);
 			AbstractDungeon.actionManager.addToTop(new MakeTempCardInDiscardAction(new Burn(), 1));
-			changeElement("Fire", 2);
+			changeElement(Element.FIRE, 2);
 		}
 
 		return damageAmount;

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.CallbackAction;
 import elementalist_mod.actions.FlameAction;
 import elementalist_mod.cards.AbstractElementalistCard;
@@ -30,8 +31,8 @@ public class Flame extends AbstractElementalistCard {
 		this.baseMagicNumber = MAGIC_NUM;
 	    this.magicNumber = this.baseMagicNumber;
 
-		addElementalCost("Fire", 1);
-		addElementalCost("Fire", 1);
+		addElementalCost(Element.FIRE, 1);
+		addElementalCost(Element.FIRE, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -40,7 +41,7 @@ public class Flame extends AbstractElementalistCard {
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 			AbstractGameAction.AttackEffect.FIRE));
 
-		if (cast("Fire", 1)) {
+		if (cast(Element.FIRE, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(new ModifyDamageAction(this.uuid, this.magicNumber));
 		    AbstractDungeon.actionManager.addToBottom(new CallbackAction(this, 0));
 		}
@@ -49,7 +50,7 @@ public class Flame extends AbstractElementalistCard {
 	
 	@Override
 	public void actionCallback(int value) {
-		if (cast("Fire", 1)) {
+		if (cast(Element.FIRE, 1)) {
 		    //AbstractDungeon.actionManager.addToBottom(new ModifyDamageAction(this.uuid, this.magicNumber));
 		    AbstractDungeon.actionManager.addToTop(new FlameAction(this.magicNumber));
 			AbstractDungeon.actionManager.addToBottom(new ModifyDamageAction(this.uuid, this.magicNumber));

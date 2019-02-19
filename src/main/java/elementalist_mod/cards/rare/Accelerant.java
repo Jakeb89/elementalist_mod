@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.RegenPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.AccelerantAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -36,19 +37,19 @@ public class Accelerant extends AbstractElementalistCard {
 		this.baseDamage = DAMAGE;
 		this.damage = DAMAGE;
 
-		addElementalCost("Air", 1);
-		addElementalCost("Fire", 1);
+		addElementalCost(Element.AIR, 1);
+		addElementalCost(Element.FIRE, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 		ElementalistMod.log("Accelerant.use(...) -> damage => " + this.damage);
 
-		if (cast("Air", 1)) {
+		if (cast(Element.AIR, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WindburnPower(m, p, this.magicNumber), this.magicNumber));
 		}
 
-		if (cast("Fire", 1)) {
+		if (cast(Element.FIRE, 1)) {
 		    AbstractDungeon.actionManager.addToBottom(new AccelerantAction(p, m, this.damage));
 		}
 	}

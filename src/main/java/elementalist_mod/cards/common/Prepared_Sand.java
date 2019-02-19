@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.*;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -25,7 +26,7 @@ public class Prepared_Sand extends AbstractElementalistCard {
 		this.baseDamage = ATTACK_DMG;
 		this.baseBlock = BLOCK_AMT;
 		
-		addElementalCost("Earth", 1);
+		addElementalCost(Element.EARTH, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {

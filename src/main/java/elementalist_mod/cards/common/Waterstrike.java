@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 
 import basemod.helpers.BaseModCardTags;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -33,7 +34,7 @@ public class Waterstrike extends AbstractElementalistCard{
 		this.tags.add(AbstractCard.CardTags.STRIKE);
 		this.tags.add(BaseModCardTags.BASIC_STRIKE);
 		
-		addElementalCost("Water", 1);
+		addElementalCost(Element.WATER, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -43,7 +44,7 @@ public class Waterstrike extends AbstractElementalistCard{
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		
 		//Watercast code
-		if (cast("Water", 1)) {
+		if (cast(Element.WATER, 1)) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), 1, true, AbstractGameAction.AttackEffect.NONE));
 
 		}

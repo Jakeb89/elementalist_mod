@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.helpers.BaseModCardTags;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -31,7 +32,7 @@ public class Airstrike extends AbstractElementalistCard{
 		this.tags.add(AbstractCard.CardTags.STRIKE);
 		this.tags.add(BaseModCardTags.BASIC_STRIKE);
 		
-		addElementalCost("Air", 1);
+		addElementalCost(Element.AIR, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -41,7 +42,7 @@ public class Airstrike extends AbstractElementalistCard{
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		
 		//Aircast code
-		if (cast("Air", 1)) {
+		if (cast(Element.AIR, 1)) {
 			int drawAmount = MAGIC_NUM;
 			if(upgraded) drawAmount++;
 			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, drawAmount));

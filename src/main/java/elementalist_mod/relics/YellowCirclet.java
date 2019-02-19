@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 
 public class YellowCirclet extends CustomRelic {
 
@@ -35,7 +36,7 @@ public class YellowCirclet extends CustomRelic {
 	}
 	
 	public void atBattleStart() {
-		ElementalistMod.changeElement("Earth", 1, this.ID);
+		ElementalistMod.changeElement(Element.EARTH, 1, this.ID);
 	}
 
 	@Override

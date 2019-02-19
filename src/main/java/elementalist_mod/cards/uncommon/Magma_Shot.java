@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -32,22 +33,22 @@ public class Magma_Shot extends AbstractElementalistCard {
 		this.baseMagicNumber = MAGIC_NUM;
 		this.magicNumber = this.baseMagicNumber;
 
-		addElementalCost("Earth", 2);
+		addElementalCost(Element.EARTH, 2);
 
 		generatesElement = true;
 		generatedElementAmount = 1;
-	    this.element = "Fire";
+	    this.element = Element.FIRE;
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
 	    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-		if (cast("Earth", 2)) {
+		if (cast(Element.EARTH, 2)) {
 			AbstractDungeon.actionManager.addToBottom(
 					new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
 			);
-			changeElement("Fire", this.magicNumber);
+			changeElement(Element.FIRE, this.magicNumber);
 		}
 	}
 

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.CallbackAction;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
@@ -29,11 +30,11 @@ public class Fission_Lance extends AbstractElementalistCard {
 		this.baseMagicNumber = MAGIC_NUM;
 		this.magicNumber = this.baseMagicNumber;
 
-		addElementalCost("Fire", 2);
+		addElementalCost(Element.FIRE, 2);
 		
 		generatesElement = true;
 		generatedElementAmount = 1;
-		this.element = "Air";
+		this.element = Element.AIR;
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -46,7 +47,7 @@ public class Fission_Lance extends AbstractElementalistCard {
 						AbstractGameAction.AttackEffect.SLASH_DIAGONAL
 				)
 		);
-		if (cast("Fire", 2)) {
+		if (cast(Element.FIRE, 2)) {
 			AbstractDungeon.actionManager.addToBottom(new CallbackAction(this, 0));
 		}
 	}
@@ -63,7 +64,7 @@ public class Fission_Lance extends AbstractElementalistCard {
 			}
 			AbstractDungeon.actionManager.addToBottom(new CallbackAction(this, step+1));
 		case 2:
-			changeElement("Air", this.magicNumber);
+			changeElement(Element.AIR, this.magicNumber);
 		}
 	}
 

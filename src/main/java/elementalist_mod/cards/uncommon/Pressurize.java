@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 import elementalist_mod.powers.WindburnPower;
@@ -34,11 +35,11 @@ public class Pressurize extends AbstractElementalistCard {
 	    this.baseMagicNumber = MAGIC;
     	this.magicNumber = MAGIC;
 
-		addElementalCost("Air", 2);
+		addElementalCost(Element.AIR, 2);
 		
 		generatesElement = true;
 		generatedElementAmount = 1;
-	    this.element = "Water";
+	    this.element = Element.WATER;
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
@@ -54,9 +55,9 @@ public class Pressurize extends AbstractElementalistCard {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new WindburnPower(p, p, this.magicNumber), this.magicNumber));
 		windburn += this.magicNumber;
 		
-		if (cast("Air", 2)) {
+		if (cast(Element.AIR, 2)) {
 		    AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, windburn)));
-		    this.changeElement("Water", 1);
+		    this.changeElement(Element.WATER, 1);
 		}
 	}
 

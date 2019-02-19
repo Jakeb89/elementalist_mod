@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 
 public class PreparedSandAction extends AbstractElementalistAction {
@@ -21,7 +22,7 @@ public class PreparedSandAction extends AbstractElementalistAction {
 
 	public void update() {
 
-		if (sourceCard.cast("Earth", 1)) {
+		if (sourceCard.cast(Element.EARTH, 1)) {
 
 			for (AbstractMonster enemy : this.getAllLivingEnemies()) {
 				if (!intentContainsAttack(enemy.intent)) {

@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.cards.special.Autopetrify;
 import elementalist_mod.patches.*;
@@ -31,13 +32,13 @@ public class Aegis extends AbstractElementalistCard {
 				AbstractCard.CardTarget.SELF);
 	    this.baseBlock = BLOCK_AMT;
 
-		addElementalCost("Earth", 1);
+		addElementalCost(Element.EARTH, 1);
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		if (cast("Earth", 1)) {
+		if (cast(Element.EARTH, 1)) {
 			//int cardCount = p.hand.size();
 		    //AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block*cardCount));
 

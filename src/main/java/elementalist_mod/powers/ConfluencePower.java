@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.actions.ElementAddAction;
 import elementalist_mod.orbs.AirOrb;
 import elementalist_mod.orbs.EarthOrb;
@@ -43,34 +44,20 @@ public class ConfluencePower extends ElementalPower {
     	*/
     	
     	//Because changeElement queues up an action, these checks shouldn't interfere with each other.
-    	if(ElementalistMod.hasSynergy("Fire")) changeElement("Fire", this.amount, "confluence");
-    	if(ElementalistMod.hasSynergy("Earth")) changeElement("Earth", this.amount, "confluence");
-    	if(ElementalistMod.hasSynergy("Water")) changeElement("Water", this.amount, "confluence");
-    	if(ElementalistMod.hasSynergy("Air")) changeElement("Air", this.amount, "confluence");
+    	if(ElementalistMod.hasSynergy(Element.FIRE)) 	changeElement(Element.FIRE, this.amount, "confluence");
+    	if(ElementalistMod.hasSynergy(Element.EARTH)) 	changeElement(Element.EARTH, this.amount, "confluence");
+    	if(ElementalistMod.hasSynergy(Element.WATER)) 	changeElement(Element.WATER, this.amount, "confluence");
+    	if(ElementalistMod.hasSynergy(Element.AIR)) 	changeElement(Element.AIR, this.amount, "confluence");
     	updateDescription();
     }
     
 
 	
-	public void changeElement(String element, int delta, String sourceType) {
-		AbstractDungeon.actionManager.addToBottom(new ElementAddAction(makeOrb(element, delta), sourceType));
+	public void changeElement(Element element, int delta, String sourceType) {
+		ElementalistMod.changeElement(element, delta, sourceType);
 	}
 	
 
-	
-	public ElementOrb makeOrb(String element, int amount) {
-		switch(element) {
-			case("Fire"): 
-				return new FireOrb(amount);
-			case("Water"): 
-				return new WaterOrb(amount);
-			case("Earth"): 
-				return new EarthOrb(amount);
-			case("Air"): 
-				return new AirOrb(amount);
-		}
-		return null;
-	}
 	
 	public void updateDescription() {
 		description = baseDescription;
