@@ -18,11 +18,11 @@ public class CardList {
 		starterDeck = new ArrayList<String>();
 
 		// Basic, in Starter
-		addCard(new Strike_Elemblue(), 0);
+		//addCard(new Strike_Elemblue(), 0);
 		addCard(new Defend_Elemblue(), 5);
 		
 		addCard(new Elemental_Strike(), 1);
-		addCard(new Elemental_Defend(), 0);
+		//addCard(new Elemental_Defend(), 0);
 		
 
 
