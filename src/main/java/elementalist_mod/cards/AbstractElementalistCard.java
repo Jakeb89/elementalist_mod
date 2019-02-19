@@ -218,8 +218,8 @@ public class AbstractElementalistCard extends CustomCard{
 		element = ElementizeRNG.getRandomElement();
 		
 		rawDescription = customDescription;
-		rawDescription = rawDescription.replace("Elementize", "Create "+element);
-		rawDescription = rawDescription.replace("elementize", "Create "+element);
+		rawDescription = rawDescription.replace("Elementize", "Create "+ElementalistMod.getElementName(element));
+		rawDescription = rawDescription.replace("elementize", "Create "+ElementalistMod.getElementName(element));
 		initializeDescription();
 		this.update();
 	}
