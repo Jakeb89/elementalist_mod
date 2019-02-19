@@ -92,6 +92,7 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 	private static final String SKILL = "512/bg_skill.png";
 	private static final String POWER = "512/bg_power.png";
 	private static final String ENERGY_ORB = "512/card_orb.png";
+	private static final String ENERGY_ORB_SMALL = "1024/energy_small.png";
 
 	private static final String ATTACK_PORTRAIT = "1024/bg_attack.png";
 	private static final String SKILL_PORTRAIT = "1024/bg_attack.png";
@@ -303,7 +304,7 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 
 		BaseMod.subscribe(this);
 		BaseMod.addColor(AbstractCardEnum.ELEMENTALIST_BLUE, ELEMBLUE, makePath(ATTACK), makePath(SKILL), makePath(POWER), makePath(ENERGY_ORB), makePath(ATTACK_PORTRAIT),
-			makePath(SKILL_PORTRAIT), makePath(POWER_PORTRAIT), makePath(ENERGY_ORB_PORTRAIT), makePath(ENERGY_ORB));
+			makePath(SKILL_PORTRAIT), makePath(POWER_PORTRAIT), makePath(ENERGY_ORB_PORTRAIT), makePath(ENERGY_ORB_SMALL));
 
 		// public static Properties modDefaults = new Properties();
 
