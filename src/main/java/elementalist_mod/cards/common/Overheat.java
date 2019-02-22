@@ -2,8 +2,12 @@ package elementalist_mod.cards.common;
 
 import java.util.ArrayList;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -29,7 +33,7 @@ public class Overheat extends AbstractElementalistCard {
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
-		
+		/*
 		if(!upgraded) {
 
 			if (cast(Element.FIRE, 1)) {
@@ -58,7 +62,40 @@ public class Overheat extends AbstractElementalistCard {
 			}
 
 		}
+		*/
 
+	}
+
+	@Override
+	public boolean doCardStep(int stepNumber) {
+		switch (stepNumber) {
+		case (0):
+			return castNow(Element.FIRE, 1);
+		case (1):
+			if(!upgraded) {
+				if(!player.exhaustPile.isEmpty()) {
+					int randomCardIndex = (int) (Math.random()*player.exhaustPile.group.size());
+					AbstractCard randomCard = player.exhaustPile.group.get(randomCardIndex);
+					
+					player.hand.addToHand(randomCard);
+					if ((AbstractDungeon.player.hasPower("Corruption")) && (randomCard.type == AbstractCard.CardType.SKILL)) {
+						randomCard.setCostForTurn(-9);
+			        }
+					player.exhaustPile.removeCard(randomCard);
+					randomCard.unhover();
+					randomCard.fadingOut = false;
+				}
+				Burn burn = new Burn();
+				//p.exhaustPile.addToTop(burn);
+			    queueAction(new MakeTempCardInDiscardAction(burn, 1));
+			}else{
+				if(!player.exhaustPile.isEmpty()) {
+					queueAction(new DrawCardFromPileAction(this, AbstractDungeon.player.exhaustPile, 1));
+				}
+			}
+		default:
+			return false;
+		}
 	}
 	
 	public void actionCallback(AbstractCard card) {

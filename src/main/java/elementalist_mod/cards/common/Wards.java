@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import elementalist_mod.ElementalistMod;
+import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.patches.*;
 
@@ -31,8 +32,22 @@ public class Wards extends AbstractElementalistCard {
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 		
+		/*
 		for(int i=0; i<getAllLivingEnemies().size(); i++) {
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
+		}
+		*/
+	}
+
+	@Override
+	public boolean doCardStep(int stepNumber) {
+		switch (stepNumber) {
+		case (0):
+			for(int i=0; i<getAllLivingEnemies().size(); i++) {
+				queueAction(new GainBlockAction(player, player, this.block));
+			}
+		default:
+			return false;
 		}
 	}
 

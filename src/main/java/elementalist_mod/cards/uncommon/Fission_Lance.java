@@ -1,4 +1,4 @@
-package elementalist_mod.cards.rare;
+package elementalist_mod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -63,6 +63,7 @@ public class Fission_Lance extends AbstractElementalistCard {
 								AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 			}
 			AbstractDungeon.actionManager.addToBottom(new CallbackAction(this, step+1));
+			break;
 		case 2:
 			changeElement(Element.AIR, this.magicNumber);
 		}

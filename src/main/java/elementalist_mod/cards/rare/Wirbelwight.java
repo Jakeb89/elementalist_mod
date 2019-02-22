@@ -38,7 +38,7 @@ public class Wirbelwight extends AbstractElementalistCard {
 	private AbstractMonster target;
 
 	public Wirbelwight() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_ATTACK_GREEN_2), COST, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCardEnum.ELEMENTALIST_BLUE,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_SKILL_GREEN_2), COST, DESCRIPTION, AbstractCard.CardType.SKILL, AbstractCardEnum.ELEMENTALIST_BLUE,
 			AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY);
 
 		this.magicNumber = MAGIC;

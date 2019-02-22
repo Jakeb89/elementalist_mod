@@ -2,6 +2,7 @@ package elementalist_mod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.ModifyDamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -38,6 +39,7 @@ public class Flame extends AbstractElementalistCard {
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
+		/*
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 			AbstractGameAction.AttackEffect.FIRE));
 
@@ -45,9 +47,32 @@ public class Flame extends AbstractElementalistCard {
 		    AbstractDungeon.actionManager.addToBottom(new ModifyDamageAction(this.uuid, this.magicNumber));
 		    AbstractDungeon.actionManager.addToBottom(new CallbackAction(this, 0));
 		}
+		*/
 		
 	}
+
+	@Override
+	public boolean doCardStep(int stepNumber) {
+		switch (stepNumber) {
+		case (0):
+			queueAction(new DamageAction(singleTarget, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.FIRE));
+			return true;
+		case (1):
+			return castNow(Element.FIRE, 1);
+		case (2):
+			queueAction(new ModifyDamageAction(this.uuid, this.magicNumber));
+			return true;
+		case (3):
+			return castNow(Element.FIRE, 1);
+		case (4):
+			queueAction(new FlameAction(this.magicNumber));
+			queueAction(new ModifyDamageAction(this.uuid, this.magicNumber));
+		default:
+			return false;
+		}
+	}
 	
+	/*
 	@Override
 	public void actionCallback(int value) {
 		if (cast(Element.FIRE, 1)) {
@@ -56,6 +81,7 @@ public class Flame extends AbstractElementalistCard {
 			AbstractDungeon.actionManager.addToBottom(new ModifyDamageAction(this.uuid, this.magicNumber));
 		}
 	}
+	*/
 
 	public AbstractCard makeCopy() {
 		return new Flame();

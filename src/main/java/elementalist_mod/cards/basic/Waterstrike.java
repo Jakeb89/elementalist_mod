@@ -3,6 +3,7 @@ package elementalist_mod.cards.basic;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -40,13 +41,27 @@ public class Waterstrike extends AbstractElementalistCard{
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-		
+		/*
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		//Watercast code
 		if (cast(Element.WATER, 1)) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), 1, true, AbstractGameAction.AttackEffect.NONE));
+		}
+		*/
+	}
 
+	@Override
+	public boolean doCardStep(int stepNumber) {
+		switch(stepNumber) {
+		case(0):
+			queueAction(new DamageAction(singleTarget, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+			return true;
+		case(1):
+			return castNow(Element.WATER, 1);
+		case(2):
+			queueAction(new ApplyPowerAction(singleTarget, player, new WeakPower(singleTarget, this.magicNumber, false), 1, true, AbstractGameAction.AttackEffect.NONE));
+		default:
+			return false;
 		}
 	}
 

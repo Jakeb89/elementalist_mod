@@ -38,14 +38,31 @@ public class Airstrike extends AbstractElementalistCard{
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-		
+		/*
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		//Aircast code
 		if (cast(Element.AIR, 1)) {
 			int drawAmount = MAGIC_NUM;
 			if(upgraded) drawAmount++;
 			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, drawAmount));
+		}
+		*/
+	}
+
+	@Override
+	public boolean doCardStep(int stepNumber) {
+		switch(stepNumber) {
+		case(0):
+			queueAction(new DamageAction(singleTarget, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+			return true;
+		case(1):
+			return castNow(Element.AIR, 1);
+		case(2):
+			int drawAmount = MAGIC_NUM;
+			if(upgraded) drawAmount++;
+			queueAction(new DrawCardAction(player, drawAmount));
+		default:
+			return false;
 		}
 	}
 

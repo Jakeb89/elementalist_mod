@@ -3,6 +3,7 @@ package elementalist_mod.cards.basic;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -38,14 +39,26 @@ public class Firestrike extends AbstractElementalistCard{
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
+		/*
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-		
-
 		if (cast(Element.FIRE, 1)) {
 			AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
-			for(AbstractMonster enemy : getAllLivingEnemies()) {
-			    
-			}
+		}
+		*/
+	}
+
+	@Override
+	public boolean doCardStep(int stepNumber) {
+		switch(stepNumber) {
+		case(0):
+			queueAction(new DamageAction(singleTarget, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+			return true;
+		case(1):
+			return castNow(Element.FIRE, 1);
+		case(2):
+			queueAction(new DamageAllEnemiesAction(player, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
+		default:
+			return false;
 		}
 	}
 

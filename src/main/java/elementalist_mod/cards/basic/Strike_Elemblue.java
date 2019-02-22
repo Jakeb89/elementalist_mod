@@ -22,7 +22,7 @@ public class Strike_Elemblue extends AbstractElementalistCard{
 	private static final int UPGRADE_PLUS_DMG = 3;
 
 	public Strike_Elemblue() {
-		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.BETA_ATTACK_GREY_1), COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
+		super(ID, NAME, ElementalistMod.makePath(ElementalistMod.ELEMENTAL_STRIKE), COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
 				AbstractCardEnum.ELEMENTALIST_BLUE, AbstractCard.CardRarity.BASIC,
 				AbstractCard.CardTarget.ENEMY);
 		this.baseDamage = ATTACK_DMG;

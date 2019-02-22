@@ -1,6 +1,9 @@
 package elementalist_mod.cards.common;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -33,6 +36,7 @@ public class Spark extends AbstractElementalistCard {
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
+		/*
 		if (cast(Element.AIR, 1)) {
 			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
 		}
@@ -48,6 +52,33 @@ public class Spark extends AbstractElementalistCard {
 					}
 				}
 			}
+		}
+		*/
+	}
+
+	@Override
+	public boolean doCardStep(int stepNumber) {
+		switch (stepNumber) {
+		case (0):
+			return castNow(Element.AIR, 1);
+		case (1):
+			queueAction(new DrawCardAction(player, 1));
+			return true;
+		case (2):
+			return castNow(Element.AIR, 1);
+		case (3):
+			if(!upgraded) {
+				AbstractMonster randomEnemy = pickRandomLivingEnemy();
+				if (randomEnemy != null) {
+					queueAction(new ThunderStrikeAction(randomEnemy, new DamageInfo(player, this.damage, this.damageTypeForTurn), 1));
+				}
+			}else {
+				for(AbstractMonster enemy : getAllLivingEnemies()) {
+					queueAction(new ThunderStrikeAction(enemy, new DamageInfo(player, this.damage, this.damageTypeForTurn), 1));
+				}
+			}
+		default:
+			return false;
 		}
 	}
 

@@ -3,6 +3,7 @@ package elementalist_mod.cards;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
@@ -19,6 +20,8 @@ import basemod.abstracts.CustomCard;
 import elementalist_mod.ElementalistMod;
 import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.ElementizeRNG;
+import elementalist_mod.actions.CallbackAction;
+import elementalist_mod.actions.NextCardStepAction;
 import elementalist_mod.orbs.*;
 import elementalist_mod.powers.ElementalPower;
 
@@ -35,11 +38,17 @@ public class AbstractElementalistCard extends CustomCard{
 	public boolean effectsChecked = false;
 	public boolean emblemedThisTurn = false;
 	public boolean isEmblem = false;
+	public boolean isFakeCard = false;
 	public String emblemID = "";
 	public boolean tiringPlayed = false;
 	public boolean isWard = false;
 	public boolean activeWard = false;
 	public boolean unplayable = false;
+	private int cardStep = 0;
+	protected boolean cardStillResolving = true;
+	protected AbstractPlayer player = null;
+	protected AbstractMonster singleTarget = null;
+	protected ArrayList<AbstractGameAction> actionQueue = new ArrayList<AbstractGameAction>();
 	
 
 	public AbstractElementalistCard(String id, String name, String img, int cost, String rawDescription, CardType type,
@@ -265,6 +274,22 @@ public class AbstractElementalistCard extends CustomCard{
 		return false;
 	}
 	
+	public int castNow(Element element) {
+		int amount = getElement(element);
+		changeElementNow(element, -amount);
+		doCastTriggers(element);
+		return amount;
+	}
+	
+	public boolean castNow(Element element, int amount) {
+		if(getElement(element) >= amount) {
+			changeElementNow(element, -amount);
+			doCastTriggers(element);
+			return true;
+		}
+		return false;
+	}
+	
 	public void doCastTriggers(Element element) {
 		for(AbstractPower power : AbstractDungeon.player.powers) {
 			if(power instanceof ElementalPower) {
@@ -276,12 +301,58 @@ public class AbstractElementalistCard extends CustomCard{
 
 	@Override
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
+		ElementalistMod.log("AbstractElementalistCard.use() ... ["+this.name+"]");
 		// TODO Auto-generated method stub
 		elementizeEffect();
 
 		if(!tiringPlayed) {
 			tiringEffect();
 		}
+		
+		player = p;
+		singleTarget = m;
+		
+		cardStep = 0;
+		//doNextCardStep();
+		AbstractDungeon.actionManager.addToBottom(new NextCardStepAction(this));
+	}
+	
+	protected void queueAction(AbstractGameAction action) {
+		actionQueue.add(0, action);
+	}
+	
+	protected void flushActionQueue() {
+		ElementalistMod.log("AbstractElementalistCard.flushActionQueue() ... ["+this.name+"]");
+		while(actionQueue.size()>0) {
+			ElementalistMod.log("Adding to top of action queue: "+actionQueue.get(0));
+			AbstractDungeon.actionManager.addToTop(actionQueue.remove(0));
+		}
+	}
+
+	public void doNextCardStep() {
+		ElementalistMod.log("AbstractElementalistCard.doNextCardStep() ... ["+this.name+"]");
+		if(cardStillResolving) {
+			cardStillResolving = doCardStep(cardStep++);
+			queueAction(new NextCardStepAction(this));
+			flushActionQueue();
+		}else {
+			cardStillResolving = true;
+			cardStep = 0;
+		}
+	}
+	
+	public boolean doCardStep(int stepNumber) {
+		/*
+		switch(stepNumber) {
+		case(0):
+			return true;
+		case(1):
+			return true;
+		default:
+			return false;
+		}
+		*/
+		return false;
 	}
 	
 	@Override
@@ -309,6 +380,14 @@ public class AbstractElementalistCard extends CustomCard{
 	
 	public void changeElement(Element element, int delta, String source) {
 		ElementalistMod.changeElement(element, delta, source);
+	}
+
+	public void changeElementNow(Element element, int delta) {
+		ElementalistMod.changeElementNow(element, delta);
+	}
+	
+	public void changeElementNow(Element element, int delta, String source) {
+		ElementalistMod.changeElementNow(element, delta, source);
 	}
 	
 	public ElementOrb makeOrb(Element element, int amount) {

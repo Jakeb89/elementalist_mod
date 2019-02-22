@@ -2,7 +2,9 @@ package elementalist_mod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -36,6 +38,7 @@ public class Spout extends AbstractElementalistCard {
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
 		super.use(p, m);
 
+		/*
 		if (cast(Element.WATER, 1)) {
 			AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
@@ -44,6 +47,26 @@ public class Spout extends AbstractElementalistCard {
 		if (getElement(Element.WATER) >= 2 && cast(Element.WATER, 1)) {
 			int discardSize = AbstractDungeon.player.discardPile.size();
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block*discardSize));
+		}
+		*/
+	}
+
+	@Override
+	public boolean doCardStep(int stepNumber) {
+		switch (stepNumber) {
+		case (0):
+			return castNow(Element.WATER, 1);
+		case (1):
+			queueAction(new DamageAction(singleTarget, new DamageInfo(player, this.damage, this.damageTypeForTurn),
+				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+			return true;
+		case (2):
+			return castNow(Element.WATER, 1);
+		case (3):
+			int discardSize = player.discardPile.size();
+			queueAction(new GainBlockAction(player, player, this.block*discardSize));
+		default:
+			return false;
 		}
 	}
 
