@@ -27,7 +27,7 @@ public class ElementalCardRenderPatch3 {
 	public static void Insert(AbstractCard obj, SpriteBatch sb, @ByRef String[] text) {
 		if(obj instanceof AbstractElementalistCard) {
 			AbstractElementalistCard card = (AbstractElementalistCard) obj;
-			if(card.isEmblem) {
+			if(card.isEmblem || card.isFakeCard) {
 				text[0] = "";
 			}
 		}

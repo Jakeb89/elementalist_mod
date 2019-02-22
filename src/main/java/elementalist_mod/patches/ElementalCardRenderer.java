@@ -18,10 +18,7 @@ import elementalist_mod.ElementalistMod.Element;
 import elementalist_mod.Util;
 import elementalist_mod.cards.AbstractElementalistCard;
 import elementalist_mod.cards.common.*;
-import elementalist_mod.cards.special.Air_Emblem;
-import elementalist_mod.cards.special.Earth_Emblem;
-import elementalist_mod.cards.special.Fire_Emblem;
-import elementalist_mod.cards.special.Water_Emblem;
+import elementalist_mod.cards.special.*;
 
 public class ElementalCardRenderer {
 
@@ -60,6 +57,11 @@ public class ElementalCardRenderer {
 		emblems.put(new Water_Emblem().emblemID, ImageMaster.loadImage("img/cards/512/water_emblem.png"));
 		emblems.put(new Air_Emblem().emblemID, ImageMaster.loadImage("img/cards/512/air_emblem.png"));
 		emblems.put(new Earth_Emblem().emblemID, ImageMaster.loadImage("img/cards/512/earth_emblem.png"));
+
+		emblems.put(new RelicCard_RedRibbon().emblemID, ImageMaster.loadImage("img/cards/512/red_ribbon.png"));
+		emblems.put(new RelicCard_BlueRibbon().emblemID, ImageMaster.loadImage("img/cards/512/blue_ribbon.png"));
+		emblems.put(new RelicCard_GreenCirclet().emblemID, ImageMaster.loadImage("img/cards/512/green_circlet.png"));
+		emblems.put(new RelicCard_YellowCirclet().emblemID, ImageMaster.loadImage("img/cards/512/yellow_circlet.png"));
 		//emblems.put(new Check_The_Pins().emblemID, ImageMaster.loadImage("img/cards/512/check_the_pins.png"));
 
 		for (int i = 0; i < 2; i++) {
@@ -112,7 +114,7 @@ public class ElementalCardRenderer {
 		if (obj instanceof AbstractElementalistCard) {
 			AbstractElementalistCard card = (AbstractElementalistCard) obj;
 
-			if (card.isEmblem) {
+			if (card.isEmblem || card.isFakeCard) {
 				//drawEmblemCard(sb, card);
 				return;
 			}
@@ -163,7 +165,7 @@ public class ElementalCardRenderer {
 		if (obj instanceof AbstractElementalistCard) {
 			AbstractElementalistCard card = (AbstractElementalistCard) obj;
 
-			if (card.isEmblem) {
+			if (card.isEmblem || card.isFakeCard) {
 				drawEmblemCard(sb, card);
 			}
 		}
