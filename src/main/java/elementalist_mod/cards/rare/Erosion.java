@@ -48,8 +48,17 @@ public class Erosion extends AbstractElementalistCard {
 	
 	@Override
 	public void actionCallback(AbstractCard card) {
-		card.costForTurn = card.cost-1;
-		card.isCostModifiedForTurn = true;
+		if(card.isCostModifiedForTurn) {
+			if(card.costForTurn > 0) {
+				card.costForTurn = card.costForTurn-1;
+				card.isCostModifiedForTurn = true;
+			}
+		}else {
+			if(card.cost > 0) {
+				card.costForTurn = card.cost-1;
+				card.isCostModifiedForTurn = true;
+			}
+		}
 	}
 
 	public void use(com.megacrit.cardcrawl.characters.AbstractPlayer p, AbstractMonster m) {
