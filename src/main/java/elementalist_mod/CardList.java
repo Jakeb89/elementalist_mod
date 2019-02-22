@@ -18,10 +18,10 @@ public class CardList {
 		starterDeck = new ArrayList<String>();
 
 		// Basic, in Starter
-		//addCard(new Strike_Elemblue(), 0);
+		addCard(new Strike_Elemblue(), 1);
 		addCard(new Defend_Elemblue(), 5);
 		
-		addCard(new Elemental_Strike(), 1);
+		//addCard(new Elemental_Strike(), 1);
 		//addCard(new Elemental_Defend(), 0);
 		
 
@@ -40,6 +40,14 @@ public class CardList {
 		addCard(new Water_Emblem(), 0);
 		addCard(new Earth_Emblem(), 0);
 		addCard(new Air_Emblem(), 0);
+
+		addCard(new RelicCard_RedRibbon(), 0);
+		addCard(new RelicCard_BlueRibbon(), 0);
+		addCard(new RelicCard_GreenCirclet(), 0);
+		addCard(new RelicCard_YellowCirclet(), 0);
+		
+
+		addCard(new Golemancy(), 1);
 		
 
 		//addCard(new Check_The_Pins(), 0);
@@ -97,7 +105,8 @@ public class CardList {
 		addCard(new Ferruchemy());
 		addCard(new Pressurize());
 		addCard(new Cauterize());
-
+		addCard(new Aero());
+		addCard(new Undertow());
 
 
 		// Rare

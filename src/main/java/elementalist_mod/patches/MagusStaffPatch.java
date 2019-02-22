@@ -29,6 +29,7 @@ public class MagusStaffPatch {
 			//ElementalistMod.log("(" + orb.hb.cX + ", " + orb.hb.cY + ") [" + orb.hb.width + ", " + orb.hb.height + "]");
 			//ElementalistMod.log("(" + mouseHitbox.cX + ", " + mouseHitbox.cY + ") [" + mouseHitbox.width + ", " + mouseHitbox.height + "]");
 			if (hitboxCheck(orb.hb, mouseHitbox)) {
+				orb.isHovered = true;
 				if(!orb.hb.hovered) {
 					orb.hb.justHovered = true;
 				}else {
@@ -44,6 +45,7 @@ public class MagusStaffPatch {
 					}
 				}
 			}else {
+				orb.isHovered = false;
 				orb.hb.hovered = false;
 				orb.hb.justHovered = false;
 			}
@@ -56,7 +58,7 @@ public class MagusStaffPatch {
 		float max_x = (hitbox1.width + hitbox2.width)/3;
 		float max_y = (hitbox1.height + hitbox2.height)/3;
 		if(dx < max_x && dy < max_y) {
-			ElementalistMod.log("Hit: (" + dx + ", " + dy + ") [" + max_x + ", " + max_y + "]");
+			//ElementalistMod.log("Hit: (" + dx + ", " + dy + ") [" + max_x + ", " + max_y + "]");
 			return true;
 		}
 		

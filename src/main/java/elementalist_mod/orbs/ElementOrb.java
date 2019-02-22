@@ -13,16 +13,20 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.FrostOrbPassiveEffect;
 
 import elementalist_mod.ElementalistMod;
 import elementalist_mod.ElementalistMod.Element;
+import elementalist_mod.Util;
 import elementalist_mod.cards.uncommon.Concentricity;
 import elementalist_mod.powers.AstralFormPower;
 import elementalist_mod.powers.ConfluencePower;
+import elementalist_mod.relics.MagusStaff;
 
 public abstract class ElementOrb extends AbstractOrb {
 	private float vfxTimer = 1.0F;
@@ -43,6 +47,18 @@ public abstract class ElementOrb extends AbstractOrb {
 	public float particleDelta = 0f;
 	public ArrayList<FloatPair> starPosition = new ArrayList<FloatPair>();
 	public ArrayList<FloatPair> starTarget = new ArrayList<FloatPair>();
+	public static Texture orbHighlightTexture = null;
+	public static Texture orbHighlightPassiveTexture = null;
+	private float highlightScale = 0;
+	public boolean isHovered = false;
+	static Hitbox mouseHitbox = new Hitbox(InputHelper.mX, InputHelper.mY, 1, 1);
+	
+	static {
+		if(orbHighlightTexture == null) {
+			orbHighlightTexture = ImageMaster.loadImage("img/orbs/highlight.png");
+			orbHighlightPassiveTexture = ImageMaster.loadImage("img/orbs/highlight_passive.png");
+		}
+	}
     
 
 	public ElementOrb(String ID, int amount) {
@@ -176,6 +192,7 @@ public abstract class ElementOrb extends AbstractOrb {
 	@Override
 	public void render(SpriteBatch sb) {
 		this.scale = Settings.scale;
+		this.updateAnimation();
 		
 		if(getOrbSlot() == 0) {
 
@@ -188,15 +205,15 @@ public abstract class ElementOrb extends AbstractOrb {
 		}
 		
 		sb.setColor(Color.WHITE.cpy());
-		if(element.equals("Fire")) {
+		if(element == Element.FIRE) {
 			sb.draw(imgExtra, this.cX - 48.0F + this.bobEffect.y / 4.0F, this.cY - 48.0F + this.bobEffect.y / 4.0F, 48.0F, 48.0F,
 					96.0F, 96.0F, this.scale, this.scale, rotation, 0, 0, 96, 96, false, false);
 		}
-		if(element.equals("Air")) {
+		if(element == Element.AIR) {
 			sb.draw(imgExtra, this.cX - 48.0F + this.bobEffect.y / 4.0F, this.cY - 48.0F + this.bobEffect.y / 4.0F, 48.0F, 48.0F,
 					96.0F, 96.0F, this.scale, this.scale, -rotation, 0, 0, 96, 96, false, false);
 		}
-		if(element.equals("Earth")) {
+		if(element == Element.EARTH) {
 			sb.draw(imgExtra, this.cX - 48.0F + this.bobEffect.y / 4.0F, this.cY - 48.0F + this.bobEffect.y / 4.0F, 48.0F, 48.0F,
 					96.0F, 96.0F, this.scale, this.scale, (float) (Math.sin(3.14f*rotation/90f)*5f), 0, 0, 96, 96, false, false);
 		}
@@ -213,7 +230,7 @@ public abstract class ElementOrb extends AbstractOrb {
 		sb.draw(imgBevel, this.cX - 48.0F + this.bobEffect.y / 4.0F, this.cY - 48.0F + this.bobEffect.y / 4.0F, 48.0F,
 				48.0F, 96.0F, 96.0F, this.scale, this.scale, 0f, 0, 0, 96, 96, false, false);
 
-		if(element.equals("Water")) {
+		if(element == Element.WATER) {
 			sb.draw(imgExtra, this.cX - 48.0F + this.bobEffect.y / 4.0F, this.cY - 48.0F + this.bobEffect.y / 4.0F, 48.0F,
 					48.0F, 96.0F, 96.0F, this.scale, this.scale, (float) (Math.cos(3.14f*rotation/90f)*5f), 0, 0, 96, 96, false, false);
 		}
@@ -247,8 +264,8 @@ public abstract class ElementOrb extends AbstractOrb {
 				dx = position.x;
 				dy = position.y;
 				sb.draw(img4, 
-						this.cX - 48.0F + this.bobEffect.y / 4.0F + dx*48f, 
-						this.cY - 48.0F + this.bobEffect.y / 4.0F + dy*48f, 
+						this.cX - 48.0F + this.bobEffect.y / 4.0F + dx*32f, 
+						this.cY - 48.0F + this.bobEffect.y / 4.0F + dy*32f, 
 						48.0F, 48.0F, 96.0F, 96.0F, this.scale*0.5f, this.scale*0.5f, 0f, 0, 0, 96, 96, false, false);
 			}
 			
@@ -257,6 +274,17 @@ public abstract class ElementOrb extends AbstractOrb {
 			//ElementalistMod.log(e.toString());
 		}
 		
+		if(shouldPassiveHighlight()) {
+			renderHighlight(sb, false);
+		}
+		
+		if(shouldActiveHighlight()) {
+			renderHighlight(sb, true);
+		}
+
+		Util.setBlending(sb, "normal");
+		sb.setColor(Color.WHITE.cpy());
+		
 		
 		rotation += 0.5f;
 
@@ -264,6 +292,63 @@ public abstract class ElementOrb extends AbstractOrb {
 		this.hb.render(sb);
 
 		particleDelta += 0.1f;
+	}
+	
+	private void renderHighlight(SpriteBatch sb, boolean active) {
+		float drawScale = this.scale;
+		float opacity = 1f;
+		if(active) {
+			opacity = highlightScale;
+			drawScale *= highlightScale;
+		}else {
+			opacity = 1-highlightScale;
+			drawScale *= 1-highlightScale;
+		}
+		
+		
+		
+		Util.setBlending(sb, "screen");
+		Color col = Color.WHITE.cpy();
+		col.r = opacity;
+		col.g = opacity;
+		col.b = opacity;
+		sb.setColor(col);
+		//ElementalistMod.log("highlightScale => "+highlightScale);
+		
+		if(active) {
+			sb.draw(orbHighlightTexture, 
+				this.cX - 64.0F + this.bobEffect.y / 4.0F, 
+				this.cY - 64.0F + this.bobEffect.y / 4.0F, 
+				64.0F, 64.0F, 128.0F, 128.0F, drawScale, drawScale, 0f, 0, 0, 128, 128, false, false);
+		}else {
+			for(int i=0; i<MagusStaff.charges; i++) {
+				float meteorAngle = 360*this.getOrbSlot()/4 + 360*i/MagusStaff.charges;
+				float individualOpacity = (float) (opacity*Math.cos( (Math.PI/360)*(10*particleDelta+meteorAngle+90*this.getOrbSlot())) );
+				individualOpacity /= 2;
+				individualOpacity += 0.5f;
+				col.r = individualOpacity;
+				col.g = individualOpacity;
+				col.b = individualOpacity;
+				sb.setColor(col);
+				sb.draw(orbHighlightPassiveTexture, 
+					this.cX - 64.0F + this.bobEffect.y / 4.0F, 
+					this.cY - 64.0F + this.bobEffect.y / 4.0F, 
+					64.0F, 64.0F, 128.0F, 128.0F, drawScale, drawScale, this.angle*MagusStaff.charges+meteorAngle, 0, 0, 128, 128, false, false);
+			}
+		}
+	}
+	
+	private boolean shouldPassiveHighlight() {
+		if(!AbstractDungeon.player.hasRelic(MagusStaff.ID)) return false;
+		
+		return (MagusStaff.charges > 0);
+	}
+	
+	private boolean shouldActiveHighlight() {
+		if(!AbstractDungeon.player.hasRelic(MagusStaff.ID)) return false;
+		if(MagusStaff.charges < 1) return false;
+		
+		return this.isHovered;
 	}
 	
 	private int getOrbSlot() {
@@ -277,7 +362,7 @@ public abstract class ElementOrb extends AbstractOrb {
 
 	@Override
 	public void updateAnimation() {
-		super.updateAnimation();
+		//super.updateAnimation();
 		this.angle += Gdx.graphics.getDeltaTime() * 45.0F;
 
 		this.vfxTimer -= Gdx.graphics.getDeltaTime();
@@ -286,6 +371,32 @@ public abstract class ElementOrb extends AbstractOrb {
 			AbstractDungeon.effectList.add(new FrostOrbPassiveEffect(this.cX, this.cY));
 			this.vfxTimer = MathUtils.random(this.vfxIntervalMin, this.vfxIntervalMax);
 		}
+		
+		if(guessWhetherHovered()) {
+			//ElementalistMod.log("Orb is hovered.");
+			highlightScale = highlightScale*0.5f + 1*0.5f;
+		}else {
+			//ElementalistMod.log("Orb is not hovered.");
+			highlightScale = highlightScale*0.5f + 0*0.5f;
+		}
+	}
+	
+	public boolean guessWhetherHovered() {
+		mouseHitbox.move(InputHelper.mX, InputHelper.mY);
+		return hitboxCheck(mouseHitbox, this.hb);
+	}
+
+	private static boolean hitboxCheck(Hitbox hitbox1, Hitbox hitbox2) {
+		float dx = Math.abs(hitbox1.cX - hitbox2.cX);
+		float dy = Math.abs(hitbox1.cY - hitbox2.cY);
+		float max_x = (hitbox1.width + hitbox2.width)/3;
+		float max_y = (hitbox1.height + hitbox2.height)/3;
+		if(dx < max_x && dy < max_y) {
+			//ElementalistMod.log("Hit: (" + dx + ", " + dy + ") [" + max_x + ", " + max_y + "]");
+			return true;
+		}
+		
+		return false;
 	}
 
 	@Override
@@ -332,6 +443,7 @@ public abstract class ElementOrb extends AbstractOrb {
 
 	private void renderParticles(SpriteBatch sb) {
 		boolean drawSynergy = false;
+		/*
 		for(AbstractPower power : AbstractDungeon.player.powers) {
 			if(power instanceof ConfluencePower) {
 				drawSynergy = true;
@@ -345,12 +457,14 @@ public abstract class ElementOrb extends AbstractOrb {
 				drawSynergy = true;
 			}
 		}
+		*/
+		drawSynergy = true;
 		
 		
 		Color col;
 		float x, y, twinkle, twinkle2;
 		if(drawSynergy && amount > 0) {
-	    	for(AbstractOrb orb : AbstractDungeon.player.orbs) {
+	    	for(AbstractOrb orb : ElementalistMod.getElementOrbs()) {
 	    		if(orb instanceof ElementOrb && orb != this) {
 	    			ElementOrb elementOrb = (ElementOrb)orb;
 	    			//check for synergy
@@ -364,8 +478,8 @@ public abstract class ElementOrb extends AbstractOrb {
 	        				col = getElementColor(element);
 	        				col = col.lerp(getElementColor(elementOrb.element), i/dis);
 	        				sb.setColor(col);
-	        				x = this.cX + this.bobEffect.y / 4.0F + dX*(i/dis);
-	        				y = this.cY + this.bobEffect.y / 4.0F + dY*(i/dis);
+	        				x = this.cX + this.bobEffect.y / 4.0F + dX*(i/dis)*this.scale;
+	        				y = this.cY + this.bobEffect.y / 4.0F + dY*(i/dis)*this.scale;
 	        				x += 5*Math.cos(i/4f);
 	        				y += 5*Math.sin(i/4f);
 	        				twinkle = (float) Math.cos(i/seperation/10f); 

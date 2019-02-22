@@ -238,6 +238,8 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 	public static final String POWER_AERIAL_DODGE_SMALL = "img/powers/aerial_dodge_small.png";
 	public static final String POWER_WINDBURN = "img/powers/windburn.png";
 	public static final String POWER_WINDBURN_SMALL = "img/powers/windburn_small.png";
+	public static final String POWER_WINDBLIGHT = "img/powers/windblight.png";
+	public static final String POWER_WINDBLIGHT_SMALL = "img/powers/windblight_small.png";
 	public static final String POWER_QUADMIRE = "img/powers/quadmire.png";
 	public static final String POWER_QUADMIRE_SMALL = "img/powers/quadmire_small.png";
 	public static final String POWER_MULTIFICATION = "img/powers/multification.png";
@@ -281,6 +283,9 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 	public static final String RED_RIBBON_OUTLINE = "img/relics/red_ribbon_outline.png";
 	public static final String BLUE_RIBBON = "img/relics/blue_ribbon.png";
 	public static final String BLUE_RIBBON_OUTLINE = "img/relics/blue_ribbon_outline.png";
+
+	public static final String GRADUATION_LETTER = "img/relics/graduation_letter.png";
+	public static final String GRADUATION_LETTER_OUTLINE = "img/relics/graduation_letter_outline.png";
 
 	// misc. effects
 	public static final String[] MAGIC_CIRCLE = { "img/effects/magic_circle_1.png", "img/effects/magic_circle_2.png", "img/effects/magic_circle_3.png",
@@ -377,6 +382,7 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 	public void receiveEditRelics() {
 
 		BaseMod.addRelicToCustomPool(new MagusStaff(), AbstractCardEnum.ELEMENTALIST_BLUE);
+		BaseMod.addRelicToCustomPool(new GraduationLetter(), AbstractCardEnum.ELEMENTALIST_BLUE);
 		BaseMod.addRelicToCustomPool(new RedRibbon(), AbstractCardEnum.ELEMENTALIST_BLUE);
 		BaseMod.addRelicToCustomPool(new BlueRibbon(), AbstractCardEnum.ELEMENTALIST_BLUE);
 		BaseMod.addRelicToCustomPool(new YellowCirclet(), AbstractCardEnum.ELEMENTALIST_BLUE);
@@ -409,9 +415,11 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 		addKeyword("Transmute", new String[] { "transmute" }, "Takes all points in the first element and moves them to the second.");
 
 		addKeyword("Synergy", new String[] { "synergy", "synergized", "synergizing", "synergizes" }, "Occurs when at least two elements are equal and greater than zero.");
-		addKeyword("Aerial Dodge", new String[] { "aerial", "dodge" }, "When you have less than 5 extra block remaining at the end of the enemy turn, gain 2 Dexterity.");
+		addKeyword("Aerial Dodge", new String[] { "aerial", "dodge" }, "When you have less than 5 extra block remaining at the end of the enemy turn, gain 1 Dexterity.");
 		addKeyword("Windburn", new String[] { "windburn" },
 			"Lose HP equal to your Windburn at the end of your turn if any element is higher than Air. Monsters always lose HP to Windburn.");
+		addKeyword("Windblight", new String[] { "windblight" },
+			"When you draw or discard cards, gain 1 Aerial Dodge and 1 Windburn.");
 		addKeyword("Rune", new String[] { "rune", "igniseye", "terraheart", "zephyrsoul", "aquamind" },
 			"Runes are temporary cards which exhaust on use, at the end of your turn, or if another Rune is played.");
 

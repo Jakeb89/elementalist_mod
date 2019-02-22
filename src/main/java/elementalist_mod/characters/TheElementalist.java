@@ -8,6 +8,7 @@ import elementalist_mod.ElementalistMod;
 import elementalist_mod.cards.basic.*;
 import elementalist_mod.patches.AbstractCardEnum;
 import elementalist_mod.patches.TheElementalistEnum;
+import elementalist_mod.relics.GraduationLetter;
 import elementalist_mod.relics.MagusStaff;
 import elementalist_mod.ui.EnergyOrbNavy;
 
@@ -36,7 +37,7 @@ public class TheElementalist extends CustomPlayer implements CustomSavable<Array
 
 	public static final int STARTING_HP = 70;
 	public static final int MAX_HP = 70;
-	public static final int ORB_SLOTS = 0;
+	public static final int ORB_SLOTS = 3;
 	public static final int STARTING_GOLD = 99;
 	public static final int HAND_SIZE = 5;
 	public static int totalExp = 0;
@@ -120,6 +121,8 @@ public class TheElementalist extends CustomPlayer implements CustomSavable<Array
 		ArrayList<String> retVal = new ArrayList<>();
 		retVal.add(MagusStaff.ID);
 		UnlockTracker.markRelicAsSeen(MagusStaff.ID);
+		retVal.add(GraduationLetter.ID);
+		UnlockTracker.markRelicAsSeen(GraduationLetter.ID);
 		return retVal;
 	}
 
