@@ -6,6 +6,13 @@
       "Gains a charge for every 5 cards played. NL Click an elemental orb to convert a charge into one point of that element. NL Starts each battle with 1 charge."
     ]
   },
+  "elementalistmod:GraduationLetter": {
+    "NAME": "Graduation Letter",
+    "FLAVOR": "The end of one journey, and the beginning of another. Perhaps it's time to break the seal and choose your elemental specialization.",
+    "DESCRIPTIONS": [
+      "Click to choose an elemental specialization, losing the graduation letter in the process."
+    ]
+  },
   "elementalistmod:BlueRibbon": {
     "NAME": "Blue Ribbon",
     "FLAVOR": "A curious and familiar blue ribbon. It looks similar to the one on your staff...",
