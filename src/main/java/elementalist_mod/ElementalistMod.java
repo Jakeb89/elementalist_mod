@@ -47,6 +47,7 @@ import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostExhaustSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
+import basemod.interfaces.PostPlayerUpdateSubscriber;
 import basemod.interfaces.PreStartGameSubscriber;
 import elementalist_mod.actions.*;
 import elementalist_mod.cards.*;
@@ -59,7 +60,7 @@ import elementalist_mod.relics.*;
 
 @SpireInitializer
 public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubscriber, EditRelicsSubscriber, EditCharactersSubscriber, EditStringsSubscriber,
-	EditKeywordsSubscriber, OnStartBattleSubscriber, PostDungeonInitializeSubscriber, PostExhaustSubscriber, PostBattleSubscriber, PreStartGameSubscriber {
+	EditKeywordsSubscriber, OnStartBattleSubscriber, PostDungeonInitializeSubscriber, PostExhaustSubscriber, PostBattleSubscriber, PreStartGameSubscriber, PostPlayerUpdateSubscriber {
 	public static final Logger logger = LogManager.getLogger(ElementalistMod.class.getName());
 	public static HashMap<String, Integer> loggerMessages = new HashMap<String, Integer>();
 	public static ArrayList<String> loggerMutes = new ArrayList<String>();
@@ -785,6 +786,13 @@ public class ElementalistMod implements PostInitializeSubscriber, EditCardsSubsc
 			case FIRE: return "Fire";
 		}
 		return "?";
+	}
+
+	@Override
+	public void receivePostPlayerUpdate() {
+		for(ElementOrb elementOrb : getElementOrbs()) {
+			elementOrb.update();
+		}
 	}
 
 }

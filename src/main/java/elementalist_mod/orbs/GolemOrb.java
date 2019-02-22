@@ -15,6 +15,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.MathHelper;
+import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbPassiveEffect;
@@ -29,6 +31,8 @@ import elementalist_mod.powers.ConfluencePower;
 import elementalist_mod.relics.MagusStaff;
 
 public class GolemOrb extends AbstractOrb {
+	public static final String ID = "Elementalist:GolemOrb";
+
 	private float vfxTimer = 1.0F;
 	private float vfxIntervalMin = 0.2F;
 	private float vfxIntervalMax = 0.7F;
@@ -59,12 +63,20 @@ public class GolemOrb extends AbstractOrb {
 	}
 
 	public GolemOrb() {
-		this.ID = "elementalist:golemOrb";
 
 		this.channelAnimTimer = 0.5F;
 		this.scale = 1f;
+		this.name = "Golem Orb";
 
 		updateDescription();
+	}
+
+	public void update() {
+		this.hb.update();
+		if (this.hb.hovered) {
+			TipHelper.renderGenericTip(this.tX + 96.0F * Settings.scale, this.tY + 64.0F * Settings.scale, this.name, this.description);
+		}
+		this.fontScale = MathHelper.scaleLerpSnap(this.fontScale, 0.7F);
 	}
 
 	public void onStartOfTurn() {
@@ -98,8 +110,8 @@ public class GolemOrb extends AbstractOrb {
 	@Override
 	public void updateDescription() {
 		applyFocus();
-		
-		this.description = "A simple golem.";
+
+		this.description = "A simple golem orb.";
 	}
 
 	@Override
@@ -201,7 +213,6 @@ public class GolemOrb extends AbstractOrb {
 
 	@Override
 	public AbstractOrb makeCopy() {
-		// TODO Auto-generated method stub
-		return null;
+		return new GolemOrb();
 	}
 }
