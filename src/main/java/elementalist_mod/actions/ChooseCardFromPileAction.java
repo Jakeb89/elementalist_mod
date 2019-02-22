@@ -7,8 +7,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import elementalist_mod.cards.AbstractElementalistCard;
+import elementalist_mod.relics.GraduationLetter;
 
 public class ChooseCardFromPileAction extends AbstractGameAction {
 
@@ -17,7 +19,8 @@ public class ChooseCardFromPileAction extends AbstractGameAction {
 	// public static final String[] TEXT = uiStrings.TEXT;
 	private AbstractPlayer p;
 	private CardGroup cardGroup;
-	private AbstractElementalistCard source;
+	private AbstractElementalistCard source = null;
+	private GraduationLetter relicSource = null;
 
 	public ChooseCardFromPileAction(AbstractElementalistCard source, CardGroup cardGroup, int amount) {
 		this.p = AbstractDungeon.player;
@@ -28,17 +31,30 @@ public class ChooseCardFromPileAction extends AbstractGameAction {
 		this.source = source;
 	}
 
+	public ChooseCardFromPileAction(GraduationLetter relicSource, CardGroup cardGroup, int amount) {
+		this.p = AbstractDungeon.player;
+		setValues(this.p, AbstractDungeon.player, amount);
+		this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
+		this.duration = Settings.ACTION_DUR_MED;
+		this.cardGroup = cardGroup;
+		this.relicSource = relicSource;
+	}
+
 	public void update() {
 		CardGroup tmp;
 		if (this.duration == Settings.ACTION_DUR_MED) {
 			tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 			for (AbstractCard c : cardGroup.group) {
-				if(source.customCardTest(c)) {
+				if(source != null) {
+					if(source.customCardTest(c)) {
+						tmp.addToRandomSpot(c);
+					}
+				}else {
 					tmp.addToRandomSpot(c);
 				}
 			}
 			if (tmp.size() == 0) {
-				source.actionCallback(null);
+				doActionCallback(null);
 				this.isDone = true;
 				return;
 			}
@@ -52,8 +68,9 @@ public class ChooseCardFromPileAction extends AbstractGameAction {
 				card.targetDrawScale = 0.75F;
 				card.current_x = CardGroup.DRAW_PILE_X;
 				card.current_y = CardGroup.DRAW_PILE_Y;*/
+
+				doActionCallback(card);
 				
-				source.actionCallback(card);
 				/*
 				if (this.p.hand.size() == 10) {
 					cardGroup.moveToDiscardPile(card);
@@ -89,12 +106,12 @@ public class ChooseCardFromPileAction extends AbstractGameAction {
 				c.unhover();
 				if (this.p.hand.size() == 10) {
 					//cardGroup.moveToDiscardPile(c);
-					source.actionCallback(c);
+					doActionCallback(c);
 					//this.p.createHandIsFullDialog();
 				} else {
 					//cardGroup.removeCard(c);
 					//this.p.hand.addToTop(c);
-					source.actionCallback(c);
+					doActionCallback(c);
 				}
 				this.p.hand.refreshHandLayout();
 				this.p.hand.applyPowers();
@@ -104,5 +121,14 @@ public class ChooseCardFromPileAction extends AbstractGameAction {
 		}
 		
 		tickDuration();
+	}
+	
+	private void doActionCallback(AbstractCard card) {
+		if(source != null) {
+			source.actionCallback(card);
+		}
+		if(relicSource != null) {
+			relicSource.actionCallback(card);
+		}
 	}
 }

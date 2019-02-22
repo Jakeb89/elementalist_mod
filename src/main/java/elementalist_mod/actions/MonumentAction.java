@@ -41,6 +41,7 @@ public class MonumentAction extends AbstractGameAction {
 					c.misc += this.increaseAmount;
 					c.applyPowers();
 					c.baseDamage = c.misc;
+					c.exhaust = true;
 				}
 			}
 			if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {

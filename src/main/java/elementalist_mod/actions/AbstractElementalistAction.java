@@ -32,6 +32,10 @@ public class AbstractElementalistAction extends AbstractGameAction {
 		
 	}
 	
+	protected void logActionComplete() {
+		ElementalistMod.log("AbstractElementalistAction.logActionComplete() ... ["+this+"]");
+	}
+	
 	
 	/*Pass-through to ElementalistMod functions*/
 

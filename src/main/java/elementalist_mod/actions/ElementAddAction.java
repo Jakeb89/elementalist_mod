@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 
-public class ElementAddAction extends AbstractGameAction {
+public class ElementAddAction extends AbstractElementalistAction {
     private ElementOrb orb;
     private int amount;
     private String sourceType = "card";
@@ -90,7 +90,7 @@ public class ElementAddAction extends AbstractGameAction {
 		}
 		
 		
-		
+		logActionComplete();
         this.isDone = true;
         return;
     }
