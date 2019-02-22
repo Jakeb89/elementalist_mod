@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.abstracts.CustomCard;
@@ -295,6 +296,11 @@ public class AbstractElementalistCard extends CustomCard{
 			if(power instanceof ElementalPower) {
 				ElementalPower elementalPower = (ElementalPower) power;
 				elementalPower.onElementalCast(element);
+			}
+		}
+		for(AbstractOrb orb : AbstractDungeon.player.orbs) {
+			if(orb instanceof GolemOrb) {
+				((GolemOrb)orb).onElementCast(element);
 			}
 		}
 	}
