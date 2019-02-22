@@ -1,6 +1,7 @@
 package elementalist_mod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -42,6 +43,8 @@ public class MonumentAction extends AbstractGameAction {
 					c.applyPowers();
 					c.baseDamage = c.misc;
 					c.exhaust = true;
+					AbstractDungeon.player.limbo.moveToExhaustPile(c);
+					AbstractDungeon.player.discardPile.moveToExhaustPile(c);
 				}
 			}
 			if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
