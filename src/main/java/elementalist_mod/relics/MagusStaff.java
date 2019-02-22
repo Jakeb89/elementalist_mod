@@ -159,9 +159,11 @@ public class MagusStaff extends CustomRelic {
 
 	public void updateDescription() {
 		this.description = "Gains a charge for every 5 cards played. Click an elemental orb to convert a charge into one point of that element. Starts each battle with 1 charge.";
+		/*
 		this.description += " NL NL ";
 		this.description += "You have played " + MagusStaff.cardsPlayed + " cards. The 5th card will create a Magus Staff charge.";
 		this.description += " NL The staff has " + MagusStaff.charges + " charges.";
+		*/
 		this.DESCRIPTIONS[0] = this.description;
 	}
 
